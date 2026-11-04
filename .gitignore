@@ -4,6 +4,9 @@
 /docs/evidencia-privada/
 /docs/privado/
 
+# Entregable firmado: lleva la firma del líder de equipo, no se publica en los remotos.
+/docs/Informe_uso_IA_PETI_Perficient*.docx
+
 # Artefactos locales de revisión y exportaciones temporales.
 *.tmp
 *.bak
