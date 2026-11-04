@@ -1,0 +1,261 @@
+<mxfile host="app.diagrams.net" pages="2">
+  <diagram id="dofa-final" name="DOFA final">
+    <mxGraphModel dx="1552" dy="1051" grid="0" gridSize="10" guides="1" tooltips="1" connect="0" arrows="0" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="1020" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c2" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=none;strokeColor=none;fontSize=24;fontStyle=1;fontColor=#1F1F1F;" value="Análisis DOFA — Perficient, operación en Colombia (PETI 2026-2028)" vertex="1">
+          <mxGeometry height="44" width="1400" x="50" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#4D4D4D;strokeColor=#4D4D4D;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" value="FAVORABLE" vertex="1">
+          <mxGeometry height="34" width="670" x="110" y="74" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#4D4D4D;strokeColor=#4D4D4D;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" value="DESFAVORABLE" vertex="1">
+          <mxGeometry height="34" width="670" x="780" y="74" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#4D4D4D;strokeColor=#4D4D4D;fontColor=#FFFFFF;fontSize=14;fontStyle=1;horizontal=0;" value="ANÁLISIS INTERNO" vertex="1">
+          <mxGeometry height="460" width="50" x="50" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="c6" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#4D4D4D;strokeColor=#4D4D4D;fontColor=#FFFFFF;fontSize=14;fontStyle=1;horizontal=0;" value="ANÁLISIS EXTERNO" vertex="1">
+          <mxGeometry height="390" width="50" x="50" y="588" as="geometry" />
+        </mxCell>
+        <mxCell id="c7" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#82B366;strokeColor=#5A8A43;fontColor=#FFFFFF;fontSize=17;fontStyle=1;" value="Fortalezas" vertex="1">
+          <mxGeometry height="40" width="670" x="110" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="c8" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EEF6EA;strokeColor=#5A8A43;fontColor=#1F1F1F;fontSize=13;align=left;verticalAlign=top;spacingLeft=14;spacingRight=14;spacingTop=12;" value="&lt;b&gt;F1&lt;/b&gt; [Seguridad] SGSI certificado en ISO/IEC 27001:2022, certificado ISMS-PE-101123 de A-Lign (PUB-002)&lt;br&gt;&lt;br&gt;&lt;b&gt;F2&lt;/b&gt; [Estrategia] Posicionamiento declarado &quot;AI-native&quot; (PUB-003) y alianzas de IA con Lovable y Gradial (PUB-009, PUB-010)&lt;br&gt;&lt;br&gt;&lt;b&gt;F3&lt;/b&gt; [Información, uso y apropiación] Alianzas con Microsoft, Databricks y Snowflake (PUB-005 a PUB-008)&lt;br&gt;&lt;br&gt;&lt;b&gt;F4&lt;/b&gt; [Seguridad, sistemas] Pruebas de seguridad continuas y análisis de dependencias en la cuenta analizada (PRV-001)&lt;br&gt;&lt;br&gt;&lt;b&gt;F5&lt;/b&gt; [Gobierno, infraestructura] Roles definidos, Scrum y ambientes separados en la cuenta analizada (PRV-001)&lt;br&gt;&lt;br&gt;&lt;b&gt;F6&lt;/b&gt; [Uso y apropiación] Formación en línea, patrocinio de certificaciones y capacitaciones obligatorias en la cuenta analizada (PRV-001)" vertex="1">
+          <mxGeometry height="420" width="670" x="110" y="158" as="geometry" />
+        </mxCell>
+        <mxCell id="c9" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#B85450;strokeColor=#8F3B38;fontColor=#FFFFFF;fontSize=17;fontStyle=1;" value="Debilidades" vertex="1">
+          <mxGeometry height="40" width="670" x="780" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="c10" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FBECEB;strokeColor=#8F3B38;fontColor=#1F1F1F;fontSize=13;align=left;verticalAlign=top;spacingLeft=14;spacingRight=14;spacingTop=12;" value="&lt;b&gt;D1&lt;/b&gt; [Seguridad, información] Uso de IA sin sistema de gestión, sin inventario y sin permisos para agentes (INT-001; PRV-001)&lt;br&gt;&lt;br&gt;&lt;b&gt;D2&lt;/b&gt; [Gobierno] Sin comité de TI, RACI, matriz de riesgos ni presupuesto de TI (INT-001)&lt;br&gt;&lt;br&gt;&lt;b&gt;D3&lt;/b&gt; [Seguridad, gobierno] Transferencias internacionales de datos sin registro por proyecto; obligaciones posteriores a la privatización sin concepto legal (INT-001; PUB-004)&lt;br&gt;&lt;br&gt;&lt;b&gt;D4&lt;/b&gt; [Estrategia] Sin misión, visión, catálogo de servicios ni tablero de TI (INT-001)&lt;br&gt;&lt;br&gt;&lt;b&gt;D5&lt;/b&gt; [Sistemas de información] Hallazgos de seguridad y horas se pasan a mano entre herramientas (PRV-001)&lt;br&gt;&lt;br&gt;&lt;b&gt;D6&lt;/b&gt; [Infraestructura] Sin infraestructura como código ni control de costos de nube (INT-001)&lt;br&gt;&lt;br&gt;&lt;b&gt;D7&lt;/b&gt; [Uso y apropiación] Adopción de IA no medida y canal de licencias no estandarizado (PRV-001; INT-001)" vertex="1">
+          <mxGeometry height="420" width="670" x="780" y="158" as="geometry" />
+        </mxCell>
+        <mxCell id="c11" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#6C8EBF;strokeColor=#46699B;fontColor=#FFFFFF;fontSize=17;fontStyle=1;" value="Oportunidades" vertex="1">
+          <mxGeometry height="40" width="670" x="110" y="588" as="geometry" />
+        </mxCell>
+        <mxCell id="c12" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EAF0F9;strokeColor=#46699B;fontColor=#1F1F1F;fontSize=13;align=left;verticalAlign=top;spacingLeft=14;spacingRight=14;spacingTop=12;" value="&lt;b&gt;O1&lt;/b&gt; Clientes que piden IA gobernada y auditable&lt;br&gt;&lt;br&gt;&lt;b&gt;O2&lt;/b&gt; ISO/IEC 42001 y NIST AI RMF para ordenar y demostrar el gobierno de la IA&lt;br&gt;&lt;br&gt;&lt;b&gt;O3&lt;/b&gt; Informe SOC 2 tipo II con controles de IA como requisito de clientes regulados&lt;br&gt;&lt;br&gt;&lt;b&gt;O4&lt;/b&gt; Plataformas, formación y certificaciones de los socios&lt;br&gt;&lt;br&gt;&lt;b&gt;O5&lt;/b&gt; Prácticas maduras de DevSecOps, infraestructura como código y observabilidad&lt;br&gt;&lt;br&gt;&lt;b&gt;O6&lt;/b&gt; COBIT 2019 como referencia para el gobierno y el presupuesto de TI" vertex="1">
+          <mxGeometry height="350" width="670" x="110" y="628" as="geometry" />
+        </mxCell>
+        <mxCell id="c13" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#D79B00;strokeColor=#A87900;fontColor=#FFFFFF;fontSize=17;fontStyle=1;" value="Amenazas" vertex="1">
+          <mxGeometry height="40" width="670" x="780" y="588" as="geometry" />
+        </mxCell>
+        <mxCell id="c14" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FFF4E0;strokeColor=#A87900;fontColor=#1F1F1F;fontSize=13;align=left;verticalAlign=top;spacingLeft=14;spacingRight=14;spacingTop=12;" value="&lt;b&gt;A1&lt;/b&gt; El certificado ISO vence el 11 de octubre de 2026 y no hay evidencia pública de su recertificación (PUB-002, PUB-018; R02)&lt;br&gt;&lt;br&gt;&lt;b&gt;A2&lt;/b&gt; Fuga de código o datos e inyección de instrucciones por herramientas de IA (R01, R05)&lt;br&gt;&lt;br&gt;&lt;b&gt;A3&lt;/b&gt; Sanción por incumplir la Ley 1581 y leyes de datos más exigentes en la región (PUB-013, PUB-014; R04)&lt;br&gt;&lt;br&gt;&lt;b&gt;A4&lt;/b&gt; Competidores nearshore que ya certificaron su gobierno de IA: Softtek, ISO/IEC 42001 desde noviembre de 2025 (PUB-017)&lt;br&gt;&lt;br&gt;&lt;b&gt;A5&lt;/b&gt; Vulnerabilidades heredadas de dependencias (R03)&lt;br&gt;&lt;br&gt;&lt;b&gt;A6&lt;/b&gt; Rotación de personal (R06)&lt;br&gt;&lt;br&gt;&lt;b&gt;A7&lt;/b&gt; El cliente no autoriza cambios en su infraestructura; sobrecosto de nube (R07, R08)" vertex="1">
+          <mxGeometry height="350" width="670" x="780" y="628" as="geometry" />
+        </mxCell>
+        <mxCell id="c15" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=none;strokeColor=none;fontSize=11;fontColor=#555555;align=left;verticalAlign=top;" value="Elaboración propia (INT-001). [Dominio de gestión de TI]. Los IDs PUB-, PRV- e INT- remiten al registro de evidencias; R01-R08 a la matriz de riesgos del PETI. Orden de prioridad dentro de cada cuadrante. Las oportunidades sin ID son lectura del entorno hecha por el equipo." vertex="1">
+          <mxGeometry height="40" width="1400" x="50" y="990" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="cruce-de-estrategias" name="Cruce de estrategias">
+    <mxGraphModel dx="1377" dy="932" grid="0" gridSize="10" guides="1" tooltips="1" connect="0" arrows="0" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c2" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=none;strokeColor=none;fontSize=24;fontStyle=1;fontColor=#1F1F1F;align=left;" value="Cruce de la DOFA: estrategias propuestas, brechas y proyectos" vertex="1">
+          <mxGeometry height="44" width="1340" x="50" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#4D4D4D;strokeColor=#FFFFFF;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" value="Tipo" vertex="1">
+          <mxGeometry height="40" width="80" x="50" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#4D4D4D;strokeColor=#FFFFFF;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" value="Cruce" vertex="1">
+          <mxGeometry height="40" width="150" x="130" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#4D4D4D;strokeColor=#FFFFFF;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" value="Estrategia propuesta" vertex="1">
+          <mxGeometry height="40" width="640" x="280" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="c6" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#4D4D4D;strokeColor=#FFFFFF;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" value="Brechas" vertex="1">
+          <mxGeometry height="40" width="250" x="920" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="c7" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#4D4D4D;strokeColor=#FFFFFF;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" value="Proyectos" vertex="1">
+          <mxGeometry height="40" width="220" x="1170" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="c8" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#82B366;strokeColor=#FFFFFF;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" value="FO" vertex="1">
+          <mxGeometry height="52" width="80" x="50" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c9" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EEF6EA;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="F1 + O2 + O3" vertex="1">
+          <mxGeometry height="52" width="150" x="130" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c10" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EEF6EA;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;align=left;spacingLeft=10;" value="Extender el SGSI certificado a un sistema de gestión de IA y llevar sus controles al informe SOC 2" vertex="1">
+          <mxGeometry height="52" width="640" x="280" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c11" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EEF6EA;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="BRE-001, BRE-014" vertex="1">
+          <mxGeometry height="52" width="250" x="920" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c12" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EEF6EA;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="P1.2, P4.1, P4.2" vertex="1">
+          <mxGeometry height="52" width="220" x="1170" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c13" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#82B366;strokeColor=#FFFFFF;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" value="FO" vertex="1">
+          <mxGeometry height="52" width="80" x="50" y="182" as="geometry" />
+        </mxCell>
+        <mxCell id="c14" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EEF6EA;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="F2 + O1" vertex="1">
+          <mxGeometry height="52" width="150" x="130" y="182" as="geometry" />
+        </mxCell>
+        <mxCell id="c15" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EEF6EA;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;align=left;spacingLeft=10;" value="Crear un centro de excelencia de IA en Colombia y llevar casos de RAG y agentes a producción" vertex="1">
+          <mxGeometry height="52" width="640" x="280" y="182" as="geometry" />
+        </mxCell>
+        <mxCell id="c16" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EEF6EA;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="BRE-001, BRE-005" vertex="1">
+          <mxGeometry height="52" width="250" x="920" y="182" as="geometry" />
+        </mxCell>
+        <mxCell id="c17" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EEF6EA;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="P1.8, P3.1, P3.3" vertex="1">
+          <mxGeometry height="52" width="220" x="1170" y="182" as="geometry" />
+        </mxCell>
+        <mxCell id="c18" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#82B366;strokeColor=#FFFFFF;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" value="FO" vertex="1">
+          <mxGeometry height="52" width="80" x="50" y="234" as="geometry" />
+        </mxCell>
+        <mxCell id="c19" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EEF6EA;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="F3 + F6 + O4" vertex="1">
+          <mxGeometry height="52" width="150" x="130" y="234" as="geometry" />
+        </mxCell>
+        <mxCell id="c20" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EEF6EA;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;align=left;spacingLeft=10;" value="Plan de certificaciones por rol articulado con los socios" vertex="1">
+          <mxGeometry height="52" width="640" x="280" y="234" as="geometry" />
+        </mxCell>
+        <mxCell id="c21" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EEF6EA;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="BRE-009" vertex="1">
+          <mxGeometry height="52" width="250" x="920" y="234" as="geometry" />
+        </mxCell>
+        <mxCell id="c22" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EEF6EA;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="P1.7, P3.4" vertex="1">
+          <mxGeometry height="52" width="220" x="1170" y="234" as="geometry" />
+        </mxCell>
+        <mxCell id="c23" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#D79B00;strokeColor=#FFFFFF;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" value="FA" vertex="1">
+          <mxGeometry height="52" width="80" x="50" y="286" as="geometry" />
+        </mxCell>
+        <mxCell id="c24" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FFF4E0;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="F1 + A1" vertex="1">
+          <mxGeometry height="52" width="150" x="130" y="286" as="geometry" />
+        </mxCell>
+        <mxCell id="c25" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FFF4E0;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;align=left;spacingLeft=10;" value="Confirmar con A-Lign el estado del certificado y cerrar la recertificación" vertex="1">
+          <mxGeometry height="52" width="640" x="280" y="286" as="geometry" />
+        </mxCell>
+        <mxCell id="c26" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FFF4E0;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="BRE-006" vertex="1">
+          <mxGeometry height="52" width="250" x="920" y="286" as="geometry" />
+        </mxCell>
+        <mxCell id="c27" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FFF4E0;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="P1.1" vertex="1">
+          <mxGeometry height="52" width="220" x="1170" y="286" as="geometry" />
+        </mxCell>
+        <mxCell id="c28" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#D79B00;strokeColor=#FFFFFF;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" value="FA" vertex="1">
+          <mxGeometry height="52" width="80" x="50" y="338" as="geometry" />
+        </mxCell>
+        <mxCell id="c29" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FFF4E0;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="F4 + A5" vertex="1">
+          <mxGeometry height="52" width="150" x="130" y="338" as="geometry" />
+        </mxCell>
+        <mxCell id="c30" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FFF4E0;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;align=left;spacingLeft=10;" value="Integrar las pruebas de seguridad al pipeline de CI/CD" vertex="1">
+          <mxGeometry height="52" width="640" x="280" y="338" as="geometry" />
+        </mxCell>
+        <mxCell id="c31" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FFF4E0;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="BRE-003, BRE-007" vertex="1">
+          <mxGeometry height="52" width="250" x="920" y="338" as="geometry" />
+        </mxCell>
+        <mxCell id="c32" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FFF4E0;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="P2.2, P2.3" vertex="1">
+          <mxGeometry height="52" width="220" x="1170" y="338" as="geometry" />
+        </mxCell>
+        <mxCell id="c33" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#D79B00;strokeColor=#FFFFFF;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" value="FA" vertex="1">
+          <mxGeometry height="52" width="80" x="50" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="c34" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FFF4E0;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="F6 + A6" vertex="1">
+          <mxGeometry height="52" width="150" x="130" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="c35" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FFF4E0;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;align=left;spacingLeft=10;" value="Usar certificaciones y rotación documentada para retener talento y conocimiento" vertex="1">
+          <mxGeometry height="52" width="640" x="280" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="c36" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FFF4E0;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="BRE-004, BRE-009" vertex="1">
+          <mxGeometry height="52" width="250" x="920" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="c37" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FFF4E0;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="P1.7, P2.1" vertex="1">
+          <mxGeometry height="52" width="220" x="1170" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="c38" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#6C8EBF;strokeColor=#FFFFFF;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" value="DO" vertex="1">
+          <mxGeometry height="52" width="80" x="50" y="442" as="geometry" />
+        </mxCell>
+        <mxCell id="c39" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EAF0F9;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="D1 + O2" vertex="1">
+          <mxGeometry height="52" width="150" x="130" y="442" as="geometry" />
+        </mxCell>
+        <mxCell id="c40" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EAF0F9;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;align=left;spacingLeft=10;" value="Levantar el inventario de IA con base en ISO/IEC 42001" vertex="1">
+          <mxGeometry height="52" width="640" x="280" y="442" as="geometry" />
+        </mxCell>
+        <mxCell id="c41" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EAF0F9;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="BRE-002" vertex="1">
+          <mxGeometry height="52" width="250" x="920" y="442" as="geometry" />
+        </mxCell>
+        <mxCell id="c42" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EAF0F9;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="P1.3, P3.2" vertex="1">
+          <mxGeometry height="52" width="220" x="1170" y="442" as="geometry" />
+        </mxCell>
+        <mxCell id="c43" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#6C8EBF;strokeColor=#FFFFFF;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" value="DO" vertex="1">
+          <mxGeometry height="52" width="80" x="50" y="494" as="geometry" />
+        </mxCell>
+        <mxCell id="c44" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EAF0F9;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="D2 + D4 + O6" vertex="1">
+          <mxGeometry height="52" width="150" x="130" y="494" as="geometry" />
+        </mxCell>
+        <mxCell id="c45" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EAF0F9;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;align=left;spacingLeft=10;" value="Formalizar comités, RACI, presupuesto y estrategia de TI con COBIT 2019" vertex="1">
+          <mxGeometry height="52" width="640" x="280" y="494" as="geometry" />
+        </mxCell>
+        <mxCell id="c46" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EAF0F9;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="BRE-011, BRE-015" vertex="1">
+          <mxGeometry height="52" width="250" x="920" y="494" as="geometry" />
+        </mxCell>
+        <mxCell id="c47" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EAF0F9;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="P2.8, P4.3" vertex="1">
+          <mxGeometry height="52" width="220" x="1170" y="494" as="geometry" />
+        </mxCell>
+        <mxCell id="c48" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#6C8EBF;strokeColor=#FFFFFF;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" value="DO" vertex="1">
+          <mxGeometry height="52" width="80" x="50" y="546" as="geometry" />
+        </mxCell>
+        <mxCell id="c49" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EAF0F9;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="D5 + D6 + O5" vertex="1">
+          <mxGeometry height="52" width="150" x="130" y="546" as="geometry" />
+        </mxCell>
+        <mxCell id="c50" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EAF0F9;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;align=left;spacingLeft=10;" value="Integrar herramientas por API, automatizar ambientes y controlar el costo de nube" vertex="1">
+          <mxGeometry height="52" width="640" x="280" y="546" as="geometry" />
+        </mxCell>
+        <mxCell id="c51" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EAF0F9;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="BRE-003, BRE-007, BRE-012, BRE-013" vertex="1">
+          <mxGeometry height="52" width="250" x="920" y="546" as="geometry" />
+        </mxCell>
+        <mxCell id="c52" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#EAF0F9;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="P2.4, P2.5, P2.6, P2.7" vertex="1">
+          <mxGeometry height="52" width="220" x="1170" y="546" as="geometry" />
+        </mxCell>
+        <mxCell id="c53" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#B85450;strokeColor=#FFFFFF;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" value="DA" vertex="1">
+          <mxGeometry height="52" width="80" x="50" y="598" as="geometry" />
+        </mxCell>
+        <mxCell id="c54" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FBECEB;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="D1 + A2" vertex="1">
+          <mxGeometry height="52" width="150" x="130" y="598" as="geometry" />
+        </mxCell>
+        <mxCell id="c55" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FBECEB;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;align=left;spacingLeft=10;" value="Permisos como código para agentes y capacitación en IA y datos" vertex="1">
+          <mxGeometry height="52" width="640" x="280" y="598" as="geometry" />
+        </mxCell>
+        <mxCell id="c56" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FBECEB;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="BRE-008, BRE-009" vertex="1">
+          <mxGeometry height="52" width="250" x="920" y="598" as="geometry" />
+        </mxCell>
+        <mxCell id="c57" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FBECEB;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="P1.4, P1.5" vertex="1">
+          <mxGeometry height="52" width="220" x="1170" y="598" as="geometry" />
+        </mxCell>
+        <mxCell id="c58" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#B85450;strokeColor=#FFFFFF;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" value="DA" vertex="1">
+          <mxGeometry height="52" width="80" x="50" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="c59" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FBECEB;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="D3 + A3" vertex="1">
+          <mxGeometry height="52" width="150" x="130" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="c60" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FBECEB;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;align=left;spacingLeft=10;" value="Concepto legal y registro de transferencias internacionales por proyecto" vertex="1">
+          <mxGeometry height="52" width="640" x="280" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="c61" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FBECEB;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="BRE-016" vertex="1">
+          <mxGeometry height="52" width="250" x="920" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="c62" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FBECEB;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="P1.9" vertex="1">
+          <mxGeometry height="52" width="220" x="1170" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="c63" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#B85450;strokeColor=#FFFFFF;fontColor=#FFFFFF;fontSize=14;fontStyle=1;" value="DA" vertex="1">
+          <mxGeometry height="52" width="80" x="50" y="702" as="geometry" />
+        </mxCell>
+        <mxCell id="c64" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FBECEB;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="D7 + A2" vertex="1">
+          <mxGeometry height="52" width="150" x="130" y="702" as="geometry" />
+        </mxCell>
+        <mxCell id="c65" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FBECEB;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;align=left;spacingLeft=10;" value="Procedimiento único para pedir y aprobar licencias de IA" vertex="1">
+          <mxGeometry height="52" width="640" x="280" y="702" as="geometry" />
+        </mxCell>
+        <mxCell id="c66" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FBECEB;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="BRE-005" vertex="1">
+          <mxGeometry height="52" width="250" x="920" y="702" as="geometry" />
+        </mxCell>
+        <mxCell id="c67" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=#FBECEB;strokeColor=#FFFFFF;fontColor=#1F1F1F;fontSize=13;" value="P1.6" vertex="1">
+          <mxGeometry height="52" width="220" x="1170" y="702" as="geometry" />
+        </mxCell>
+        <mxCell id="c68" parent="1" style="whiteSpace=wrap;html=1;fontFamily=Helvetica;fillColor=none;strokeColor=none;fontSize=11;fontColor=#555555;align=left;verticalAlign=top;" value="FO: usar fortalezas para aprovechar oportunidades. FA: usar fortalezas para frenar amenazas. DO: corregir debilidades con oportunidades. DA: reducir debilidades frente a amenazas. Todas las estrategias son propuestas; brechas y proyectos remiten a §8 y §9 del PETI Colombia v1.1." vertex="1">
+          <mxGeometry height="40" width="1340" x="50" y="766" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
