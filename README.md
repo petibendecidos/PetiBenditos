@@ -31,6 +31,7 @@ python .claude/skills/guia-peti/scripts/md_a_docx.py docs/perficient_peti_v2_202
 | [entregas-2026-10-21/](docs/entregas-2026-10-21/README.md) | Entregas del 21 de octubre: DOFA y Porter ajustada (análisis y libro de matrices), modelo de negocio Canvas, estrategia de TI y cadena de valor |
 | [entregas-2026-10-22/](docs/entregas-2026-10-22/README.md) | Entrega del 22 de octubre: diagnóstico de gestión y gobierno de TI mediante BSC (40 enunciados, radar y causas críticas) |
 | [entregas-2026-10-29/](docs/entregas-2026-10-29/README.md) | Mapa estratégico de TI (BSC de TI) en draw.io: cuatro perspectivas, 14 objetivos, KPI, proyectos y relaciones causa-efecto. Incluye [segundo-parcial/](docs/entregas-2026-10-29/segundo-parcial/README.md): copia de los 7 trabajos del segundo parcial con un guion de exposición por trabajo, el reparto entre integrantes y las inconsistencias conocidas |
+| [entregas-2026-11-04/](docs/entregas-2026-11-04/README.md) | Herramienta de medición de madurez digital del MinTIC diligenciada (nivel 2, "Iniciando") con su mapa de calor de procesos por áreas y el análisis de resultados |
 | [justificacion-dofa-porter.md](docs/justificacion-dofa-porter.md) | Guía de estudio para defender la DOFA, Porter y las respuestas de la entrega ajustada. No se entrega |
 | [preparacion-sustentacion-peti-colombia.md](docs/preparacion-sustentacion-peti-colombia.md) | Guía de estudio para la sustentación del PETI Colombia, numeral por numeral. No se entrega |
 | `docs/Cuadro de Mando Integral Balanced Scorecard -BSC.pdf` | Material de clase (unidad 2): DOFA, cinco fuerzas, cadena de valor y modelo de negocio Canvas |
@@ -40,7 +41,9 @@ python .claude/skills/guia-peti/scripts/md_a_docx.py docs/perficient_peti_v2_202
 | Script | Qué genera |
 |---|---|
 | `scripts/generar_informe_uso_ia.py` | Informe de uso de IA con la firma del líder de equipo (la firma y el informe quedan fuera de Git) |
-| `scripts/md_a_docx_simple.py` | Word con estilos neutros a partir de Markdown, para entregas del curso (el PETI usa `md_a_docx.py`, con la plantilla del MinTIC) |
+| `scripts/md_a_docx_simple.py` | Word con estilos neutros a partir de Markdown (tablas e imágenes), para entregas del curso (el PETI usa `md_a_docx.py`, con la plantilla del MinTIC) |
+| `scripts/generar_madurez_digital.py` | Herramienta de madurez digital del MinTIC diligenciada; usa `scripts/excel_com_madurez.ps1` (Excel) y `scripts/vba_vecinos.py`, que ejecuta en Python la macro de priorización original |
+| `scripts/priorizar_mapa_de_calor.py` | Priorización de un mapa de calor escrito en Markdown, sin Excel (se usó para la validación simulada) |
 | `scripts/generar_matrices_dofa_porter.py` | Libro de matrices de la entrega DOFA y Porter |
 | `scripts/generar_canvas_modelo_negocio.py` | Lienzo Canvas del modelo de negocio del área de TI |
 | `scripts/generar_diagnostico_bsc.py` | Formato del docente del diagnóstico BSC, diligenciado y con radar; usa `scripts/word_com_bsc.ps1` (Word) |
