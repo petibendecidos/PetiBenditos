@@ -3,9 +3,11 @@
 Uso:
     python scripts/md_a_docx_simple.py <entrada.md> <salida.docx> "<texto del pie de página>"
 
-Soporta '#'-'####', párrafos, viñetas, listas numeradas, tablas con '|', **negrita**, *cursiva*
-y `código`. Para el PETI se usa .claude/skills/guia-peti/scripts/md_a_docx.py (plantilla MinTIC).
+Soporta '#'-'####', párrafos, viñetas, listas numeradas, tablas con '|', **negrita**, *cursiva*,
+`código` e imágenes en línea propia (![leyenda](ruta relativa al .md)). Omite los comentarios HTML.
+Para el PETI se usa .claude/skills/guia-peti/scripts/md_a_docx.py (plantilla MinTIC).
 """
+import os
 import re
 import sys
 
@@ -77,7 +79,8 @@ def convertir(entrada, salida, pie):
         for r in s.footer.paragraphs[0].runs:
             r.font.size = Pt(8)
     filas = []
-    for linea in open(entrada, encoding="utf8").read().splitlines() + [""]:
+    texto = re.sub(r"<!--.*?-->", "", open(entrada, encoding="utf8").read(), flags=re.S)
+    for linea in texto.splitlines() + [""]:
         if linea.strip().startswith("|"):
             filas.append([c.strip() for c in linea.strip().strip("|").split("|")])
             continue
@@ -85,6 +88,15 @@ def convertir(entrada, salida, pie):
             tabla(d, filas); filas = []
         s = linea.rstrip()
         if not s.strip():
+            continue
+        img = re.match(r"^!\[([^\]]*)\]\(([^)]+)\)$", s.strip())
+        if img:
+            ruta = os.path.join(os.path.dirname(os.path.abspath(entrada)), img.group(2))
+            d.add_picture(ruta, width=Cm(16))
+            d.paragraphs[-1].alignment = WD_ALIGN_PARAGRAPH.CENTER
+            leyenda = d.add_paragraph()
+            formato(leyenda, f"*{img.group(1)}*", 9)
+            leyenda.alignment = WD_ALIGN_PARAGRAPH.CENTER
             continue
         m = re.match(r"^(#{1,4})\s+(.*)", s)
         if m:
