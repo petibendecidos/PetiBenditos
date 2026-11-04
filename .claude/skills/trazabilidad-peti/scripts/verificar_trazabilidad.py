@@ -146,9 +146,9 @@ def main():
     print(f"Archivo: `{os.path.relpath(ruta_peti, RAIZ)}`\n")
     print("## Conteo\n")
     print("| Elemento | Definidos |\n|---|---|")
-    for nombre, d in [("Brechas (§11)", brechas), ("Oportunidades (§12)", oportunidades),
-                      ("Proyectos (§13)", proyectos), ("Indicadores (§14)", kpis),
-                      ("Riesgos (§15)", riesgos)]:
+    for nombre, d in [("Brechas", brechas), ("Oportunidades", oportunidades),
+                      ("Proyectos", proyectos), ("Indicadores", kpis),
+                      ("Riesgos", riesgos)]:
         print(f"| {nombre} | {len(d)} |")
     print(f"| Evidencias en el registro | {len(evid_def)} |")
     print()
@@ -215,11 +215,11 @@ def main():
 
     # Columnas del Anexo 1
     requisitos = [
-        (brechas, "§11 brechas (Anexo 1, Act. 11)", ["accion", "justificacion/descripcion", "tiempo", "costo"]),
-        (proyectos, "§13 portafolio (Anexo 1, Act. 13)",
+        (brechas, "Brechas (Anexo 1, Act. 11)", ["accion", "justificacion/descripcion", "tiempo", "costo"]),
+        (proyectos, "Portafolio (Anexo 1, Act. 13)",
          ["dominio", "objetivo estrategico de ti/objetivo de ti", "meta", "area lider/responsable",
           "tiempo/meses", "costo/presupuesto", "brecha"]),
-        (kpis, "§14 indicadores (Anexo 1, Act. 14B)",
+        (kpis, "Indicadores (Anexo 1, Act. 14B)",
          ["formula", "frecuencia", "origen/fuente", "responsable", "meta", "rango/umbral", "linea base"]),
     ]
     for definidos, nombre, req in requisitos:

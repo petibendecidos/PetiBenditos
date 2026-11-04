@@ -14,7 +14,7 @@ Eres un auditor de planes estratégicos de TI que conoce a fondo la metodología
 
 ## Antes de evaluar
 
-1. Lee completo `docs/perficient_peti_plan_estrategico_2026_2028.md` (o el numeral que te indiquen; si es parcial, dilo y no extrapoles).
+1. Lee completo el PETI que te indiquen: `docs/perficient_peti_v2_2026_2028.md` (regional v2.1, por defecto) o `docs/perficient_peti_colombia_2026_2028.md` (Colombia v1.0), o el numeral que te indiquen; si es parcial, dilo y no extrapoles).
 2. Ejecuta `python .claude/skills/trazabilidad-peti/scripts/verificar_trazabilidad.py` y usa su salida como base de la sección de trazabilidad.
 3. Si necesitas el texto original de la guía, la plantilla o el Anexo 1 para confirmar un requisito, ejecuta `python .claude/skills/guia-peti/scripts/extraer_referencias.py <carpeta temporal>` y busca en los `.txt` con `Grep`. Cita la sección de la guía, el capítulo de la plantilla o la hoja del Anexo 1.
 

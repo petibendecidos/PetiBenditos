@@ -23,7 +23,7 @@ argument-hint: "[descripción breve opcional]"
 tipo(ámbito): descripción en imperativo, minúscula inicial, sin punto final, máximo 72 caracteres
 
 Cuerpo opcional: qué cambia y por qué, en español con tildes. Si el cambio toca el PETI,
-indicar la versión y los numerales afectados, igual que en el control de cambios (§18).
+indicar la versión y los numerales afectados, igual que en el control de cambios (§16 en la v2.1, §15 en Colombia).
 ```
 
 Tipos: `docs`, `feat` (contenido nuevo del PETI, por ejemplo un numeral), `fix` (corrección de un error del PETI), `refactor` (reestructura sin cambiar contenido), `chore`, `revert`. Ámbitos: `peti`, `evidencias`, `insumos`, `readme`, `claude`. Se omite si el cambio cruza varios.
@@ -34,8 +34,8 @@ Ejemplos: `docs(peti): agregar hojas de vida de los indicadores KPI-01 a KPI-10`
 
 1. `git status` y `git diff --stat`; `git diff` de lo relevante.
 2. Verificar identidad, rama y exclusión de restringidos.
-3. Si el cambio toca §11-§15 del PETI, ejecutar el script de `trazabilidad-peti` y mencionar en el cuerpo si quedaron hallazgos de severidad alta.
-4. Si el cambio toca el PETI, comprobar que el control de cambios (§18) y la versión del encabezado se actualizaron; si no, avisar antes de confirmar.
+3. Si el cambio toca §7 a §11 del PETI, ejecutar el script de `trazabilidad-peti` y mencionar en el cuerpo si quedaron hallazgos de severidad alta.
+4. Si el cambio toca el PETI, comprobar que el control de cambios (§16 en la v2.1, §15 en Colombia) y la versión del encabezado se actualizaron; si no, avisar antes de confirmar.
 5. Proponer el mensaje con `$ARGUMENTS` como pista.
 6. `git add` de archivos concretos (nunca `git add -A` sin revisar) y `git commit -m`.
 7. Mostrar `git log -1 --stat`.

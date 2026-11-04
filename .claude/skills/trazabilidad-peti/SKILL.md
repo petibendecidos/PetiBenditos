@@ -27,16 +27,16 @@ Un eslabón suelto es un defecto: una brecha sin proyecto no se cierra, un proye
 python .claude/skills/trazabilidad-peti/scripts/verificar_trazabilidad.py
 ```
 
-Imprime conteos, hallazgos `T-nn` por severidad, la matriz brecha → proyectos y las brechas por dominio. Comprueba: brechas y oportunidades sin proyecto; proyectos sin origen; IDs citados sin definir (incluida la evidencia contra el registro); viñetas del AS-IS sin ID; indicadores y riesgos sin vínculo; columnas del Anexo 1 que faltan en §11, §13 y §14; cifras del README. Ejecútalo antes y después de tocar cualquiera de esos numerales y reporta la diferencia.
+Imprime conteos, hallazgos `T-nn` por severidad, la matriz brecha → proyectos y las brechas por dominio. Comprueba: brechas y oportunidades sin proyecto; proyectos sin origen; IDs citados sin definir (incluida la evidencia contra el registro); viñetas del AS-IS sin ID; indicadores y riesgos sin vínculo; columnas del Anexo 1 que faltan en brechas, portafolio e indicadores; cifras del README. Por defecto revisa el PETI regional v2.1; para el PETI Colombia, pasa `docs/perficient_peti_colombia_2026_2028.md` como primer argumento. Ejecútalo antes y después de tocar cualquiera de esos numerales y reporta la diferencia. Las filas `PUB-` del registro que solo usan las entregas del curso (por ejemplo, PUB-016 a PUB-025) aparecen como "no citadas" con severidad baja: es esperado.
 
 El script no juzga calidad (si la brecha está bien justificada o la meta es realista); eso lo hacen el agente `auditor-conformidad` y la lectura.
 
 ## IDs: los del PETI y los del Anexo 1
 
-| Elemento | PETI v1.1 | Anexo 1 | Regla |
+| Elemento | PETI v2.1 y Colombia | Anexo 1 | Regla |
 |---|---|---|---|
-| Objetivo estratégico de TI | 1-4 (§7.4) | `OETI01…` | Si se añaden metas, usar `OETI0n` y `METI0n` y mapear 1→OETI01 |
-| Meta de TI | no existe | `METI01…` | Crear con línea base y años 1-3 (Act. 8) |
+| Objetivo estratégico de TI | `OETI01…` (§7) | `OETI01…` | Mismo ID que el Anexo 1 (en la v1.1 histórica eran 1-4) |
+| Meta de TI | `METI01…` (§7) | `METI01…` | Con línea base y meta por año (Act. 8) |
 | Brecha | `BRE-001…` | `B001…` | Mantener `BRE-` |
 | Oportunidad | `OPT-001…` | — | Mantener |
 | Proyecto | `P<fase>.<n>` | `IT001…` | Mantener `P1.1`; si el profesor exige el catálogo del Anexo 1, añadir tabla de equivalencias |
@@ -50,8 +50,8 @@ El script no juzga calidad (si la brecha está bien justificada o la meta es rea
 
 | Si cambias… | Revisa también |
 |---|---|
-| Una brecha | Hallazgo del §9 que la origina; proyecto en §13; dominio; mapa de ruta; README |
-| Un proyecto | Brecha u oportunidad; fase y meses en el mapa de ruta; indicador en §14; riesgo en §15; responsable (rol propuesto); costo |
+| Una brecha | Hallazgo de la situación actual (§6) que la origina; proyecto en el portafolio (§9); dominio; mapa de ruta; README; DOFA y entregas del curso que la citan |
+| Un proyecto | Brecha u oportunidad; fase y meses en el mapa de ruta; indicador (§10); riesgo (§11); responsable (rol propuesto); costo; DOFA cruzada y libro de matrices de `docs/entregas-*/` |
 | Un indicador | Proyecto u objetivo que mide; hoja de vida completa (fórmula, línea base, fuente, responsable, frecuencia, meta, rangos) |
 | Un riesgo | Proyecto o control que lo trata; propietario; riesgo residual |
 | Un objetivo de TI | Objetivo corporativo que apoya; metas por año; proyectos que contribuyen |

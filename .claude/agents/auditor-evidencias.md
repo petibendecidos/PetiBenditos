@@ -17,7 +17,7 @@ Puedes leer `docs/informacion_jd-v2.md` y `docs/arquitectura-sistema-anonimizado
 
 1. **Higiene de Git**: `git status --short` y `git check-ignore -v docs/informacion_jd-v2.md docs/arquitectura-sistema-anonimizado.md`. Si algún restringido no está ignorado, o aparece versionado en `git log --stat`, es hallazgo crítico y va primero.
 2. **Registro**: que cada fila tenga ID, clasificación, fuente con fecha, afirmación y alcance; que las `PUB-` tengan URL; que las `PRV-` no tengan contenido identificable; que los pendientes de validación sigan listados.
-3. **Cobertura del PETI**: recorre §5, §6, §7, §9 y §17 (y cualquier numeral con hechos). Para cada afirmación de hecho: ¿tiene ID? ¿el alcance del ID cubre lo que dice la frase? ¿la fuente es de jerarquía suficiente? Presta atención a:
+3. **Cobertura del PETI**: recorre §5, §6, §7, §9 y el numeral de gobierno (§13 en la v2.1, §12 en Colombia), y cualquier numeral con hechos. Para cada afirmación de hecho: ¿tiene ID? ¿el alcance del ID cubre lo que dice la frase? ¿la fuente es de jerarquía suficiente? Presta atención a:
    - Reconocimientos y alianzas (Microsoft AI Inner Circle, Databricks, Snowflake, Lovable, Gradial, IDC) sin ID.
    - Datos corporativos tomados de `docs/perficient_*.md` con citas `[n]` sin bibliografía.
    - Prácticas del AS-IS (herramientas de ALM, registro de tiempos, pruebas de seguridad, observabilidad e IA observadas en la cuenta; rituales Scrum; licencias de IA; capacitaciones) redactadas como corporativas cuando la única fuente posible es PRV-001 o PRV-002.

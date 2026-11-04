@@ -2,7 +2,7 @@
 
 Fuente: `docs/Anexo 2. Plantilla PETI.docx` (cartilla MinTIC, versión 3.0, noviembre de 2023). La plantilla trae textos base, recuadros guía y tablas de ejemplo de una alcaldía o ministerio; los recuadros se eliminan en la versión final. Donde la plantilla dice "entidad", en este proyecto se lee "Perficient (operación LATAM)".
 
-La columna **PETI v1.1** mapea por título con `docs/perficient_peti_plan_estrategico_2026_2028.md` a septiembre de 2026. Indica dónde debería estar el contenido, no si está bien hecho. Verifica el mapeo si el PETI cambió.
+La columna **PETI v1.1** mapea por título con `docs/perficient_peti_plan_estrategico_2026_2028.md` (histórico). La v2.1 y el PETI Colombia ya siguen el orden de esta plantilla: introducción §1, objetivo y alcance §2, marco normativo §3, metodología §4, contexto §5, situación actual §6, situación objetivo §7, brechas §8, portafolio §9, indicadores §10, riesgos §11 y, al final, comunicación, gobierno, glosario, referencias y control de cambios. Indica dónde debería estar el contenido, no si está bien hecho. Verifica el mapeo si el PETI cambió.
 
 ## Capítulos
 

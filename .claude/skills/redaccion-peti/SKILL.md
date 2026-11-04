@@ -25,7 +25,7 @@ El registro de referencia es el de los PETI de MinCiencias y MinTIC: sobrio, imp
 1. **El texto** listo para pegar en el Markdown del PETI, con IDs de evidencia entre paréntesis `(PUB-002)` y marcadores `[EVIDENCIA: …]` donde falte.
 2. **Afirmaciones y su estado**: cada hecho del texto con su evidencia (ID), o "propuesto", o marcador.
 3. **Impacto en otros numerales**: IDs creados o modificados y qué otras secciones tocan (por ejemplo, una brecha nueva exige proyecto en §13 e indicador en §14).
-4. **Entrada para el control de cambios** (§18) si el texto va a reemplazar contenido.
+4. **Entrada para el control de cambios** (§16 en la v2.1, §15 en el PETI Colombia) si el texto va a reemplazar contenido.
 
 Si el usuario pide solo el texto, entrega el texto y la lista de afirmaciones sin evidencia; no omitas esa lista.
 
@@ -37,7 +37,7 @@ Si el usuario pide solo el texto, entrega el texto y la lista de afirmaciones si
 | Alcance de la evidencia | Lo que viene de entrevistas o de la arquitectura de la cuenta se escribe "en la cuenta analizada se observó… (PRV-001)". Nunca "Perficient hace…" ni "en LATAM se hace…". |
 | Propuesto, no hecho | TO-BE y portafolio en futuro o con "se propone": "Se propone formalizar un comité táctico mensual". Nunca "El comité táctico sesiona mensualmente". |
 | Sin tono comercial | Fuera "los más altos estándares", "líder", "de clase mundial", "excelencia", "maximizar el valor", "transformar radicalmente". Un reconocimiento (Inner Circle, IDC) se nombra con su fuente y se dice qué implica para TI; no se usa como adjetivo. |
-| Metas medibles | "> 85 %" solo con fórmula, línea base y fuente en §14. Sin línea base, la meta se marca propuesta y se dice cómo se medirá la línea base. |
+| Metas medibles | "> 85 %" solo con fórmula, línea base y fuente en el numeral de indicadores (§10). Sin línea base, la meta se marca propuesta y se dice cómo se medirá la línea base. |
 | Objetivos de TI | Verbo en infinitivo, qué y no cómo, SMART, perspectiva BSC (guía, Actividad 8). |
 | Brechas | Nombre corto del elemento, acción (crear, modificar, eliminar, mantener), justificación con el hallazgo del AS-IS que la origina, tiempo y costo estimados. |
 | Términos de marcos | SOC 2 es un **informe de atestación**, no una certificación ni una acreditación. ISO 27001 se **certifica**. NIST AI RMF se **adopta**; no se certifica. |
