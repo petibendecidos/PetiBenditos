@@ -56,6 +56,21 @@ Si alguien abre el libro y vuelve a pulsar "Calcular Nivel de Madurez" o "Calcul
 - La aclaración 15 repite la escala de la pregunta 12 ("tecnologías suficientemente robustas"). Se calificó el conocimiento de las tecnologías, que es lo que pregunta.
 - Las preguntas 4 y 13 hablan de la ciudadanía; para Perficient se leyeron como los clientes.
 
+## Segunda actividad: diagnóstico de madurez digital de CEIPA
+
+Actividad "Aplicar la herramienta de Softwhere para medir la madurez digital" en https://api.mdigital.ceipa.edu.co/, con la nota "Adjuntar resultado en archivo PDF". Está en [diagnostico-ceipa/](diagnostico-ceipa/).
+
+| Archivo | Qué es |
+|---|---|
+| [Respuestas_Diagnostico_CEIPA_Perficient_Colombia.docx](diagnostico-ceipa/Respuestas_Diagnostico_CEIPA_Perficient_Colombia.docx) | Guía para diligenciar la herramienta en línea: datos de la empresa, 33 puntajes de 0 a 10 con su sustento y lectura anticipada. Fuente: [respuestas-diagnostico-ceipa.md](diagnostico-ceipa/respuestas-diagnostico-ceipa.md) |
+| `Madurez Digital 2025 B.pdf` | Material de clase (CINTEL, MinTIC y Softwhere), copiado de `D:\Descargas` |
+| [Resultado_Diagnostico_CEIPA_Perficient_Colombia.pdf](diagnostico-ceipa/Resultado_Diagnostico_CEIPA_Perficient_Colombia.pdf) | **Lo que se sube.** El informe que generó la herramienta el 4 de noviembre de 2026 (diligenció Nicolás Chávez Oliveros). Copiado de `D:\Descargas` |
+| [Analisis_Resultado_CEIPA_Perficient_Colombia.docx](diagnostico-ceipa/Analisis_Resultado_CEIPA_Perficient_Colombia.docx) | Análisis del resultado: niveles por dimensión, comparación con la MEFI, el BSC y la herramienta del MinTIC, hoja de ruta de CEIPA frente al PETI y observaciones sobre la herramienta. No lo pide la actividad; sirve para sustentar o como anexo. Fuente: [analisis-resultado-ceipa.md](diagnostico-ceipa/analisis-resultado-ceipa.md) |
+
+La herramienta pide datos personales de quien responde (documento, correo y teléfono) y la aceptación de la política de datos de CEIPA, así que la diligencia un integrante y no un script. Para no marcar a mano las 33 preguntas, `scripts/llenar_encuesta_ceipa.js` se pega en la consola del navegador (F12) al llegar a la encuesta: marca los puntajes de la guía y avanza página por página. Las preguntas y opciones se tomaron del código público de la página, sin enviar nada.
+
+**Resultado:** nivel básico, "conciencia inicial" (2 de 5). Tres dimensiones quedan en básico y el portafolio digital en intermedio, con productos y servicios digitales en avanzado. Coincide con la lectura anticipada (promedio de 4,6 sobre 10; dirección y evaluación digital, la más baja, con 2,8) y con la herramienta del MinTIC (nivel 2 de 4). De las doce acciones urgentes de la hoja de ruta de CEIPA, cuatro dependen de P2.8 (fase 2), lo que refuerza la propuesta de adelantar el comité, el presupuesto y un tablero mínimo de indicadores a la fase 1. La gestión del cambio no tiene proyecto en el PETI.
+
 ## Pendientes
 
 - Validar el mapa de calor con los tres perfiles reales que pide el marco (dueño del proceso, conocedor del área y líder de la transformación). Ya hay una validación simulada, asumida por el equipo con un criterio escrito por perfil. Encontró cinco cruces que incumplían la regla de urgencia del propio equipo; ya se corrigieron en la herramienta y en el análisis. Propone además tres cambios de criterio que llevarían el gobierno de TI (P2.8) al primer lugar; esos esperan el taller real.
