@@ -7,6 +7,7 @@ Entrega del curso Gobierno y Servicios de TI (Universidad Santiago de Cali, doce
 | **Enlace** | https://snapshots.raintank.io/dashboard/snapshot/XuadxcseLJupiHbunv3ZXRV9u23xjfag: lo que se pega en la tarea. Instantánea pública de Grafana, sin usuario ni contraseña |
 | [Dashboard_CIO_PETI_Perficient_Colombia.docx](Dashboard_CIO_PETI_Perficient_Colombia.docx) | **Lo que se sube.** Tipo de dashboard y justificación, método, datos sintéticos, plataformas evaluadas, lectura y capturas |
 | [dashboard-cio-peti.md](dashboard-cio-peti.md) | Fuente del Word |
+| [guia-exposicion-dashboard.md](guia-exposicion-dashboard.md) | Guía para quien exponga: dónde está cada cosa, de dónde sale, por qué se decidió así, recorrido sugerido y preguntas difíciles. No se entrega |
 | `capturas/` | Capturas del tablero (completo y por fila); van dentro del Word |
 | `grafana/dashboard.json` | El tablero editable. Cada panel trae sus datos en CSV con la fuente TestData de Grafana; para importarlo, primero hay que crear una fuente TestData con uid `peti-testdata` |
 | `grafana/snapshot.json` | La instantánea: los mismos paneles, con los datos guardados dentro. Con este archivo se publica el enlace |
