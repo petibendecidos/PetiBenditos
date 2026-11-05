@@ -77,3 +77,7 @@ La herramienta pide datos personales de quien responde (documento, correo y tel�
 - Para repetir la priorización con otro mapa, sin Excel: `python scripts/priorizar_mapa_de_calor.py "docs/entregas-2026-11-04/formato-docente/Herramienta_Medicion_MD_Estado_Colombia.xlsm" docs/entregas-2026-11-04/validacion-simulada-mapa-de-calor.md cruces-validados docs/entregas-2026-11-04/madurez-digital.md`.
 - Confirmar con el docente si se sube el .xlsm, el Word o los dos.
 - Para llevar el nivel 2 como línea base al PETI Colombia hace falta una versión 1.1 con su entrada en el control de cambios (§15), junto con los cambios pendientes del diagnóstico BSC y del mapa estratégico.
+
+## Tercera actividad: dashboard de CIO del PETI
+
+Actividad "Cargar el dashboard y el enlace o las credenciales de la herramienta usada para el análisis de datos", con datos sintéticos. Está en [dashboard/](dashboard/README.md): tablero en Grafana con datos sintéticos de MOSTLY AI, publicado como instantánea pública (sin credenciales), y un Word con la justificación y las capturas.

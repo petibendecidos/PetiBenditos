@@ -1,0 +1,1630 @@
+{
+ "title": "PETI Colombia 2026-2028 · Dashboard de CIO (escenario simulado)",
+ "description": "Trabajo académico, Equipo Firmes por la Gobernanza. Datos sintéticos generados con mostly.ai: no son datos reales de Perficient ni de ningún cliente.",
+ "uid": "peti-colombia-cio",
+ "tags": [
+  "PETI",
+  "CIO",
+  "datos sinteticos"
+ ],
+ "timezone": "utc",
+ "editable": false,
+ "graphTooltip": 1,
+ "schemaVersion": 39,
+ "time": {
+  "from": "2026-10-01T00:00:00Z",
+  "to": "2027-09-30T23:59:59Z"
+ },
+ "panels": [
+  {
+   "id": 1,
+   "type": "row",
+   "title": "Resumen ejecutivo · corte al mes 12 (septiembre de 2027) · escenario simulado",
+   "collapsed": false,
+   "gridPos": {
+    "h": 1,
+    "w": 24,
+    "x": 0,
+    "y": 0
+   },
+   "panels": []
+  },
+  {
+   "id": 2,
+   "type": "gauge",
+   "title": "KPI-01 Ejecución del PETI",
+   "description": "Proyectos terminados / 25. Meta mes 12: 55 %. Verde desde el 95 % de la meta.",
+   "gridPos": {
+    "h": 7,
+    "w": 5,
+    "x": 0,
+    "y": 1
+   },
+   "datasource": {
+    "type": "grafana-testdata-datasource",
+    "uid": "peti-testdata"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-testdata-datasource",
+      "uid": "peti-testdata"
+     },
+     "scenarioId": "csv_content",
+     "csvContent": "KPI-01\n52.0\n"
+    }
+   ],
+   "options": {
+    "reduceOptions": {
+     "calcs": [
+      "lastNotNull"
+     ]
+    },
+    "showThresholdMarkers": true,
+    "showThresholdLabels": false
+   },
+   "fieldConfig": {
+    "defaults": {
+     "unit": "percent",
+     "min": 0,
+     "max": 100,
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "red",
+        "value": null
+       },
+       {
+        "color": "#EAB839",
+        "value": 38.5
+       },
+       {
+        "color": "green",
+        "value": 52.3
+       }
+      ]
+     }
+    },
+    "overrides": []
+   }
+  },
+  {
+   "id": 3,
+   "type": "stat",
+   "title": "Estado bueno",
+   "description": "",
+   "gridPos": {
+    "h": 7,
+    "w": 3,
+    "x": 5,
+    "y": 1
+   },
+   "datasource": {
+    "type": "grafana-testdata-datasource",
+    "uid": "peti-testdata"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-testdata-datasource",
+      "uid": "peti-testdata"
+     },
+     "scenarioId": "csv_content",
+     "csvContent": "Bueno\n7\n"
+    }
+   ],
+   "options": {
+    "reduceOptions": {
+     "calcs": [
+      "lastNotNull"
+     ],
+     "fields": "",
+     "values": false
+    },
+    "colorMode": "background",
+    "graphMode": "none",
+    "justifyMode": "center",
+    "textMode": "value_and_name",
+    "orientation": "auto"
+   },
+   "fieldConfig": {
+    "defaults": {
+     "color": {
+      "mode": "fixed",
+      "fixedColor": "green"
+     }
+    },
+    "overrides": []
+   }
+  },
+  {
+   "id": 4,
+   "type": "stat",
+   "title": "Estado intermedio",
+   "description": "",
+   "gridPos": {
+    "h": 7,
+    "w": 3,
+    "x": 8,
+    "y": 1
+   },
+   "datasource": {
+    "type": "grafana-testdata-datasource",
+    "uid": "peti-testdata"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-testdata-datasource",
+      "uid": "peti-testdata"
+     },
+     "scenarioId": "csv_content",
+     "csvContent": "Intermedio\n3\n"
+    }
+   ],
+   "options": {
+    "reduceOptions": {
+     "calcs": [
+      "lastNotNull"
+     ],
+     "fields": "",
+     "values": false
+    },
+    "colorMode": "background",
+    "graphMode": "none",
+    "justifyMode": "center",
+    "textMode": "value_and_name",
+    "orientation": "auto"
+   },
+   "fieldConfig": {
+    "defaults": {
+     "color": {
+      "mode": "fixed",
+      "fixedColor": "#EAB839"
+     }
+    },
+    "overrides": []
+   }
+  },
+  {
+   "id": 5,
+   "type": "stat",
+   "title": "Estado bajo",
+   "description": "",
+   "gridPos": {
+    "h": 7,
+    "w": 3,
+    "x": 11,
+    "y": 1
+   },
+   "datasource": {
+    "type": "grafana-testdata-datasource",
+    "uid": "peti-testdata"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-testdata-datasource",
+      "uid": "peti-testdata"
+     },
+     "scenarioId": "csv_content",
+     "csvContent": "Bajo\n3\n"
+    }
+   ],
+   "options": {
+    "reduceOptions": {
+     "calcs": [
+      "lastNotNull"
+     ],
+     "fields": "",
+     "values": false
+    },
+    "colorMode": "background",
+    "graphMode": "none",
+    "justifyMode": "center",
+    "textMode": "value_and_name",
+    "orientation": "auto"
+   },
+   "fieldConfig": {
+    "defaults": {
+     "color": {
+      "mode": "fixed",
+      "fixedColor": "red"
+     }
+    },
+    "overrides": []
+   }
+  },
+  {
+   "id": 6,
+   "type": "piechart",
+   "title": "Portafolio: 25 proyectos por estado",
+   "description": "",
+   "gridPos": {
+    "h": 7,
+    "w": 10,
+    "x": 14,
+    "y": 1
+   },
+   "datasource": {
+    "type": "grafana-testdata-datasource",
+    "uid": "peti-testdata"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-testdata-datasource",
+      "uid": "peti-testdata"
+     },
+     "scenarioId": "csv_content",
+     "csvContent": "Terminado,En ejecución,Atrasado,Por iniciar\n13,0,4,8\n"
+    }
+   ],
+   "options": {
+    "reduceOptions": {
+     "calcs": [
+      "lastNotNull"
+     ],
+     "fields": "",
+     "values": false
+    },
+    "pieType": "donut",
+    "legend": {
+     "displayMode": "table",
+     "placement": "right",
+     "values": [
+      "value"
+     ],
+     "showLegend": true
+    },
+    "displayLabels": [
+     "value"
+    ]
+   },
+   "fieldConfig": {
+    "defaults": {},
+    "overrides": [
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Terminado"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "green"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "En ejecución"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#5794F2"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Atrasado"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "red"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Por iniciar"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#8F8F8F"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": 7,
+   "type": "table",
+   "title": "Semáforo de indicadores del PETI y acción recomendada",
+   "description": "Rangos del PETI: bueno ≥ 95 % de la meta; intermedio 71–94 %; bajo ≤ 70 %. (*) Meta intermedia supuesta: interpolación lineal de la meta del mes 24. La proyección al mes 24 es una tendencia lineal de los últimos meses.",
+   "gridPos": {
+    "h": 15,
+    "w": 24,
+    "x": 0,
+    "y": 8
+   },
+   "datasource": {
+    "type": "grafana-testdata-datasource",
+    "uid": "peti-testdata"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-testdata-datasource",
+      "uid": "peti-testdata"
+     },
+     "scenarioId": "csv_content",
+     "csvContent": "ID,Indicador,Valor mes 12,Meta mes 12,Cumplimiento,Estado,Proyección mes 24,Meta mes 24,Acción recomendada\nKPI-01,Ejecución acumulada del PETI,52 %,55 %,94.5,Intermedio,100 %,95 %,\"Recuperar P1.8, P2.2, P2.3 y P2.6 (atrasados)\"\nKPI-02,Variación del costo de nube,-4.4 %,−3 % *,100.0,Bueno,-19 %,−15 %,Mantener P2.7 (tablero FinOps)\nKPI-03,Casos de IA en producción,0,0 *,100.0,Bueno,Inicia mes 13,5,Arrancar P3.1 y P3.3 en el mes 13\nKPI-04,Adopción de IA en células,78 %,85 %,91.8,Intermedio,100 %,95 %,Acelerar P1.8 (CoE de IA) y P1.6 (licencias)\nKPI-05,Remediación de vulnerabilidades críticas,181 h,< 72 h,39.8,Bajo,102 h,< 24 h,Cerrar P2.2 y P2.3 (pruebas de seguridad en el pipeline)\nKPI-06,Conciliación de horas y tareas,84 %,95 %,88.4,Intermedio,100 %,95 %,Estabilizar P2.4 (conciliación con la ALM)\nKPI-07,No conformidades mayores ISO/IEC 27001,0,0,100.0,Bueno,0,0,Mantener el SGSI (P1.1 cerrado)\nKPI-08,Cobertura del inventario de IA,93 %,90 %,100.0,Bueno,100 %,100 %,Mantener P1.3\nKPI-09,Personal técnico certificado,67 %,70 %,95.3,Bueno,—,90 %,Reforzar P1.7 en los roles con menor cobertura\nKPI-10,Rotación entre células,33 %,50 % *,66.4,Bajo,—,100 %,Plan de rotación con Line Managers (R06)\nKPI-11,Ambientes con infraestructura como código,33 %,50 % *,66.0,Bajo,100 %,100 %,Recuperar P2.6 (atrasado)\nKPI-13,Informe SOC 2 sin salvedades,En preparación,—,100.0,Bueno,Sí,Sí,P4.1 inicia en el mes 13\nKPI-14,Sesiones de comité con acta,100 %,90 %,100.0,Bueno,100 %,90 %,Mantener el Comité Directivo del PETI\n"
+    }
+   ],
+   "options": {
+    "showHeader": true,
+    "cellHeight": "sm",
+    "footer": {
+     "show": false
+    }
+   },
+   "fieldConfig": {
+    "defaults": {
+     "custom": {
+      "align": "auto",
+      "cellOptions": {
+       "type": "auto"
+      },
+      "inspect": true
+     }
+    },
+    "overrides": [
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Estado"
+      },
+      "properties": [
+       {
+        "id": "mappings",
+        "value": [
+         {
+          "type": "value",
+          "options": {
+           "Bueno": {
+            "color": "green",
+            "index": 0
+           },
+           "Intermedio": {
+            "color": "#EAB839",
+            "index": 1
+           },
+           "Bajo": {
+            "color": "red",
+            "index": 2
+           }
+          }
+         }
+        ]
+       },
+       {
+        "id": "custom.cellOptions",
+        "value": {
+         "type": "color-background",
+         "mode": "basic"
+        }
+       },
+       {
+        "id": "custom.width",
+        "value": 105
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Cumplimiento"
+      },
+      "properties": [
+       {
+        "id": "custom.cellOptions",
+        "value": {
+         "type": "gauge",
+         "mode": "basic"
+        }
+       },
+       {
+        "id": "thresholds",
+        "value": {
+         "mode": "absolute",
+         "steps": [
+          {
+           "color": "red",
+           "value": null
+          },
+          {
+           "color": "#EAB839",
+           "value": 70.01
+          },
+          {
+           "color": "green",
+           "value": 95
+          }
+         ]
+        }
+       },
+       {
+        "id": "min",
+        "value": 0
+       },
+       {
+        "id": "max",
+        "value": 100
+       },
+       {
+        "id": "custom.width",
+        "value": 150
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "ID"
+      },
+      "properties": [
+       {
+        "id": "custom.width",
+        "value": 70
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byRegexp",
+       "options": "Valor mes 12|Meta mes 12|Meta mes 24"
+      },
+      "properties": [
+       {
+        "id": "custom.width",
+        "value": 105
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Proyección mes 24"
+      },
+      "properties": [
+       {
+        "id": "custom.width",
+        "value": 145
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Indicador"
+      },
+      "properties": [
+       {
+        "id": "custom.width",
+        "value": 330
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": 8,
+   "type": "row",
+   "title": "Avance del portafolio (KPI-01) y proyección",
+   "collapsed": false,
+   "gridPos": {
+    "h": 1,
+    "w": 24,
+    "x": 0,
+    "y": 23
+   },
+   "panels": []
+  },
+  {
+   "id": 9,
+   "type": "trend",
+   "title": "Proyectos terminados: plan, real y proyección al mes 24",
+   "description": "Predictivo: regresión lineal sobre los meses 4 a 12 del avance real.",
+   "gridPos": {
+    "h": 9,
+    "w": 14,
+    "x": 0,
+    "y": 24
+   },
+   "datasource": {
+    "type": "grafana-testdata-datasource",
+    "uid": "peti-testdata"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-testdata-datasource",
+      "uid": "peti-testdata"
+     },
+     "scenarioId": "csv_content",
+     "csvContent": "Mes del PETI,Plan,Real,Proyección (tendencia)\n1,0,0,\n2,0,0,\n3,2,2,\n4,3,3,\n5,5,5,\n6,8,6,\n7,8,7,\n8,9,8,\n9,11,10,\n10,13,12,\n11,14,12,\n12,17,13,13\n13,17,,14.8\n14,17,,16.0\n15,17,,17.3\n16,18,,18.6\n17,18,,19.8\n18,22,,21.1\n19,22,,22.4\n20,22,,23.6\n21,23,,24.9\n22,23,,26.2\n23,23,,27.4\n24,25,,28.7\n"
+    }
+   ],
+   "options": {
+    "legend": {
+     "displayMode": "list",
+     "placement": "bottom",
+     "showLegend": true
+    },
+    "tooltip": {
+     "mode": "multi",
+     "sort": "none"
+    },
+    "xField": "Mes del PETI"
+   },
+   "fieldConfig": {
+    "defaults": {
+     "custom": {
+      "lineWidth": 2,
+      "fillOpacity": 0,
+      "spanNulls": false,
+      "showPoints": "auto"
+     },
+     "min": 0,
+     "max": 25
+    },
+    "overrides": [
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Plan"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#8F8F8F"
+        }
+       },
+       {
+        "id": "custom.lineStyle",
+        "value": {
+         "fill": "dash",
+         "dash": [
+          10,
+          10
+         ]
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Real"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#5794F2"
+        }
+       },
+       {
+        "id": "custom.lineWidth",
+        "value": 3
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Proyección (tendencia)"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "orange"
+        }
+       },
+       {
+        "id": "custom.lineStyle",
+        "value": {
+         "fill": "dot",
+         "dash": [
+          0,
+          10
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": 10,
+   "type": "barchart",
+   "title": "Estado de los proyectos por fase",
+   "description": "",
+   "gridPos": {
+    "h": 9,
+    "w": 10,
+    "x": 14,
+    "y": 24
+   },
+   "datasource": {
+    "type": "grafana-testdata-datasource",
+    "uid": "peti-testdata"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-testdata-datasource",
+      "uid": "peti-testdata"
+     },
+     "scenarioId": "csv_content",
+     "csvContent": "Fase,Terminado,En ejecución,Atrasado,Por iniciar\nFase 1,8,0,1,0\nFase 2,5,0,3,0\nFase 3,0,0,0,5\nFase 4,0,0,0,3\n"
+    }
+   ],
+   "options": {
+    "legend": {
+     "displayMode": "list",
+     "placement": "bottom",
+     "showLegend": true
+    },
+    "tooltip": {
+     "mode": "multi"
+    },
+    "xTickLabelRotation": 0,
+    "showValue": "auto",
+    "barWidth": 0.7,
+    "groupWidth": 0.7,
+    "orientation": "auto",
+    "stacking": "normal"
+   },
+   "fieldConfig": {
+    "defaults": {},
+    "overrides": [
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Terminado"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "green"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "En ejecución"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#5794F2"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Atrasado"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "red"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Por iniciar"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#8F8F8F"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": 11,
+   "type": "row",
+   "title": "Seguridad y cumplimiento",
+   "collapsed": false,
+   "gridPos": {
+    "h": 1,
+    "w": 24,
+    "x": 0,
+    "y": 33
+   },
+   "panels": []
+  },
+  {
+   "id": 12,
+   "type": "trend",
+   "title": "KPI-05 Horas promedio para remediar vulnerabilidades críticas",
+   "description": "Meta < 72 h al mes 12 y < 24 h al mes 24 (la rampa entre ambas es supuesto del equipo). Línea base mes 3.",
+   "gridPos": {
+    "h": 9,
+    "w": 12,
+    "x": 0,
+    "y": 34
+   },
+   "datasource": {
+    "type": "grafana-testdata-datasource",
+    "uid": "peti-testdata"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-testdata-datasource",
+      "uid": "peti-testdata"
+     },
+     "scenarioId": "csv_content",
+     "csvContent": "Mes del PETI,Horas (real),Proyección (tendencia),Meta\n1,,,\n2,,,\n3,220.9,,72\n4,210.7,,72\n5,255.1,,72\n6,187.6,,72\n7,167.3,,72\n8,222.2,,72\n9,137.3,,72\n10,162.2,,72\n11,162.7,,72\n12,217.9,217.9,72\n13,,163.6,68\n14,,158.0,64\n15,,152.4,60\n16,,146.8,56\n17,,141.2,52\n18,,135.6,48\n19,,130.0,44\n20,,124.4,40\n21,,118.8,36\n22,,113.2,32\n23,,107.6,28\n24,,102.0,24\n"
+    }
+   ],
+   "options": {
+    "legend": {
+     "displayMode": "list",
+     "placement": "bottom",
+     "showLegend": true
+    },
+    "tooltip": {
+     "mode": "multi",
+     "sort": "none"
+    },
+    "xField": "Mes del PETI"
+   },
+   "fieldConfig": {
+    "defaults": {
+     "unit": "suffix: h",
+     "custom": {
+      "lineWidth": 2,
+      "spanNulls": true
+     },
+     "min": 0
+    },
+    "overrides": [
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Mes del PETI"
+      },
+      "properties": [
+       {
+        "id": "unit",
+        "value": "none"
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Meta"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "red"
+        }
+       },
+       {
+        "id": "custom.lineStyle",
+        "value": {
+         "fill": "dash",
+         "dash": [
+          10,
+          10
+         ]
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Proyección (tendencia)"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "orange"
+        }
+       },
+       {
+        "id": "custom.lineStyle",
+        "value": {
+         "fill": "dot",
+         "dash": [
+          0,
+          10
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": 13,
+   "type": "barchart",
+   "title": "Vulnerabilidades detectadas por mes y severidad",
+   "description": "",
+   "gridPos": {
+    "h": 9,
+    "w": 12,
+    "x": 12,
+    "y": 34
+   },
+   "datasource": {
+    "type": "grafana-testdata-datasource",
+    "uid": "peti-testdata"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-testdata-datasource",
+      "uid": "peti-testdata"
+     },
+     "scenarioId": "csv_content",
+     "csvContent": "Mes,Crítica,Alta,Media,Baja\noct 26,34,75,108,49\nnov 26,11,32,73,53\ndic 26,19,48,72,35\nene 27,14,63,101,38\nfeb 27,12,57,70,62\nmar 27,18,62,100,56\nabr 27,14,46,97,45\nmay 27,26,97,97,50\njun 27,11,45,93,39\njul 27,13,65,106,53\nago 27,10,41,53,61\nsep 27,20,45,79,63\n"
+    }
+   ],
+   "options": {
+    "legend": {
+     "displayMode": "list",
+     "placement": "bottom",
+     "showLegend": true
+    },
+    "tooltip": {
+     "mode": "multi"
+    },
+    "xTickLabelRotation": -45,
+    "showValue": "auto",
+    "barWidth": 0.7,
+    "groupWidth": 0.7,
+    "orientation": "auto",
+    "stacking": "normal"
+   },
+   "fieldConfig": {
+    "defaults": {},
+    "overrides": [
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Crítica"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "dark-red"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Alta"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "orange"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Media"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#EAB839"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Baja"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#73BF69"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": 14,
+   "type": "stat",
+   "title": "KPI-07 No conformidades ISO 27001",
+   "description": "No conformidades mayores en la auditoría de recertificación ISO/IEC 27001 del mes 5 (supuesto del escenario).",
+   "gridPos": {
+    "h": 6,
+    "w": 6,
+    "x": 0,
+    "y": 43
+   },
+   "datasource": {
+    "type": "grafana-testdata-datasource",
+    "uid": "peti-testdata"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-testdata-datasource",
+      "uid": "peti-testdata"
+     },
+     "scenarioId": "csv_content",
+     "csvContent": "No conformidades mayores\n0\n"
+    }
+   ],
+   "options": {
+    "reduceOptions": {
+     "calcs": [
+      "lastNotNull"
+     ],
+     "fields": "",
+     "values": false
+    },
+    "colorMode": "background",
+    "graphMode": "none",
+    "justifyMode": "center",
+    "textMode": "value",
+    "orientation": "auto"
+   },
+   "fieldConfig": {
+    "defaults": {
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "green",
+        "value": null
+       },
+       {
+        "color": "red",
+        "value": 1
+       }
+      ]
+     }
+    },
+    "overrides": []
+   }
+  },
+  {
+   "id": 15,
+   "type": "timeseries",
+   "title": "Tiempo medio de detección de vulnerabilidades (MTTD, horas)",
+   "description": "",
+   "gridPos": {
+    "h": 6,
+    "w": 9,
+    "x": 6,
+    "y": 43
+   },
+   "datasource": {
+    "type": "grafana-testdata-datasource",
+    "uid": "peti-testdata"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-testdata-datasource",
+      "uid": "peti-testdata"
+     },
+     "scenarioId": "csv_content",
+     "csvContent": "time,MTTD\n2026-10-15T00:00:00Z,25.3\n2026-11-15T00:00:00Z,24.2\n2026-12-15T00:00:00Z,25.8\n2027-01-15T00:00:00Z,22.1\n2027-02-15T00:00:00Z,21.4\n2027-03-15T00:00:00Z,23.1\n2027-04-15T00:00:00Z,24.4\n2027-05-15T00:00:00Z,22.4\n2027-06-15T00:00:00Z,20.3\n2027-07-15T00:00:00Z,22.1\n2027-08-15T00:00:00Z,21.3\n2027-09-15T00:00:00Z,21.6\n"
+    }
+   ],
+   "options": {
+    "legend": {
+     "displayMode": "list",
+     "placement": "bottom",
+     "showLegend": true
+    },
+    "tooltip": {
+     "mode": "multi",
+     "sort": "none"
+    }
+   },
+   "fieldConfig": {
+    "defaults": {
+     "unit": "suffix: h",
+     "custom": {
+      "lineWidth": 2,
+      "fillOpacity": 15
+     },
+     "color": {
+      "mode": "fixed",
+      "fixedColor": "purple"
+     }
+    },
+    "overrides": []
+   }
+  },
+  {
+   "id": 16,
+   "type": "barchart",
+   "title": "KPI-08 Cobertura del inventario de IA (trimestral)",
+   "description": "",
+   "gridPos": {
+    "h": 6,
+    "w": 9,
+    "x": 15,
+    "y": 43
+   },
+   "datasource": {
+    "type": "grafana-testdata-datasource",
+    "uid": "peti-testdata"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-testdata-datasource",
+      "uid": "peti-testdata"
+     },
+     "scenarioId": "csv_content",
+     "csvContent": "Trimestre,Cobertura\nmes 3,40\nmes 6,70\nmes 9,85\nmes 12,93\n"
+    }
+   ],
+   "options": {
+    "legend": {
+     "showLegend": false,
+     "displayMode": "list",
+     "placement": "bottom"
+    },
+    "tooltip": {
+     "mode": "multi"
+    },
+    "xTickLabelRotation": 0,
+    "showValue": "always",
+    "barWidth": 0.7,
+    "groupWidth": 0.7,
+    "orientation": "auto",
+    "stacking": "none"
+   },
+   "fieldConfig": {
+    "defaults": {
+     "unit": "percent",
+     "min": 0,
+     "max": 100,
+     "color": {
+      "mode": "thresholds"
+     },
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "red",
+        "value": null
+       },
+       {
+        "color": "#EAB839",
+        "value": 63.1
+       },
+       {
+        "color": "green",
+        "value": 85.5
+       }
+      ]
+     }
+    },
+    "overrides": []
+   }
+  },
+  {
+   "id": 17,
+   "type": "row",
+   "title": "Servicio y operación (mesa de servicio de TI interna)",
+   "collapsed": false,
+   "gridPos": {
+    "h": 1,
+    "w": 24,
+    "x": 0,
+    "y": 49
+   },
+   "panels": []
+  },
+  {
+   "id": 18,
+   "type": "timeseries",
+   "title": "Cumplimiento de ANS, resolución al primer contacto y satisfacción",
+   "description": "",
+   "gridPos": {
+    "h": 9,
+    "w": 14,
+    "x": 0,
+    "y": 50
+   },
+   "datasource": {
+    "type": "grafana-testdata-datasource",
+    "uid": "peti-testdata"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-testdata-datasource",
+      "uid": "peti-testdata"
+     },
+     "scenarioId": "csv_content",
+     "csvContent": "time,Dentro de ANS,Primer contacto (FCR),CSAT (4 o 5)\n2026-10-15T00:00:00Z,87.4,55.5,54.4\n2026-11-15T00:00:00Z,91.7,60.4,55.0\n2026-12-15T00:00:00Z,84.7,74.6,66.1\n2027-01-15T00:00:00Z,92.4,70.3,62.1\n2027-02-15T00:00:00Z,94.5,63.3,66.4\n2027-03-15T00:00:00Z,93.1,55.2,60.0\n2027-04-15T00:00:00Z,93.3,68.7,68.7\n2027-05-15T00:00:00Z,96.6,66.7,49.6\n2027-06-15T00:00:00Z,96.0,66.9,70.9\n2027-07-15T00:00:00Z,92.9,78.0,67.4\n2027-08-15T00:00:00Z,98.6,78.3,80.4\n2027-09-15T00:00:00Z,93.3,72.0,66.7\n"
+    }
+   ],
+   "options": {
+    "legend": {
+     "displayMode": "list",
+     "placement": "bottom",
+     "showLegend": true
+    },
+    "tooltip": {
+     "mode": "multi",
+     "sort": "none"
+    }
+   },
+   "fieldConfig": {
+    "defaults": {
+     "unit": "percent",
+     "min": 0,
+     "max": 100,
+     "custom": {
+      "lineWidth": 2
+     }
+    },
+    "overrides": []
+   }
+  },
+  {
+   "id": 19,
+   "type": "barchart",
+   "title": "Tiempo medio de resolución por prioridad (último trimestre)",
+   "description": "",
+   "gridPos": {
+    "h": 9,
+    "w": 10,
+    "x": 14,
+    "y": 50
+   },
+   "datasource": {
+    "type": "grafana-testdata-datasource",
+    "uid": "peti-testdata"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-testdata-datasource",
+      "uid": "peti-testdata"
+     },
+     "scenarioId": "csv_content",
+     "csvContent": "Prioridad,Horas\nP1,2.4\nP2,4.4\nP3,9.4\nP4,14.5\n"
+    }
+   ],
+   "options": {
+    "legend": {
+     "showLegend": false,
+     "displayMode": "list",
+     "placement": "bottom"
+    },
+    "tooltip": {
+     "mode": "multi"
+    },
+    "xTickLabelRotation": 0,
+    "showValue": "always",
+    "barWidth": 0.7,
+    "groupWidth": 0.7,
+    "orientation": "auto",
+    "stacking": "none"
+   },
+   "fieldConfig": {
+    "defaults": {
+     "unit": "suffix: h",
+     "color": {
+      "mode": "fixed",
+      "fixedColor": "#5794F2"
+     }
+    },
+    "overrides": []
+   }
+  },
+  {
+   "id": 20,
+   "type": "barchart",
+   "title": "Tickets por mes",
+   "description": "",
+   "gridPos": {
+    "h": 8,
+    "w": 8,
+    "x": 0,
+    "y": 59
+   },
+   "datasource": {
+    "type": "grafana-testdata-datasource",
+    "uid": "peti-testdata"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-testdata-datasource",
+      "uid": "peti-testdata"
+     },
+     "scenarioId": "csv_content",
+     "csvContent": "Mes,Tickets\noct 26,182\nnov 26,169\ndic 26,118\nene 27,145\nfeb 27,128\nmar 27,145\nabr 27,150\nmay 27,117\njun 27,151\njul 27,141\nago 27,138\nsep 27,150\n"
+    }
+   ],
+   "options": {
+    "legend": {
+     "showLegend": false,
+     "displayMode": "list",
+     "placement": "bottom"
+    },
+    "tooltip": {
+     "mode": "multi"
+    },
+    "xTickLabelRotation": -45,
+    "showValue": "auto",
+    "barWidth": 0.7,
+    "groupWidth": 0.7,
+    "orientation": "auto",
+    "stacking": "none"
+   },
+   "fieldConfig": {
+    "defaults": {
+     "color": {
+      "mode": "fixed",
+      "fixedColor": "#5794F2"
+     }
+    },
+    "overrides": []
+   }
+  },
+  {
+   "id": 21,
+   "type": "timeseries",
+   "title": "KPI-04 Adopción de IA y KPI-06 Conciliación de horas",
+   "description": "",
+   "gridPos": {
+    "h": 8,
+    "w": 16,
+    "x": 8,
+    "y": 59
+   },
+   "datasource": {
+    "type": "grafana-testdata-datasource",
+    "uid": "peti-testdata"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-testdata-datasource",
+      "uid": "peti-testdata"
+     },
+     "scenarioId": "csv_content",
+     "csvContent": "time,KPI-04 Adopción de IA,KPI-06 Conciliación,Meta KPI-04 (85 %),Meta KPI-06 (95 %)\n2026-10-15T00:00:00Z,,,85,95\n2026-11-15T00:00:00Z,,,85,95\n2026-12-15T00:00:00Z,52,,85,95\n2027-01-15T00:00:00Z,55,,85,95\n2027-02-15T00:00:00Z,58,,85,95\n2027-03-15T00:00:00Z,61,61,85,95\n2027-04-15T00:00:00Z,64,66,85,95\n2027-05-15T00:00:00Z,67,70,85,95\n2027-06-15T00:00:00Z,70,74,85,95\n2027-07-15T00:00:00Z,73,78,85,95\n2027-08-15T00:00:00Z,76,81,85,95\n2027-09-15T00:00:00Z,78,84,85,95\n"
+    }
+   ],
+   "options": {
+    "legend": {
+     "displayMode": "list",
+     "placement": "bottom",
+     "showLegend": true
+    },
+    "tooltip": {
+     "mode": "multi",
+     "sort": "none"
+    }
+   },
+   "fieldConfig": {
+    "defaults": {
+     "unit": "percent",
+     "min": 40,
+     "max": 100,
+     "custom": {
+      "lineWidth": 2,
+      "spanNulls": false
+     }
+    },
+    "overrides": [
+     {
+      "matcher": {
+       "id": "byRegexp",
+       "options": "Meta.*"
+      },
+      "properties": [
+       {
+        "id": "custom.lineStyle",
+        "value": {
+         "fill": "dash",
+         "dash": [
+          10,
+          10
+         ]
+        }
+       },
+       {
+        "id": "custom.lineWidth",
+        "value": 1
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": 22,
+   "type": "row",
+   "title": "Costo y talento",
+   "collapsed": false,
+   "gridPos": {
+    "h": 1,
+    "w": 24,
+    "x": 0,
+    "y": 67
+   },
+   "panels": []
+  },
+  {
+   "id": 23,
+   "type": "barchart",
+   "title": "Costo mensual de nube administrada (USD miles) y KPI-02",
+   "description": "Línea base: promedio de abril a junio de 2027 (meses 7–9, tablero P2.7). Variación al mes 12: -4.4 %.",
+   "gridPos": {
+    "h": 8,
+    "w": 10,
+    "x": 0,
+    "y": 68
+   },
+   "datasource": {
+    "type": "grafana-testdata-datasource",
+    "uid": "peti-testdata"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-testdata-datasource",
+      "uid": "peti-testdata"
+     },
+     "scenarioId": "csv_content",
+     "csvContent": "Mes,Costo\nabr 27,188.0\nmay 27,191.5\njun 27,186.5\njul 27,185.0\nago 27,182.6\nsep 27,180.4\n"
+    }
+   ],
+   "options": {
+    "legend": {
+     "showLegend": false,
+     "displayMode": "list",
+     "placement": "bottom"
+    },
+    "tooltip": {
+     "mode": "multi"
+    },
+    "xTickLabelRotation": 0,
+    "showValue": "always",
+    "barWidth": 0.7,
+    "groupWidth": 0.7,
+    "orientation": "auto",
+    "stacking": "none"
+   },
+   "fieldConfig": {
+    "defaults": {
+     "color": {
+      "mode": "fixed",
+      "fixedColor": "#B877D9"
+     }
+    },
+    "overrides": []
+   }
+  },
+  {
+   "id": 24,
+   "type": "bargauge",
+   "title": "KPI-09 Personal certificado por rol (más de 6 meses)",
+   "description": "",
+   "gridPos": {
+    "h": 8,
+    "w": 7,
+    "x": 10,
+    "y": 68
+   },
+   "datasource": {
+    "type": "grafana-testdata-datasource",
+    "uid": "peti-testdata"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-testdata-datasource",
+      "uid": "peti-testdata"
+     },
+     "scenarioId": "csv_content",
+     "csvContent": "Rol,Certificado\nArquitectura,77.8\nDatos e IA,84.6\nDesarrollo,64.7\nDevOps y nube,65.0\nQA,63.2\n"
+    }
+   ],
+   "options": {
+    "orientation": "horizontal",
+    "displayMode": "gradient",
+    "showUnfilled": true,
+    "reduceOptions": {
+     "calcs": [
+      "lastNotNull"
+     ],
+     "values": true
+    }
+   },
+   "fieldConfig": {
+    "defaults": {
+     "unit": "percent",
+     "min": 0,
+     "max": 100,
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "red",
+        "value": null
+       },
+       {
+        "color": "#EAB839",
+        "value": 49.1
+       },
+       {
+        "color": "green",
+        "value": 66.5
+       }
+      ]
+     }
+    },
+    "overrides": []
+   }
+  },
+  {
+   "id": 25,
+   "type": "bargauge",
+   "title": "KPI-10 Rotación y KPI-11 Infraestructura como código",
+   "description": "Meta intermedia supuesta al mes 12: 50 % para ambos (100 % al mes 24).",
+   "gridPos": {
+    "h": 8,
+    "w": 7,
+    "x": 17,
+    "y": 68
+   },
+   "datasource": {
+    "type": "grafana-testdata-datasource",
+    "uid": "peti-testdata"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-testdata-datasource",
+      "uid": "peti-testdata"
+     },
+     "scenarioId": "csv_content",
+     "csvContent": "Indicador,Valor\nKPI-10 Rotación,33.2\nKPI-11 IaC,33\n"
+    }
+   ],
+   "options": {
+    "orientation": "horizontal",
+    "displayMode": "gradient",
+    "showUnfilled": true,
+    "reduceOptions": {
+     "calcs": [
+      "lastNotNull"
+     ],
+     "values": true
+    }
+   },
+   "fieldConfig": {
+    "defaults": {
+     "unit": "percent",
+     "min": 0,
+     "max": 100,
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "red",
+        "value": null
+       },
+       {
+        "color": "#EAB839",
+        "value": 35.1
+       },
+       {
+        "color": "green",
+        "value": 47.5
+       }
+      ]
+     }
+    },
+    "overrides": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,221 @@
+persona,rol,celula,antiguedad_meses,certificaciones,rotado_ultimo_anio
+P057,Desarrollo,C03,5,0,No
+P182,Desarrollo,C03,3,0,No
+P034,Desarrollo,C06,36,0,Si
+P156,QA,C02,36,1,No
+P084,Desarrollo,C03,3,2,No
+P001,QA,C02,18,0,No
+P079,Desarrollo,C01,5,1,No
+P000,Desarrollo,C04,18,0,Si
+P168,Desarrollo,C10,5,1,No
+P180,Arquitectura,C10,8,1,No
+P153,Desarrollo,C10,60,0,No
+P253,Arquitectura,C08,18,1,No
+P162,Desarrollo,C04,36,0,No
+P188,Desarrollo,C07,12,1,No
+P159,DevOps y nube,C03,30,1,Si
+P008,Desarrollo,C07,48,1,Si
+P232,DevOps y nube,C12,5,1,No
+P042,DevOps y nube,C02,8,1,No
+P058,Desarrollo,C09,5,0,No
+P027,Desarrollo,C06,18,1,No
+P161,Desarrollo,C11,60,0,Si
+P087,Desarrollo,C02,3,1,Si
+P132,Desarrollo,C03,24,0,No
+P011,Datos e IA,C01,18,1,Si
+P159,DevOps y nube,C11,24,0,No
+P079,Datos e IA,C09,8,1,Si
+P109,Desarrollo,C07,48,0,No
+P058,Desarrollo,C09,60,2,No
+P095,Desarrollo,C02,48,0,Si
+P198,Desarrollo,C04,18,2,No
+P145,DevOps y nube,C02,30,0,No
+P021,Datos e IA,C09,60,1,No
+P266,DevOps y nube,C08,30,0,No
+P089,Desarrollo,C02,48,0,Si
+P136,Desarrollo,C07,24,0,Si
+P031,DevOps y nube,C09,5,1,No
+P040,Desarrollo,C05,36,0,No
+P093,QA,C12,5,2,Si
+P033,DevOps y nube,C06,12,2,No
+P153,Desarrollo,C03,24,1,Si
+P139,Desarrollo,C06,18,1,Si
+P074,Desarrollo,C10,5,0,No
+P084,Desarrollo,C07,8,1,No
+P150,QA,C12,60,2,No
+P119,Desarrollo,C03,36,1,No
+P101,QA,C06,5,0,No
+P007,Desarrollo,C08,60,1,Si
+P062,Arquitectura,C08,8,1,Si
+P135,DevOps y nube,C04,36,0,Si
+P116,Desarrollo,C11,8,0,No
+P007,Arquitectura,C05,24,1,Si
+P207,Desarrollo,C03,48,1,Si
+P033,DevOps y nube,C10,60,2,Si
+P013,Desarrollo,C09,60,1,No
+P217,DevOps y nube,C09,60,1,No
+P148,Datos e IA,C12,8,1,Si
+P151,QA,C07,36,0,Si
+P032,Desarrollo,C03,3,2,Si
+P024,Desarrollo,C02,8,1,Si
+P034,Desarrollo,C03,60,0,No
+P158,Desarrollo,C02,18,0,No
+P109,QA,C07,36,0,No
+P201,Desarrollo,C03,5,2,Si
+P001,Datos e IA,C07,30,1,No
+P103,DevOps y nube,C05,5,2,No
+P265,QA,C02,8,1,Si
+P002,Desarrollo,C07,18,1,No
+P265,Desarrollo,C09,5,1,Si
+P102,Desarrollo,C09,12,0,Si
+P090,Desarrollo,C02,3,1,Si
+P118,Desarrollo,C01,30,2,Si
+P007,Desarrollo,C08,48,1,No
+P043,DevOps y nube,C04,36,1,No
+P062,Desarrollo,C08,18,1,No
+P038,DevOps y nube,C05,48,1,No
+P170,QA,C02,12,1,Si
+P152,Desarrollo,C10,3,2,No
+P193,Desarrollo,C02,12,0,Si
+P134,DevOps y nube,C05,60,2,No
+P119,Desarrollo,C03,3,0,No
+P287,Datos e IA,C05,18,0,No
+P106,Datos e IA,C05,5,1,No
+P133,Desarrollo,C09,12,0,No
+P107,Desarrollo,C05,8,0,No
+P157,Desarrollo,C07,8,1,No
+P113,Desarrollo,C08,48,0,Si
+P084,Desarrollo,C03,24,1,No
+P030,Desarrollo,C06,36,0,Si
+P126,Desarrollo,C09,8,0,No
+P196,Desarrollo,C08,3,0,No
+P183,Desarrollo,C09,60,0,No
+P001,Desarrollo,C10,12,0,Si
+P072,Desarrollo,C04,30,0,No
+P056,QA,C05,12,0,Si
+P203,Desarrollo,C04,3,2,Si
+P004,Desarrollo,C03,30,1,No
+P022,Desarrollo,C01,30,1,No
+P070,QA,C09,30,2,Si
+P046,Desarrollo,C02,48,1,Si
+P171,Desarrollo,C06,30,1,No
+P218,DevOps y nube,C04,36,2,Si
+P146,DevOps y nube,C11,60,0,No
+P012,Datos e IA,C01,24,2,No
+P100,Desarrollo,C11,36,1,No
+P026,Desarrollo,C01,18,1,No
+P023,DevOps y nube,C04,60,0,Si
+P064,QA,C12,48,1,Si
+P212,Desarrollo,C03,30,2,No
+P193,Desarrollo,C09,36,1,No
+P027,QA,C08,12,1,Si
+P105,Desarrollo,C02,60,1,Si
+P020,Desarrollo,C07,18,0,Si
+P066,Desarrollo,C07,3,1,Si
+P049,QA,C07,60,0,Si
+P145,Desarrollo,C01,24,1,No
+P242,Desarrollo,C01,8,0,No
+P186,Datos e IA,C07,60,2,No
+P148,QA,C09,60,2,Si
+P047,Desarrollo,C05,24,1,No
+P088,Desarrollo,C03,36,0,Si
+P158,DevOps y nube,C02,5,2,No
+P179,Desarrollo,C06,12,1,Si
+P002,Desarrollo,C04,8,1,No
+P018,Desarrollo,C03,24,1,Si
+P028,Desarrollo,C09,5,1,No
+P255,Desarrollo,C01,3,2,No
+P065,DevOps y nube,C02,36,1,Si
+P114,Desarrollo,C05,3,1,No
+P080,Desarrollo,C07,60,1,Si
+181,Desarrollo,C10,18,1,No
+P132,Desarrollo,C04,60,1,No
+P004,Desarrollo,C03,30,1,Si
+P132,Desarrollo,C06,3,1,Si
+P027,Desarrollo,C03,8,0,No
+P222,Desarrollo,C03,24,1,No
+P205,Desarrollo,C10,30,1,No
+P175,Desarrollo,C08,8,0,No
+P088,Desarrollo,C09,18,1,No
+P186,Desarrollo,C07,36,1,No
+P153,Desarrollo,C12,24,1,No
+P132,Desarrollo,C01,60,1,No
+P022,Desarrollo,C01,8,1,No
+P134,Desarrollo,C08,8,0,No
+P236,QA,C02,60,0,No
+P154,Arquitectura,C09,18,0,No
+P218,Desarrollo,C09,36,1,No
+P04,Desarrollo,C11,30,0,No
+P031,Desarrollo,C04,5,0,No
+P033,Desarrollo,C05,12,2,Si
+P060,Desarrollo,C01,12,1,No
+P096,Datos e IA,C12,3,2,No
+P154,Desarrollo,C03,24,1,Si
+P009,Desarrollo,C07,12,0,Si
+P182,Desarrollo,C03,8,0,No
+P175,Desarrollo,C12,12,2,No
+P057,Arquitectura,C07,5,0,No
+P012,Desarrollo,C09,5,0,No
+P066,QA,C01,30,2,No
+P276,Desarrollo,C02,3,1,No
+P006,DevOps y nube,C03,18,0,No
+P152,Desarrollo,C05,18,1,No
+P164,Desarrollo,C01,36,1,No
+P058,Desarrollo,C01,3,1,Si
+P168,DevOps y nube,C03,24,1,No
+P195,Desarrollo,C03,60,0,No
+P189,Desarrollo,C12,12,1,Si
+P181,Desarrollo,C02,5,1,Si
+P048,Desarrollo,C10,30,0,Si
+P284,DevOps y nube,C09,60,1,No
+P028,Desarrollo,C03,36,1,No
+P121,QA,C03,8,1,No
+P000,Desarrollo,C07,36,1,Si
+P142,Desarrollo,C04,5,0,No
+P064,Desarrollo,C09,48,1,Si
+P005,Arquitectura,C06,48,1,No
+P129,Desarrollo,C09,24,0,No
+P065,Desarrollo,C07,8,1,No
+P087,Datos e IA,C09,18,2,No
+P179,Datos e IA,C10,18,0,No
+P106,Desarrollo,C08,36,2,No
+P000,Desarrollo,C01,48,1,No
+P029,Datos e IA,C12,60,1,No
+P032,Desarrollo,C09,24,1,Si
+P139,Desarrollo,C01,8,0,No
+P208,Desarrollo,C10,8,0,No
+P023,Desarrollo,C06,30,1,No
+P174,QA,C02,60,1,No
+P097,Desarrollo,C02,18,1,No
+P101,Datos e IA,C12,36,1,No
+P180,Desarrollo,C08,3,1,Si
+P191,Desarrollo,C11,30,0,Si
+P011,Datos e IA,C03,24,1,No
+P104,Desarrollo,C12,5,2,No
+P068,Desarrollo,C09,30,1,No
+P174,Desarrollo,C12,12,0,Si
+P213,Desarrollo,C09,30,1,Si
+P218,DevOps y nube,C04,30,1,No
+P121,Arquitectura,C07,5,1,No
+P169,Desarrollo,C06,12,0,Si
+P040,Desarrollo,C04,30,1,No
+P128,Desarrollo,C12,60,1,No
+P188,Desarrollo,C04,12,2,No
+P201,QA,C10,36,0,No
+P073,Arquitectura,C08,18,1,Si
+P014,Arquitectura,C07,48,1,No
+P045,Desarrollo,C12,30,2,No
+P102,Desarrollo,C08,30,1,Si
+P289,Desarrollo,C09,18,1,No
+P021,QA,C03,60,1,No
+P159,Desarrollo,C09,30,1,No
+P029,Desarrollo,C09,3,1,No
+P003,Arquitectura,C07,36,0,Si
+P294,Desarrollo,C06,30,2,No
+P008,QA,C02,3,0,No
+P099,Desarrollo,C10,36,2,No
+P128,Desarrollo,C10,30,1,No
+P095,Desarrollo,C09,3,0,No
+P286,Desarrollo,C04,18,1,No
+P102,Desarrollo,C10,36,1,No
+P013,Desarrollo,C07,5,0,No

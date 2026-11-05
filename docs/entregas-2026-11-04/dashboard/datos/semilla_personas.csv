@@ -1,0 +1,221 @@
+persona,rol,celula,antiguedad_meses,certificaciones,rotado_ultimo_anio
+P001,Desarrollo,C10,48,1,Si
+P002,Desarrollo,C08,36,2,No
+P003,Desarrollo,C09,30,1,No
+P004,Desarrollo,C01,5,1,No
+P005,Desarrollo,C07,60,0,No
+P006,DevOps y nube,C01,36,1,Si
+P007,Desarrollo,C07,30,0,No
+P008,Desarrollo,C01,30,0,No
+P009,Arquitectura,C10,8,1,No
+P010,DevOps y nube,C02,12,1,Si
+P011,Datos e IA,C03,36,1,Si
+P012,Desarrollo,C01,30,1,No
+P013,QA,C01,48,0,Si
+P014,Desarrollo,C05,60,0,No
+P015,Desarrollo,C03,3,0,No
+P016,Desarrollo,C11,36,0,No
+P017,QA,C05,48,1,No
+P018,Desarrollo,C10,18,1,Si
+P019,Desarrollo,C08,60,1,No
+P020,Datos e IA,C01,60,1,No
+P021,Desarrollo,C06,24,1,Si
+P022,Desarrollo,C02,24,1,No
+P023,Desarrollo,C11,60,1,No
+P024,Desarrollo,C10,8,1,Si
+P025,Desarrollo,C06,12,1,No
+P026,Desarrollo,C09,60,2,No
+P027,Desarrollo,C11,60,2,Si
+P028,QA,C05,60,1,No
+P029,QA,C03,18,0,Si
+P030,Desarrollo,C12,60,0,Si
+P031,DevOps y nube,C02,48,0,No
+P032,Arquitectura,C12,5,1,No
+P033,Desarrollo,C03,30,1,No
+P034,Desarrollo,C10,3,0,Si
+P035,Desarrollo,C04,48,0,Si
+P036,Datos e IA,C03,5,0,No
+P037,Desarrollo,C05,60,2,No
+P038,Desarrollo,C01,3,1,No
+P039,Desarrollo,C02,3,1,No
+P040,Desarrollo,C10,8,0,Si
+P041,Desarrollo,C12,24,2,No
+P042,Desarrollo,C09,8,1,No
+P043,DevOps y nube,C12,60,1,Si
+P044,Arquitectura,C12,30,1,No
+P045,DevOps y nube,C06,12,0,No
+P046,QA,C12,18,1,No
+P047,Datos e IA,C02,30,0,No
+P048,DevOps y nube,C02,36,2,No
+P049,QA,C02,30,2,Si
+P050,Desarrollo,C02,36,0,Si
+P051,DevOps y nube,C02,48,1,No
+P052,Desarrollo,C03,24,2,No
+P053,Desarrollo,C09,30,1,No
+P054,Desarrollo,C03,48,1,No
+P055,QA,C11,60,0,No
+P056,Datos e IA,C09,8,1,No
+P057,QA,C09,8,2,Si
+P058,Desarrollo,C07,48,0,No
+P059,QA,C07,18,1,Si
+P060,QA,C12,12,1,No
+P061,QA,C01,36,0,No
+P062,DevOps y nube,C04,30,1,No
+P063,QA,C04,5,0,No
+P064,Desarrollo,C05,60,0,Si
+P065,Desarrollo,C02,8,1,Si
+P066,Datos e IA,C01,3,0,Si
+P067,Desarrollo,C08,30,1,No
+P068,Desarrollo,C08,5,1,No
+P069,Datos e IA,C06,5,0,No
+P070,Desarrollo,C10,18,1,No
+P071,Desarrollo,C12,36,1,No
+P072,Desarrollo,C02,8,1,Si
+P073,QA,C05,24,0,No
+P074,Desarrollo,C03,18,1,No
+P075,Desarrollo,C03,30,1,Si
+P076,Desarrollo,C07,12,0,No
+P077,DevOps y nube,C05,5,1,No
+P078,QA,C04,60,1,No
+P079,QA,C03,30,0,No
+P080,DevOps y nube,C05,48,1,No
+P081,Desarrollo,C09,36,0,No
+P082,Desarrollo,C11,36,0,No
+P083,QA,C03,3,1,No
+P084,Desarrollo,C11,12,1,No
+P085,Desarrollo,C02,18,1,No
+P086,Desarrollo,C01,24,0,No
+P087,Desarrollo,C10,24,1,No
+P088,Desarrollo,C02,5,0,No
+P089,Desarrollo,C02,12,2,No
+P090,DevOps y nube,C07,30,0,Si
+P091,Desarrollo,C03,3,0,No
+P092,Desarrollo,C10,18,0,No
+P093,Arquitectura,C09,12,1,Si
+P094,Desarrollo,C03,8,0,Si
+P095,Desarrollo,C06,36,1,No
+P096,DevOps y nube,C04,3,1,Si
+P097,Desarrollo,C02,12,1,No
+P098,DevOps y nube,C05,18,1,No
+P099,QA,C02,3,0,Si
+P100,Desarrollo,C02,5,2,Si
+P101,Desarrollo,C04,36,1,No
+P102,DevOps y nube,C01,24,0,No
+P103,DevOps y nube,C02,30,2,No
+P104,Desarrollo,C12,48,1,No
+P105,Desarrollo,C08,48,1,Si
+P106,DevOps y nube,C10,36,1,No
+P107,QA,C08,36,2,Si
+P108,QA,C01,5,0,No
+P109,Datos e IA,C06,36,0,Si
+P110,Desarrollo,C11,5,0,Si
+P111,QA,C02,8,1,Si
+P112,Arquitectura,C10,12,0,Si
+P113,Datos e IA,C02,12,1,No
+P114,Datos e IA,C08,5,1,No
+P115,Datos e IA,C12,60,1,Si
+P116,QA,C08,36,0,No
+P117,Desarrollo,C06,48,1,Si
+P118,Desarrollo,C11,5,0,Si
+P119,Desarrollo,C07,12,0,No
+P120,Desarrollo,C12,24,1,No
+P121,Arquitectura,C10,48,1,No
+P122,Desarrollo,C01,30,1,Si
+P123,Desarrollo,C01,8,0,Si
+P124,Desarrollo,C12,36,0,No
+P125,Desarrollo,C03,36,1,No
+P126,DevOps y nube,C06,18,0,No
+P127,Desarrollo,C05,36,1,Si
+P128,Desarrollo,C09,24,1,Si
+P129,Desarrollo,C01,48,2,Si
+P130,DevOps y nube,C09,36,1,Si
+P131,Desarrollo,C10,3,0,No
+P132,Desarrollo,C12,18,1,Si
+P133,Desarrollo,C10,30,2,Si
+P134,Desarrollo,C05,30,0,Si
+P135,Desarrollo,C08,36,0,No
+P136,DevOps y nube,C05,60,0,Si
+P137,QA,C05,48,1,No
+P138,Desarrollo,C07,48,1,No
+P139,Desarrollo,C10,36,1,No
+P140,Desarrollo,C02,8,1,No
+P141,Desarrollo,C11,3,0,No
+P142,Desarrollo,C06,24,1,Si
+P143,Desarrollo,C05,3,0,Si
+P144,Desarrollo,C04,30,2,No
+P145,QA,C01,5,0,No
+P146,Arquitectura,C05,5,0,No
+P147,Desarrollo,C12,12,2,Si
+P148,Arquitectura,C11,30,2,Si
+P149,Desarrollo,C09,8,1,Si
+P150,DevOps y nube,C03,30,1,Si
+P151,Desarrollo,C04,30,1,Si
+P152,Desarrollo,C08,8,1,Si
+P153,Datos e IA,C08,36,1,No
+P154,Desarrollo,C07,48,1,Si
+P155,QA,C06,8,0,Si
+P156,Desarrollo,C03,3,1,Si
+P157,Desarrollo,C09,5,0,No
+P158,Desarrollo,C10,36,1,Si
+P159,Desarrollo,C10,60,0,No
+P160,DevOps y nube,C05,24,1,Si
+P161,Desarrollo,C04,48,1,Si
+P162,Arquitectura,C03,36,2,No
+P163,Desarrollo,C09,36,1,No
+P164,DevOps y nube,C02,3,1,No
+P165,Desarrollo,C07,48,1,No
+P166,Desarrollo,C11,18,0,No
+P167,Desarrollo,C10,36,2,Si
+P168,Datos e IA,C09,12,1,No
+P169,Desarrollo,C04,36,0,No
+P170,QA,C03,5,0,No
+P171,Desarrollo,C07,12,2,Si
+P172,Desarrollo,C03,3,0,No
+P173,Desarrollo,C05,30,0,Si
+P174,Arquitectura,C06,5,1,Si
+P175,Desarrollo,C11,36,1,Si
+P176,Desarrollo,C02,60,1,Si
+P177,Desarrollo,C04,48,1,No
+P178,Datos e IA,C09,48,0,Si
+P179,QA,C10,24,1,No
+P180,Desarrollo,C01,60,1,No
+P181,Datos e IA,C02,12,1,No
+P182,Desarrollo,C01,48,2,Si
+P183,Desarrollo,C05,3,0,Si
+P184,Desarrollo,C03,24,1,No
+P185,Desarrollo,C03,12,1,No
+P186,Desarrollo,C08,60,0,No
+P187,Desarrollo,C05,48,0,No
+P188,Desarrollo,C06,36,1,No
+P189,QA,C03,8,1,No
+P190,Desarrollo,C03,48,1,No
+P191,Desarrollo,C10,36,1,Si
+P192,DevOps y nube,C05,48,0,No
+P193,Arquitectura,C06,18,0,No
+P194,Desarrollo,C07,8,1,No
+P195,Desarrollo,C07,8,1,No
+P196,Datos e IA,C08,48,2,No
+P197,Desarrollo,C07,8,2,No
+P198,Desarrollo,C04,30,1,No
+P199,Desarrollo,C11,5,0,Si
+P200,QA,C05,48,1,No
+P201,DevOps y nube,C04,5,1,No
+P202,Desarrollo,C11,5,0,No
+P203,Arquitectura,C09,8,0,No
+P204,QA,C07,30,1,Si
+P205,Desarrollo,C09,30,1,No
+P206,Desarrollo,C06,24,1,Si
+P207,Desarrollo,C09,5,0,Si
+P208,DevOps y nube,C11,8,3,Si
+P209,Desarrollo,C09,5,0,No
+P210,QA,C11,18,2,No
+P211,Desarrollo,C06,3,0,Si
+P212,DevOps y nube,C12,30,1,Si
+P213,Desarrollo,C03,36,3,No
+P214,Desarrollo,C04,24,1,Si
+P215,Desarrollo,C09,3,0,Si
+P216,DevOps y nube,C10,60,1,No
+P217,Desarrollo,C05,5,0,No
+P218,QA,C09,60,1,Si
+P219,Desarrollo,C04,18,1,No
+P220,DevOps y nube,C12,3,2,No

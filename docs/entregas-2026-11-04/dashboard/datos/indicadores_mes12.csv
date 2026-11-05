@@ -1,0 +1,14 @@
+id,indicador,valor_mes12,meta_mes12,cumplimiento,estado,proyeccion_mes24,meta_mes24,accion
+KPI-01,Ejecución acumulada del PETI,52 %,55 %,94.5,Intermedio,100 %,95 %,"Recuperar P1.8, P2.2, P2.3 y P2.6 (atrasados)"
+KPI-02,Variación del costo de nube,-4.4 %,−3 % *,100.0,Bueno,-19 %,−15 %,Mantener P2.7 (tablero FinOps)
+KPI-03,Casos de IA en producción,0,0 *,100.0,Bueno,Inicia mes 13,5,Arrancar P3.1 y P3.3 en el mes 13
+KPI-04,Adopción de IA en células,78 %,85 %,91.8,Intermedio,100 %,95 %,Acelerar P1.8 (CoE de IA) y P1.6 (licencias)
+KPI-05,Remediación de vulnerabilidades críticas,181 h,< 72 h,39.8,Bajo,102 h,< 24 h,Cerrar P2.2 y P2.3 (pruebas de seguridad en el pipeline)
+KPI-06,Conciliación de horas y tareas,84 %,95 %,88.4,Intermedio,100 %,95 %,Estabilizar P2.4 (conciliación con la ALM)
+KPI-07,No conformidades mayores ISO/IEC 27001,0,0,100.0,Bueno,0,0,Mantener el SGSI (P1.1 cerrado)
+KPI-08,Cobertura del inventario de IA,93 %,90 %,100.0,Bueno,100 %,100 %,Mantener P1.3
+KPI-09,Personal técnico certificado,67 %,70 %,95.3,Bueno,—,90 %,Reforzar P1.7 en los roles con menor cobertura
+KPI-10,Rotación entre células,33 %,50 % *,66.4,Bajo,—,100 %,Plan de rotación con Line Managers (R06)
+KPI-11,Ambientes con infraestructura como código,33 %,50 % *,66.0,Bajo,100 %,100 %,Recuperar P2.6 (atrasado)
+KPI-13,Informe SOC 2 sin salvedades,En preparación,—,100.0,Bueno,Sí,Sí,P4.1 inicia en el mes 13
+KPI-14,Sesiones de comité con acta,100 %,90 %,100.0,Bueno,100 %,90 %,Mantener el Comité Directivo del PETI
