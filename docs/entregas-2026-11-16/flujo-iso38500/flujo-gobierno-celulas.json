@@ -1,0 +1,644 @@
+{
+  "name": "Gobierno de TI por célula (ISO/IEC 38500:2024)",
+  "nodes": [
+    {
+      "id": "1ea89c5e-c094-5de1-9140-a558cfc46c93",
+      "name": "Disparo mensual",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "months",
+              "monthsInterval": 1,
+              "triggerAtDayOfMonth": 1,
+              "triggerAtHour": 7
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "3d4feb53-392a-507d-965b-d8ab9ac96adb",
+      "name": "Disparo manual",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        200
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "60129c76-c5b3-536f-8219-bb43200cb24e",
+      "name": "Leer Config",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        240,
+        100
+      ],
+      "parameters": {
+        "authentication": "oAuth2",
+        "documentId": {
+          "__rl": true,
+          "value": "__SPREADSHEET_ID__",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Config",
+          "mode": "name"
+        },
+        "operation": "read",
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "__CREDENCIAL_SHEETS__",
+          "name": "Google Sheets PETI"
+        }
+      }
+    },
+    {
+      "id": "a51f44d9-674f-5ca8-bffd-c4b413ff74ab",
+      "name": "Leer Células",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        460,
+        100
+      ],
+      "parameters": {
+        "authentication": "oAuth2",
+        "documentId": {
+          "__rl": true,
+          "value": "__SPREADSHEET_ID__",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Celulas",
+          "mode": "name"
+        },
+        "operation": "read",
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "__CREDENCIAL_SHEETS__",
+          "name": "Google Sheets PETI"
+        }
+      },
+      "executeOnce": true
+    },
+    {
+      "id": "2cdf0a3d-9182-5d2f-a94b-95c6f196958f",
+      "name": "Leer Umbrales",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        680,
+        100
+      ],
+      "parameters": {
+        "authentication": "oAuth2",
+        "documentId": {
+          "__rl": true,
+          "value": "__SPREADSHEET_ID__",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Umbrales",
+          "mode": "name"
+        },
+        "operation": "read",
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "__CREDENCIAL_SHEETS__",
+          "name": "Google Sheets PETI"
+        }
+      },
+      "executeOnce": true
+    },
+    {
+      "id": "494fc5d0-b481-577f-98f5-a1b94b217739",
+      "name": "Leer Mediciones",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        900,
+        100
+      ],
+      "parameters": {
+        "authentication": "oAuth2",
+        "documentId": {
+          "__rl": true,
+          "value": "__SPREADSHEET_ID__",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Mediciones",
+          "mode": "name"
+        },
+        "operation": "read",
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "__CREDENCIAL_SHEETS__",
+          "name": "Google Sheets PETI"
+        }
+      },
+      "executeOnce": true
+    },
+    {
+      "id": "f8a8d17f-8be5-5c9e-912b-48bddf8ff946",
+      "name": "Evaluar células",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        100
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "// Lógica del flujo de n8n \"Gobierno de TI por célula\" (ISO/IEC 38500:2024, tarea Evaluar).\n// Sin dependencias: scripts/flujo_gobierno_construir.py copia este archivo dentro de los nodos Code.\n// Reglas de cumplimiento y estado iguales a scripts/dashboard_construir.py (rangos del PETI §10).\n\nconst MENSAJE_CORREOS = 'Reemplaza los correos de ejemplo en las pestañas Config y Celulas';\nconst GRAVEDAD = { Bajo: 0, Intermedio: 1, Bueno: 2, 'Sin datos': 3 };\n\nfunction numero(v) {\n  if (v === null || v === undefined) return null;\n  const s = String(v).trim().replace(',', '.');\n  if (s === '') return null;\n  const n = Number(s);\n  return Number.isFinite(n) ? n : null;\n}\n\nfunction redondear1(x) {\n  return Math.round(x * 10) / 10;\n}\n\nfunction cumplimiento(valor, meta, menorEsMejor) {\n  if (valor === null || valor === undefined) return null;\n  if (menorEsMejor) return valor <= meta ? 100 : redondear1((100 * meta) / valor);\n  return meta ? redondear1(Math.min(100, (100 * valor) / meta)) : 100;\n}\n\nfunction estadoDe(c) {\n  if (c === null || c === undefined) return null;\n  return c >= 95 ? 'Bueno' : c > 70 ? 'Intermedio' : 'Bajo';\n}\n\nfunction cicloDe(mes) {\n  const m0 = 9 + (Number(mes) - 1); // mes 1 = octubre de 2026\n  const anio = 2026 + Math.floor(m0 / 12);\n  return `${anio}-${String((m0 % 12) + 1).padStart(2, '0')}`;\n}\n\nfunction fmt(valor, unidad) {\n  if (valor === null) return 'sin dato';\n  return `${valor.toFixed(1).replace('.', ',')} ${unidad}`;\n}\n\nfunction esEjemplo(correo) {\n  const c = String(correo || '').trim().toLowerCase();\n  return c === '' || c.endsWith('@ejemplo.com');\n}\n\nfunction validarCorreos(config, celulas) {\n  const correos = [config.correo_comite, config.correo_copia, ...celulas.map((c) => c.correo_lider)];\n  if (correos.some(esEjemplo)) throw new Error(MENSAJE_CORREOS);\n}\n\nfunction evaluarMes(celula, mes, umbrales, mediciones) {\n  const filas = mediciones.filter((m) => Number(m.mes) === Number(mes) && m.celula === celula);\n  if (filas.length === 0) return { estado: 'Sin datos', indicadores: [] };\n  const indicadores = umbrales.map((u) => {\n    const fila = filas.find((m) => m.kpi === u.kpi);\n    const valor = fila ? numero(fila.valor) : null;\n    const meta = numero(u.meta);\n    const c = cumplimiento(valor, meta, String(u.menor_es_mejor).trim() === 'Si');\n    return { kpi: u.kpi, nombre: u.nombre, valor, meta, unidad: u.unidad, cumplimiento: c, estado: estadoDe(c), proyecto: u.proyecto };\n  });\n  const conDato = indicadores.filter((i) => i.estado !== null);\n  if (conDato.length === 0) return { estado: 'Sin datos', indicadores };\n  const peor = conDato.reduce((a, b) => (GRAVEDAD[b.estado] < GRAVEDAD[a.estado] ? b : a));\n  return { estado: peor.estado, indicadores };\n}\n\nfunction filasIndicadores(indicadores, soloEstado) {\n  return indicadores\n    .filter((i) => !soloEstado || soloEstado.includes(i.estado))\n    .map((i) => `<tr><td>${i.kpi}</td><td>${i.nombre}</td><td>${fmt(i.valor, i.unidad)}</td><td>${fmt(i.meta, i.unidad)}</td><td>${i.estado || 'sin dato'}</td><td>${i.proyecto}</td></tr>`)\n    .join('');\n}\n\nconst ENCABEZADO = '<tr><th>Indicador</th><th>Nombre</th><th>Valor</th><th>Meta</th><th>Estado</th><th>Proyecto que corrige</th></tr>';\n\nfunction evaluarCelulas({ config, celulas, umbrales, mediciones, ahora }) {\n  const mes = Number(config.mes_corte);\n  const ciclo = cicloDe(mes);\n  const fecha = ahora || new Date().toISOString();\n  return celulas.map((c) => {\n    const actual = evaluarMes(c.celula, mes, umbrales, mediciones);\n    const anterior = mes > 1 ? evaluarMes(c.celula, mes - 1, umbrales, mediciones).estado : null;\n    const item = {\n      clave: `${ciclo}|${c.celula}`,\n      ciclo,\n      celula: c.celula,\n      nombre: c.nombre,\n      correo_lider: c.correo_lider,\n      estado: actual.estado,\n      estado_anterior: anterior,\n      indicadores: actual.indicadores,\n      fecha_ejecucion: fecha,\n    };\n    for (const u of umbrales) {\n      const i = actual.indicadores.find((x) => x.kpi === u.kpi);\n      item[u.kpi] = i ? i.valor : null;\n    }\n    if (actual.estado === 'Intermedio') {\n      item.aviso_asunto = `Gobierno de TI ${ciclo}: ${c.celula} con indicadores bajo la meta`;\n      item.aviso_html = `<p>La revisión mensual del ciclo ${ciclo} encontró indicadores de ${c.nombre} (${c.celula}) por debajo de la meta del PETI.</p>`\n        + `<table border=\"1\" cellpadding=\"4\">${ENCABEZADO}${filasIndicadores(actual.indicadores, ['Intermedio', 'Bajo'])}</table>`\n        + '<p>Se pide al Technical Lead y al Line Manager registrar un plan de acción antes del próximo Comité Táctico de TI.</p>';\n    }\n    return item;\n  });\n}\n\nfunction agruparRojos(evaluadas) {\n  const rojos = evaluadas.filter((e) => e.estado === 'Bajo');\n  if (rojos.length === 0) return [];\n  const ciclo = rojos[0].ciclo;\n  const n = rojos.length;\n  const filas = rojos\n    .map((r) => `<tr><td colspan=\"6\"><b>${r.nombre} (${r.celula})</b></td></tr>${filasIndicadores(r.indicadores, ['Bajo'])}`)\n    .join('');\n  return [{\n    ciclo,\n    celulas: rojos.map((r) => ({ celula: r.celula, nombre: r.nombre, indicadores: r.indicadores.filter((i) => i.estado === 'Bajo') })),\n    asunto: `Aprobación requerida: ${n} ${n === 1 ? 'célula' : 'células'} en rojo, ciclo ${ciclo}`,\n    cuerpoHtml: `<p>En el ciclo ${ciclo}, ${n === 1 ? 'una célula tiene' : `${n} células tienen`} indicadores en estado Bajo:</p>`\n      + `<table border=\"1\" cellpadding=\"4\">${ENCABEZADO}${filas}</table>`\n      + '<p><b>Aprobar</b>: el Comité Táctico de TI ejecuta el plan correctivo del proyecto indicado. '\n      + '<b>Escalar</b>: el caso pasa al Comité Directivo del PETI.</p>',\n    // El nodo Gmail \"Send and Wait\" escapa el HTML y respeta los saltos de línea: este es el cuerpo que usa.\n    cuerpoTexto: [\n      `En el ciclo ${ciclo}, ${n === 1 ? 'una célula tiene' : `${n} células tienen`} indicadores en estado Bajo:`,\n      '',\n      ...rojos.map((r) => `${r.nombre} (${r.celula}): ${r.indicadores.filter((i) => i.estado === 'Bajo')\n        .map((i) => `${i.kpi}: ${fmt(i.valor, i.unidad)} (meta ${fmt(i.meta, i.unidad)}; corrige ${i.proyecto})`).join('; ')}`),\n      '',\n      'Aprobar plan correctivo: el Comité Táctico de TI ejecuta el plan del proyecto indicado.',\n      'Escalar al Comité Directivo: el caso pasa al Comité Directivo del PETI.',\n    ].join('\\n'),\n  }];\n}\n\nfunction armarInforme(evaluadas) {\n  const ciclo = evaluadas.length ? evaluadas[0].ciclo : '';\n  const minimo = (e) => Math.min(...e.indicadores.filter((i) => i.cumplimiento !== null).map((i) => i.cumplimiento), 101);\n  const orden = [...evaluadas].sort((a, b) => GRAVEDAD[a.estado] - GRAVEDAD[b.estado] || minimo(a) - minimo(b));\n  const conteo = Object.keys(GRAVEDAD).map((k) => `${k}: ${evaluadas.filter((e) => e.estado === k).length}`).join(' · ');\n  const filas = orden\n    .map((e) => `<tr><td>${e.celula}</td><td>${e.nombre}</td><td>${e.estado}</td><td>${e.estado_anterior || '—'}</td>`\n      + `<td>${e.indicadores.map((i) => `${i.kpi} ${fmt(i.valor, i.unidad)}`).join('<br>')}</td></tr>`)\n    .join('');\n  return {\n    asunto: `Informe mensual de gobierno de TI por célula, ciclo ${ciclo}`,\n    cuerpoHtml: `<p>Resultado de la revisión mensual del ciclo ${ciclo} (ISO/IEC 38500:2024: evaluar, dirigir y monitorear).</p>`\n      + `<p>${conteo}</p>`\n      + '<table border=\"1\" cellpadding=\"4\"><tr><th>Célula</th><th>Nombre</th><th>Estado</th><th>Mes anterior</th><th>Indicadores</th></tr>'\n      + `${filas}</table>`\n      + '<p>Datos sintéticos del PETI Colombia (trabajo académico). Historial y decisiones en la hoja de gobierno.</p>',\n  };\n}\n\nfunction prepararDecisiones(grupo, aprobado, ahora) {\n  const decision = aprobado === true ? 'Aprobado plan correctivo'\n    : aprobado === false ? 'Escalado al Comité Directivo' : 'Sin respuesta en el plazo';\n  return grupo.celulas.map((c) => ({\n    fecha: ahora || new Date().toISOString(),\n    ciclo: grupo.ciclo,\n    celula: c.celula,\n    foco: 'Desempeño',\n    justificacion: c.indicadores.map((i) => `${i.kpi}: ${fmt(i.valor, i.unidad)} frente a meta ${fmt(i.meta, i.unidad)} (${i.proyecto})`).join('; '),\n    decision,\n    responsable: 'Comité Táctico de TI',\n  }));\n}\n\nconst COLUMNAS_HISTORIAL = ['clave', 'ciclo', 'celula', 'estado', 'KPI-05', 'ANS', 'KPI-09', 'KPI-10', 'fecha_ejecucion'];\n\nfunction filaHistorial(item) {\n  return Object.fromEntries(COLUMNAS_HISTORIAL.map((k) => [k, item[k] === null || item[k] === undefined ? '' : item[k]]));\n}\n\nconst config = $('Leer Config').first().json;\nconst celulas = $('Leer Células').all().map((i) => i.json);\nconst umbrales = $('Leer Umbrales').all().map((i) => i.json);\nconst mediciones = $('Leer Mediciones').all().map((i) => i.json);\nvalidarCorreos(config, celulas);\nreturn evaluarCelulas({ config, celulas, umbrales, mediciones }).map((json) => ({ json }));"
+      }
+    },
+    {
+      "id": "ae495e8d-4d78-5dd4-846e-832582baddd3",
+      "name": "Preparar historial",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        -120
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "// Lógica del flujo de n8n \"Gobierno de TI por célula\" (ISO/IEC 38500:2024, tarea Evaluar).\n// Sin dependencias: scripts/flujo_gobierno_construir.py copia este archivo dentro de los nodos Code.\n// Reglas de cumplimiento y estado iguales a scripts/dashboard_construir.py (rangos del PETI §10).\n\nconst MENSAJE_CORREOS = 'Reemplaza los correos de ejemplo en las pestañas Config y Celulas';\nconst GRAVEDAD = { Bajo: 0, Intermedio: 1, Bueno: 2, 'Sin datos': 3 };\n\nfunction numero(v) {\n  if (v === null || v === undefined) return null;\n  const s = String(v).trim().replace(',', '.');\n  if (s === '') return null;\n  const n = Number(s);\n  return Number.isFinite(n) ? n : null;\n}\n\nfunction redondear1(x) {\n  return Math.round(x * 10) / 10;\n}\n\nfunction cumplimiento(valor, meta, menorEsMejor) {\n  if (valor === null || valor === undefined) return null;\n  if (menorEsMejor) return valor <= meta ? 100 : redondear1((100 * meta) / valor);\n  return meta ? redondear1(Math.min(100, (100 * valor) / meta)) : 100;\n}\n\nfunction estadoDe(c) {\n  if (c === null || c === undefined) return null;\n  return c >= 95 ? 'Bueno' : c > 70 ? 'Intermedio' : 'Bajo';\n}\n\nfunction cicloDe(mes) {\n  const m0 = 9 + (Number(mes) - 1); // mes 1 = octubre de 2026\n  const anio = 2026 + Math.floor(m0 / 12);\n  return `${anio}-${String((m0 % 12) + 1).padStart(2, '0')}`;\n}\n\nfunction fmt(valor, unidad) {\n  if (valor === null) return 'sin dato';\n  return `${valor.toFixed(1).replace('.', ',')} ${unidad}`;\n}\n\nfunction esEjemplo(correo) {\n  const c = String(correo || '').trim().toLowerCase();\n  return c === '' || c.endsWith('@ejemplo.com');\n}\n\nfunction validarCorreos(config, celulas) {\n  const correos = [config.correo_comite, config.correo_copia, ...celulas.map((c) => c.correo_lider)];\n  if (correos.some(esEjemplo)) throw new Error(MENSAJE_CORREOS);\n}\n\nfunction evaluarMes(celula, mes, umbrales, mediciones) {\n  const filas = mediciones.filter((m) => Number(m.mes) === Number(mes) && m.celula === celula);\n  if (filas.length === 0) return { estado: 'Sin datos', indicadores: [] };\n  const indicadores = umbrales.map((u) => {\n    const fila = filas.find((m) => m.kpi === u.kpi);\n    const valor = fila ? numero(fila.valor) : null;\n    const meta = numero(u.meta);\n    const c = cumplimiento(valor, meta, String(u.menor_es_mejor).trim() === 'Si');\n    return { kpi: u.kpi, nombre: u.nombre, valor, meta, unidad: u.unidad, cumplimiento: c, estado: estadoDe(c), proyecto: u.proyecto };\n  });\n  const conDato = indicadores.filter((i) => i.estado !== null);\n  if (conDato.length === 0) return { estado: 'Sin datos', indicadores };\n  const peor = conDato.reduce((a, b) => (GRAVEDAD[b.estado] < GRAVEDAD[a.estado] ? b : a));\n  return { estado: peor.estado, indicadores };\n}\n\nfunction filasIndicadores(indicadores, soloEstado) {\n  return indicadores\n    .filter((i) => !soloEstado || soloEstado.includes(i.estado))\n    .map((i) => `<tr><td>${i.kpi}</td><td>${i.nombre}</td><td>${fmt(i.valor, i.unidad)}</td><td>${fmt(i.meta, i.unidad)}</td><td>${i.estado || 'sin dato'}</td><td>${i.proyecto}</td></tr>`)\n    .join('');\n}\n\nconst ENCABEZADO = '<tr><th>Indicador</th><th>Nombre</th><th>Valor</th><th>Meta</th><th>Estado</th><th>Proyecto que corrige</th></tr>';\n\nfunction evaluarCelulas({ config, celulas, umbrales, mediciones, ahora }) {\n  const mes = Number(config.mes_corte);\n  const ciclo = cicloDe(mes);\n  const fecha = ahora || new Date().toISOString();\n  return celulas.map((c) => {\n    const actual = evaluarMes(c.celula, mes, umbrales, mediciones);\n    const anterior = mes > 1 ? evaluarMes(c.celula, mes - 1, umbrales, mediciones).estado : null;\n    const item = {\n      clave: `${ciclo}|${c.celula}`,\n      ciclo,\n      celula: c.celula,\n      nombre: c.nombre,\n      correo_lider: c.correo_lider,\n      estado: actual.estado,\n      estado_anterior: anterior,\n      indicadores: actual.indicadores,\n      fecha_ejecucion: fecha,\n    };\n    for (const u of umbrales) {\n      const i = actual.indicadores.find((x) => x.kpi === u.kpi);\n      item[u.kpi] = i ? i.valor : null;\n    }\n    if (actual.estado === 'Intermedio') {\n      item.aviso_asunto = `Gobierno de TI ${ciclo}: ${c.celula} con indicadores bajo la meta`;\n      item.aviso_html = `<p>La revisión mensual del ciclo ${ciclo} encontró indicadores de ${c.nombre} (${c.celula}) por debajo de la meta del PETI.</p>`\n        + `<table border=\"1\" cellpadding=\"4\">${ENCABEZADO}${filasIndicadores(actual.indicadores, ['Intermedio', 'Bajo'])}</table>`\n        + '<p>Se pide al Technical Lead y al Line Manager registrar un plan de acción antes del próximo Comité Táctico de TI.</p>';\n    }\n    return item;\n  });\n}\n\nfunction agruparRojos(evaluadas) {\n  const rojos = evaluadas.filter((e) => e.estado === 'Bajo');\n  if (rojos.length === 0) return [];\n  const ciclo = rojos[0].ciclo;\n  const n = rojos.length;\n  const filas = rojos\n    .map((r) => `<tr><td colspan=\"6\"><b>${r.nombre} (${r.celula})</b></td></tr>${filasIndicadores(r.indicadores, ['Bajo'])}`)\n    .join('');\n  return [{\n    ciclo,\n    celulas: rojos.map((r) => ({ celula: r.celula, nombre: r.nombre, indicadores: r.indicadores.filter((i) => i.estado === 'Bajo') })),\n    asunto: `Aprobación requerida: ${n} ${n === 1 ? 'célula' : 'células'} en rojo, ciclo ${ciclo}`,\n    cuerpoHtml: `<p>En el ciclo ${ciclo}, ${n === 1 ? 'una célula tiene' : `${n} células tienen`} indicadores en estado Bajo:</p>`\n      + `<table border=\"1\" cellpadding=\"4\">${ENCABEZADO}${filas}</table>`\n      + '<p><b>Aprobar</b>: el Comité Táctico de TI ejecuta el plan correctivo del proyecto indicado. '\n      + '<b>Escalar</b>: el caso pasa al Comité Directivo del PETI.</p>',\n    // El nodo Gmail \"Send and Wait\" escapa el HTML y respeta los saltos de línea: este es el cuerpo que usa.\n    cuerpoTexto: [\n      `En el ciclo ${ciclo}, ${n === 1 ? 'una célula tiene' : `${n} células tienen`} indicadores en estado Bajo:`,\n      '',\n      ...rojos.map((r) => `${r.nombre} (${r.celula}): ${r.indicadores.filter((i) => i.estado === 'Bajo')\n        .map((i) => `${i.kpi}: ${fmt(i.valor, i.unidad)} (meta ${fmt(i.meta, i.unidad)}; corrige ${i.proyecto})`).join('; ')}`),\n      '',\n      'Aprobar plan correctivo: el Comité Táctico de TI ejecuta el plan del proyecto indicado.',\n      'Escalar al Comité Directivo: el caso pasa al Comité Directivo del PETI.',\n    ].join('\\n'),\n  }];\n}\n\nfunction armarInforme(evaluadas) {\n  const ciclo = evaluadas.length ? evaluadas[0].ciclo : '';\n  const minimo = (e) => Math.min(...e.indicadores.filter((i) => i.cumplimiento !== null).map((i) => i.cumplimiento), 101);\n  const orden = [...evaluadas].sort((a, b) => GRAVEDAD[a.estado] - GRAVEDAD[b.estado] || minimo(a) - minimo(b));\n  const conteo = Object.keys(GRAVEDAD).map((k) => `${k}: ${evaluadas.filter((e) => e.estado === k).length}`).join(' · ');\n  const filas = orden\n    .map((e) => `<tr><td>${e.celula}</td><td>${e.nombre}</td><td>${e.estado}</td><td>${e.estado_anterior || '—'}</td>`\n      + `<td>${e.indicadores.map((i) => `${i.kpi} ${fmt(i.valor, i.unidad)}`).join('<br>')}</td></tr>`)\n    .join('');\n  return {\n    asunto: `Informe mensual de gobierno de TI por célula, ciclo ${ciclo}`,\n    cuerpoHtml: `<p>Resultado de la revisión mensual del ciclo ${ciclo} (ISO/IEC 38500:2024: evaluar, dirigir y monitorear).</p>`\n      + `<p>${conteo}</p>`\n      + '<table border=\"1\" cellpadding=\"4\"><tr><th>Célula</th><th>Nombre</th><th>Estado</th><th>Mes anterior</th><th>Indicadores</th></tr>'\n      + `${filas}</table>`\n      + '<p>Datos sintéticos del PETI Colombia (trabajo académico). Historial y decisiones en la hoja de gobierno.</p>',\n  };\n}\n\nfunction prepararDecisiones(grupo, aprobado, ahora) {\n  const decision = aprobado === true ? 'Aprobado plan correctivo'\n    : aprobado === false ? 'Escalado al Comité Directivo' : 'Sin respuesta en el plazo';\n  return grupo.celulas.map((c) => ({\n    fecha: ahora || new Date().toISOString(),\n    ciclo: grupo.ciclo,\n    celula: c.celula,\n    foco: 'Desempeño',\n    justificacion: c.indicadores.map((i) => `${i.kpi}: ${fmt(i.valor, i.unidad)} frente a meta ${fmt(i.meta, i.unidad)} (${i.proyecto})`).join('; '),\n    decision,\n    responsable: 'Comité Táctico de TI',\n  }));\n}\n\nconst COLUMNAS_HISTORIAL = ['clave', 'ciclo', 'celula', 'estado', 'KPI-05', 'ANS', 'KPI-09', 'KPI-10', 'fecha_ejecucion'];\n\nfunction filaHistorial(item) {\n  return Object.fromEntries(COLUMNAS_HISTORIAL.map((k) => [k, item[k] === null || item[k] === undefined ? '' : item[k]]));\n}\n\nreturn $input.all().map((i) => ({ json: filaHistorial(i.json) }));"
+      }
+    },
+    {
+      "id": "83f24b2a-5e4f-53e3-bdfd-d0a932de561f",
+      "name": "Registrar historial",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1580,
+        -120
+      ],
+      "parameters": {
+        "authentication": "oAuth2",
+        "documentId": {
+          "__rl": true,
+          "value": "__SPREADSHEET_ID__",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Historial",
+          "mode": "name"
+        },
+        "operation": "appendOrUpdate",
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "clave"
+          ],
+          "schema": []
+        },
+        "options": {
+          "cellFormat": "RAW"
+        }
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "__CREDENCIAL_SHEETS__",
+          "name": "Google Sheets PETI"
+        }
+      }
+    },
+    {
+      "id": "49a37269-b408-5128-8ed2-72d0cd81d1fb",
+      "name": "Según estado",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1360,
+        100
+      ],
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "470214f7-5914-58c9-8a75-ff7b4008f91a",
+                    "leftValue": "={{ $json.estado }}",
+                    "rightValue": "Intermedio",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Intermedio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "516e0151-3318-5099-a84e-9834a298f5ca",
+                    "leftValue": "={{ $json.estado }}",
+                    "rightValue": "Bajo",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Bajo"
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "8eec05b6-5f45-5589-95a5-f5f7e2cbf251",
+      "name": "Avisar a líderes",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1580,
+        20
+      ],
+      "parameters": {
+        "sendTo": "={{ $json.correo_lider }}",
+        "subject": "={{ $json.aviso_asunto }}",
+        "emailType": "html",
+        "message": "={{ $json.aviso_html }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "__CREDENCIAL_GMAIL__",
+          "name": "Gmail PETI"
+        }
+      },
+      "webhookId": "35b6cefa-756c-5543-8420-b5263c7ce81f"
+    },
+    {
+      "id": "38323d96-fedc-5ab2-b88c-aff877e23ccf",
+      "name": "Agrupar rojos",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1580,
+        200
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "// Lógica del flujo de n8n \"Gobierno de TI por célula\" (ISO/IEC 38500:2024, tarea Evaluar).\n// Sin dependencias: scripts/flujo_gobierno_construir.py copia este archivo dentro de los nodos Code.\n// Reglas de cumplimiento y estado iguales a scripts/dashboard_construir.py (rangos del PETI §10).\n\nconst MENSAJE_CORREOS = 'Reemplaza los correos de ejemplo en las pestañas Config y Celulas';\nconst GRAVEDAD = { Bajo: 0, Intermedio: 1, Bueno: 2, 'Sin datos': 3 };\n\nfunction numero(v) {\n  if (v === null || v === undefined) return null;\n  const s = String(v).trim().replace(',', '.');\n  if (s === '') return null;\n  const n = Number(s);\n  return Number.isFinite(n) ? n : null;\n}\n\nfunction redondear1(x) {\n  return Math.round(x * 10) / 10;\n}\n\nfunction cumplimiento(valor, meta, menorEsMejor) {\n  if (valor === null || valor === undefined) return null;\n  if (menorEsMejor) return valor <= meta ? 100 : redondear1((100 * meta) / valor);\n  return meta ? redondear1(Math.min(100, (100 * valor) / meta)) : 100;\n}\n\nfunction estadoDe(c) {\n  if (c === null || c === undefined) return null;\n  return c >= 95 ? 'Bueno' : c > 70 ? 'Intermedio' : 'Bajo';\n}\n\nfunction cicloDe(mes) {\n  const m0 = 9 + (Number(mes) - 1); // mes 1 = octubre de 2026\n  const anio = 2026 + Math.floor(m0 / 12);\n  return `${anio}-${String((m0 % 12) + 1).padStart(2, '0')}`;\n}\n\nfunction fmt(valor, unidad) {\n  if (valor === null) return 'sin dato';\n  return `${valor.toFixed(1).replace('.', ',')} ${unidad}`;\n}\n\nfunction esEjemplo(correo) {\n  const c = String(correo || '').trim().toLowerCase();\n  return c === '' || c.endsWith('@ejemplo.com');\n}\n\nfunction validarCorreos(config, celulas) {\n  const correos = [config.correo_comite, config.correo_copia, ...celulas.map((c) => c.correo_lider)];\n  if (correos.some(esEjemplo)) throw new Error(MENSAJE_CORREOS);\n}\n\nfunction evaluarMes(celula, mes, umbrales, mediciones) {\n  const filas = mediciones.filter((m) => Number(m.mes) === Number(mes) && m.celula === celula);\n  if (filas.length === 0) return { estado: 'Sin datos', indicadores: [] };\n  const indicadores = umbrales.map((u) => {\n    const fila = filas.find((m) => m.kpi === u.kpi);\n    const valor = fila ? numero(fila.valor) : null;\n    const meta = numero(u.meta);\n    const c = cumplimiento(valor, meta, String(u.menor_es_mejor).trim() === 'Si');\n    return { kpi: u.kpi, nombre: u.nombre, valor, meta, unidad: u.unidad, cumplimiento: c, estado: estadoDe(c), proyecto: u.proyecto };\n  });\n  const conDato = indicadores.filter((i) => i.estado !== null);\n  if (conDato.length === 0) return { estado: 'Sin datos', indicadores };\n  const peor = conDato.reduce((a, b) => (GRAVEDAD[b.estado] < GRAVEDAD[a.estado] ? b : a));\n  return { estado: peor.estado, indicadores };\n}\n\nfunction filasIndicadores(indicadores, soloEstado) {\n  return indicadores\n    .filter((i) => !soloEstado || soloEstado.includes(i.estado))\n    .map((i) => `<tr><td>${i.kpi}</td><td>${i.nombre}</td><td>${fmt(i.valor, i.unidad)}</td><td>${fmt(i.meta, i.unidad)}</td><td>${i.estado || 'sin dato'}</td><td>${i.proyecto}</td></tr>`)\n    .join('');\n}\n\nconst ENCABEZADO = '<tr><th>Indicador</th><th>Nombre</th><th>Valor</th><th>Meta</th><th>Estado</th><th>Proyecto que corrige</th></tr>';\n\nfunction evaluarCelulas({ config, celulas, umbrales, mediciones, ahora }) {\n  const mes = Number(config.mes_corte);\n  const ciclo = cicloDe(mes);\n  const fecha = ahora || new Date().toISOString();\n  return celulas.map((c) => {\n    const actual = evaluarMes(c.celula, mes, umbrales, mediciones);\n    const anterior = mes > 1 ? evaluarMes(c.celula, mes - 1, umbrales, mediciones).estado : null;\n    const item = {\n      clave: `${ciclo}|${c.celula}`,\n      ciclo,\n      celula: c.celula,\n      nombre: c.nombre,\n      correo_lider: c.correo_lider,\n      estado: actual.estado,\n      estado_anterior: anterior,\n      indicadores: actual.indicadores,\n      fecha_ejecucion: fecha,\n    };\n    for (const u of umbrales) {\n      const i = actual.indicadores.find((x) => x.kpi === u.kpi);\n      item[u.kpi] = i ? i.valor : null;\n    }\n    if (actual.estado === 'Intermedio') {\n      item.aviso_asunto = `Gobierno de TI ${ciclo}: ${c.celula} con indicadores bajo la meta`;\n      item.aviso_html = `<p>La revisión mensual del ciclo ${ciclo} encontró indicadores de ${c.nombre} (${c.celula}) por debajo de la meta del PETI.</p>`\n        + `<table border=\"1\" cellpadding=\"4\">${ENCABEZADO}${filasIndicadores(actual.indicadores, ['Intermedio', 'Bajo'])}</table>`\n        + '<p>Se pide al Technical Lead y al Line Manager registrar un plan de acción antes del próximo Comité Táctico de TI.</p>';\n    }\n    return item;\n  });\n}\n\nfunction agruparRojos(evaluadas) {\n  const rojos = evaluadas.filter((e) => e.estado === 'Bajo');\n  if (rojos.length === 0) return [];\n  const ciclo = rojos[0].ciclo;\n  const n = rojos.length;\n  const filas = rojos\n    .map((r) => `<tr><td colspan=\"6\"><b>${r.nombre} (${r.celula})</b></td></tr>${filasIndicadores(r.indicadores, ['Bajo'])}`)\n    .join('');\n  return [{\n    ciclo,\n    celulas: rojos.map((r) => ({ celula: r.celula, nombre: r.nombre, indicadores: r.indicadores.filter((i) => i.estado === 'Bajo') })),\n    asunto: `Aprobación requerida: ${n} ${n === 1 ? 'célula' : 'células'} en rojo, ciclo ${ciclo}`,\n    cuerpoHtml: `<p>En el ciclo ${ciclo}, ${n === 1 ? 'una célula tiene' : `${n} células tienen`} indicadores en estado Bajo:</p>`\n      + `<table border=\"1\" cellpadding=\"4\">${ENCABEZADO}${filas}</table>`\n      + '<p><b>Aprobar</b>: el Comité Táctico de TI ejecuta el plan correctivo del proyecto indicado. '\n      + '<b>Escalar</b>: el caso pasa al Comité Directivo del PETI.</p>',\n    // El nodo Gmail \"Send and Wait\" escapa el HTML y respeta los saltos de línea: este es el cuerpo que usa.\n    cuerpoTexto: [\n      `En el ciclo ${ciclo}, ${n === 1 ? 'una célula tiene' : `${n} células tienen`} indicadores en estado Bajo:`,\n      '',\n      ...rojos.map((r) => `${r.nombre} (${r.celula}): ${r.indicadores.filter((i) => i.estado === 'Bajo')\n        .map((i) => `${i.kpi}: ${fmt(i.valor, i.unidad)} (meta ${fmt(i.meta, i.unidad)}; corrige ${i.proyecto})`).join('; ')}`),\n      '',\n      'Aprobar plan correctivo: el Comité Táctico de TI ejecuta el plan del proyecto indicado.',\n      'Escalar al Comité Directivo: el caso pasa al Comité Directivo del PETI.',\n    ].join('\\n'),\n  }];\n}\n\nfunction armarInforme(evaluadas) {\n  const ciclo = evaluadas.length ? evaluadas[0].ciclo : '';\n  const minimo = (e) => Math.min(...e.indicadores.filter((i) => i.cumplimiento !== null).map((i) => i.cumplimiento), 101);\n  const orden = [...evaluadas].sort((a, b) => GRAVEDAD[a.estado] - GRAVEDAD[b.estado] || minimo(a) - minimo(b));\n  const conteo = Object.keys(GRAVEDAD).map((k) => `${k}: ${evaluadas.filter((e) => e.estado === k).length}`).join(' · ');\n  const filas = orden\n    .map((e) => `<tr><td>${e.celula}</td><td>${e.nombre}</td><td>${e.estado}</td><td>${e.estado_anterior || '—'}</td>`\n      + `<td>${e.indicadores.map((i) => `${i.kpi} ${fmt(i.valor, i.unidad)}`).join('<br>')}</td></tr>`)\n    .join('');\n  return {\n    asunto: `Informe mensual de gobierno de TI por célula, ciclo ${ciclo}`,\n    cuerpoHtml: `<p>Resultado de la revisión mensual del ciclo ${ciclo} (ISO/IEC 38500:2024: evaluar, dirigir y monitorear).</p>`\n      + `<p>${conteo}</p>`\n      + '<table border=\"1\" cellpadding=\"4\"><tr><th>Célula</th><th>Nombre</th><th>Estado</th><th>Mes anterior</th><th>Indicadores</th></tr>'\n      + `${filas}</table>`\n      + '<p>Datos sintéticos del PETI Colombia (trabajo académico). Historial y decisiones en la hoja de gobierno.</p>',\n  };\n}\n\nfunction prepararDecisiones(grupo, aprobado, ahora) {\n  const decision = aprobado === true ? 'Aprobado plan correctivo'\n    : aprobado === false ? 'Escalado al Comité Directivo' : 'Sin respuesta en el plazo';\n  return grupo.celulas.map((c) => ({\n    fecha: ahora || new Date().toISOString(),\n    ciclo: grupo.ciclo,\n    celula: c.celula,\n    foco: 'Desempeño',\n    justificacion: c.indicadores.map((i) => `${i.kpi}: ${fmt(i.valor, i.unidad)} frente a meta ${fmt(i.meta, i.unidad)} (${i.proyecto})`).join('; '),\n    decision,\n    responsable: 'Comité Táctico de TI',\n  }));\n}\n\nconst COLUMNAS_HISTORIAL = ['clave', 'ciclo', 'celula', 'estado', 'KPI-05', 'ANS', 'KPI-09', 'KPI-10', 'fecha_ejecucion'];\n\nfunction filaHistorial(item) {\n  return Object.fromEntries(COLUMNAS_HISTORIAL.map((k) => [k, item[k] === null || item[k] === undefined ? '' : item[k]]));\n}\n\nreturn agruparRojos($input.all().map((i) => i.json)).map((json) => ({ json }));"
+      }
+    },
+    {
+      "id": "f07c71bf-d47b-5346-b6be-e444876d2222",
+      "name": "Aprobación del Comité",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1800,
+        200
+      ],
+      "parameters": {
+        "operation": "sendAndWait",
+        "sendTo": "={{ $('Leer Config').first().json.correo_comite }}",
+        "subject": "={{ $json.asunto }}",
+        "message": "={{ $json.cuerpoTexto }}",
+        "approvalOptions": {
+          "values": {
+            "approvalType": "double",
+            "approveLabel": "Aprobar plan correctivo",
+            "disapproveLabel": "Escalar al Comité Directivo"
+          }
+        },
+        "options": {
+          "limitWaitTime": {
+            "values": {
+              "limitType": "afterTimeInterval",
+              "resumeAmount": 3,
+              "resumeUnit": "days"
+            }
+          },
+          "appendAttribution": false
+        }
+      },
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "__CREDENCIAL_GMAIL__",
+          "name": "Gmail PETI"
+        }
+      },
+      "webhookId": "f7f8bad7-16ed-5630-8b64-2d74d373b530"
+    },
+    {
+      "id": "76c41a62-7b71-545c-aab4-c5f99685be61",
+      "name": "Preparar decisión",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2020,
+        200
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "// Lógica del flujo de n8n \"Gobierno de TI por célula\" (ISO/IEC 38500:2024, tarea Evaluar).\n// Sin dependencias: scripts/flujo_gobierno_construir.py copia este archivo dentro de los nodos Code.\n// Reglas de cumplimiento y estado iguales a scripts/dashboard_construir.py (rangos del PETI §10).\n\nconst MENSAJE_CORREOS = 'Reemplaza los correos de ejemplo en las pestañas Config y Celulas';\nconst GRAVEDAD = { Bajo: 0, Intermedio: 1, Bueno: 2, 'Sin datos': 3 };\n\nfunction numero(v) {\n  if (v === null || v === undefined) return null;\n  const s = String(v).trim().replace(',', '.');\n  if (s === '') return null;\n  const n = Number(s);\n  return Number.isFinite(n) ? n : null;\n}\n\nfunction redondear1(x) {\n  return Math.round(x * 10) / 10;\n}\n\nfunction cumplimiento(valor, meta, menorEsMejor) {\n  if (valor === null || valor === undefined) return null;\n  if (menorEsMejor) return valor <= meta ? 100 : redondear1((100 * meta) / valor);\n  return meta ? redondear1(Math.min(100, (100 * valor) / meta)) : 100;\n}\n\nfunction estadoDe(c) {\n  if (c === null || c === undefined) return null;\n  return c >= 95 ? 'Bueno' : c > 70 ? 'Intermedio' : 'Bajo';\n}\n\nfunction cicloDe(mes) {\n  const m0 = 9 + (Number(mes) - 1); // mes 1 = octubre de 2026\n  const anio = 2026 + Math.floor(m0 / 12);\n  return `${anio}-${String((m0 % 12) + 1).padStart(2, '0')}`;\n}\n\nfunction fmt(valor, unidad) {\n  if (valor === null) return 'sin dato';\n  return `${valor.toFixed(1).replace('.', ',')} ${unidad}`;\n}\n\nfunction esEjemplo(correo) {\n  const c = String(correo || '').trim().toLowerCase();\n  return c === '' || c.endsWith('@ejemplo.com');\n}\n\nfunction validarCorreos(config, celulas) {\n  const correos = [config.correo_comite, config.correo_copia, ...celulas.map((c) => c.correo_lider)];\n  if (correos.some(esEjemplo)) throw new Error(MENSAJE_CORREOS);\n}\n\nfunction evaluarMes(celula, mes, umbrales, mediciones) {\n  const filas = mediciones.filter((m) => Number(m.mes) === Number(mes) && m.celula === celula);\n  if (filas.length === 0) return { estado: 'Sin datos', indicadores: [] };\n  const indicadores = umbrales.map((u) => {\n    const fila = filas.find((m) => m.kpi === u.kpi);\n    const valor = fila ? numero(fila.valor) : null;\n    const meta = numero(u.meta);\n    const c = cumplimiento(valor, meta, String(u.menor_es_mejor).trim() === 'Si');\n    return { kpi: u.kpi, nombre: u.nombre, valor, meta, unidad: u.unidad, cumplimiento: c, estado: estadoDe(c), proyecto: u.proyecto };\n  });\n  const conDato = indicadores.filter((i) => i.estado !== null);\n  if (conDato.length === 0) return { estado: 'Sin datos', indicadores };\n  const peor = conDato.reduce((a, b) => (GRAVEDAD[b.estado] < GRAVEDAD[a.estado] ? b : a));\n  return { estado: peor.estado, indicadores };\n}\n\nfunction filasIndicadores(indicadores, soloEstado) {\n  return indicadores\n    .filter((i) => !soloEstado || soloEstado.includes(i.estado))\n    .map((i) => `<tr><td>${i.kpi}</td><td>${i.nombre}</td><td>${fmt(i.valor, i.unidad)}</td><td>${fmt(i.meta, i.unidad)}</td><td>${i.estado || 'sin dato'}</td><td>${i.proyecto}</td></tr>`)\n    .join('');\n}\n\nconst ENCABEZADO = '<tr><th>Indicador</th><th>Nombre</th><th>Valor</th><th>Meta</th><th>Estado</th><th>Proyecto que corrige</th></tr>';\n\nfunction evaluarCelulas({ config, celulas, umbrales, mediciones, ahora }) {\n  const mes = Number(config.mes_corte);\n  const ciclo = cicloDe(mes);\n  const fecha = ahora || new Date().toISOString();\n  return celulas.map((c) => {\n    const actual = evaluarMes(c.celula, mes, umbrales, mediciones);\n    const anterior = mes > 1 ? evaluarMes(c.celula, mes - 1, umbrales, mediciones).estado : null;\n    const item = {\n      clave: `${ciclo}|${c.celula}`,\n      ciclo,\n      celula: c.celula,\n      nombre: c.nombre,\n      correo_lider: c.correo_lider,\n      estado: actual.estado,\n      estado_anterior: anterior,\n      indicadores: actual.indicadores,\n      fecha_ejecucion: fecha,\n    };\n    for (const u of umbrales) {\n      const i = actual.indicadores.find((x) => x.kpi === u.kpi);\n      item[u.kpi] = i ? i.valor : null;\n    }\n    if (actual.estado === 'Intermedio') {\n      item.aviso_asunto = `Gobierno de TI ${ciclo}: ${c.celula} con indicadores bajo la meta`;\n      item.aviso_html = `<p>La revisión mensual del ciclo ${ciclo} encontró indicadores de ${c.nombre} (${c.celula}) por debajo de la meta del PETI.</p>`\n        + `<table border=\"1\" cellpadding=\"4\">${ENCABEZADO}${filasIndicadores(actual.indicadores, ['Intermedio', 'Bajo'])}</table>`\n        + '<p>Se pide al Technical Lead y al Line Manager registrar un plan de acción antes del próximo Comité Táctico de TI.</p>';\n    }\n    return item;\n  });\n}\n\nfunction agruparRojos(evaluadas) {\n  const rojos = evaluadas.filter((e) => e.estado === 'Bajo');\n  if (rojos.length === 0) return [];\n  const ciclo = rojos[0].ciclo;\n  const n = rojos.length;\n  const filas = rojos\n    .map((r) => `<tr><td colspan=\"6\"><b>${r.nombre} (${r.celula})</b></td></tr>${filasIndicadores(r.indicadores, ['Bajo'])}`)\n    .join('');\n  return [{\n    ciclo,\n    celulas: rojos.map((r) => ({ celula: r.celula, nombre: r.nombre, indicadores: r.indicadores.filter((i) => i.estado === 'Bajo') })),\n    asunto: `Aprobación requerida: ${n} ${n === 1 ? 'célula' : 'células'} en rojo, ciclo ${ciclo}`,\n    cuerpoHtml: `<p>En el ciclo ${ciclo}, ${n === 1 ? 'una célula tiene' : `${n} células tienen`} indicadores en estado Bajo:</p>`\n      + `<table border=\"1\" cellpadding=\"4\">${ENCABEZADO}${filas}</table>`\n      + '<p><b>Aprobar</b>: el Comité Táctico de TI ejecuta el plan correctivo del proyecto indicado. '\n      + '<b>Escalar</b>: el caso pasa al Comité Directivo del PETI.</p>',\n    // El nodo Gmail \"Send and Wait\" escapa el HTML y respeta los saltos de línea: este es el cuerpo que usa.\n    cuerpoTexto: [\n      `En el ciclo ${ciclo}, ${n === 1 ? 'una célula tiene' : `${n} células tienen`} indicadores en estado Bajo:`,\n      '',\n      ...rojos.map((r) => `${r.nombre} (${r.celula}): ${r.indicadores.filter((i) => i.estado === 'Bajo')\n        .map((i) => `${i.kpi}: ${fmt(i.valor, i.unidad)} (meta ${fmt(i.meta, i.unidad)}; corrige ${i.proyecto})`).join('; ')}`),\n      '',\n      'Aprobar plan correctivo: el Comité Táctico de TI ejecuta el plan del proyecto indicado.',\n      'Escalar al Comité Directivo: el caso pasa al Comité Directivo del PETI.',\n    ].join('\\n'),\n  }];\n}\n\nfunction armarInforme(evaluadas) {\n  const ciclo = evaluadas.length ? evaluadas[0].ciclo : '';\n  const minimo = (e) => Math.min(...e.indicadores.filter((i) => i.cumplimiento !== null).map((i) => i.cumplimiento), 101);\n  const orden = [...evaluadas].sort((a, b) => GRAVEDAD[a.estado] - GRAVEDAD[b.estado] || minimo(a) - minimo(b));\n  const conteo = Object.keys(GRAVEDAD).map((k) => `${k}: ${evaluadas.filter((e) => e.estado === k).length}`).join(' · ');\n  const filas = orden\n    .map((e) => `<tr><td>${e.celula}</td><td>${e.nombre}</td><td>${e.estado}</td><td>${e.estado_anterior || '—'}</td>`\n      + `<td>${e.indicadores.map((i) => `${i.kpi} ${fmt(i.valor, i.unidad)}`).join('<br>')}</td></tr>`)\n    .join('');\n  return {\n    asunto: `Informe mensual de gobierno de TI por célula, ciclo ${ciclo}`,\n    cuerpoHtml: `<p>Resultado de la revisión mensual del ciclo ${ciclo} (ISO/IEC 38500:2024: evaluar, dirigir y monitorear).</p>`\n      + `<p>${conteo}</p>`\n      + '<table border=\"1\" cellpadding=\"4\"><tr><th>Célula</th><th>Nombre</th><th>Estado</th><th>Mes anterior</th><th>Indicadores</th></tr>'\n      + `${filas}</table>`\n      + '<p>Datos sintéticos del PETI Colombia (trabajo académico). Historial y decisiones en la hoja de gobierno.</p>',\n  };\n}\n\nfunction prepararDecisiones(grupo, aprobado, ahora) {\n  const decision = aprobado === true ? 'Aprobado plan correctivo'\n    : aprobado === false ? 'Escalado al Comité Directivo' : 'Sin respuesta en el plazo';\n  return grupo.celulas.map((c) => ({\n    fecha: ahora || new Date().toISOString(),\n    ciclo: grupo.ciclo,\n    celula: c.celula,\n    foco: 'Desempeño',\n    justificacion: c.indicadores.map((i) => `${i.kpi}: ${fmt(i.valor, i.unidad)} frente a meta ${fmt(i.meta, i.unidad)} (${i.proyecto})`).join('; '),\n    decision,\n    responsable: 'Comité Táctico de TI',\n  }));\n}\n\nconst COLUMNAS_HISTORIAL = ['clave', 'ciclo', 'celula', 'estado', 'KPI-05', 'ANS', 'KPI-09', 'KPI-10', 'fecha_ejecucion'];\n\nfunction filaHistorial(item) {\n  return Object.fromEntries(COLUMNAS_HISTORIAL.map((k) => [k, item[k] === null || item[k] === undefined ? '' : item[k]]));\n}\n\nconst grupo = $('Agrupar rojos').first().json;\nconst r = $input.first().json;\nconst aprobado = r.data && typeof r.data.approved === 'boolean' ? r.data.approved : null;\nreturn prepararDecisiones(grupo, aprobado).map((json) => ({ json }));"
+      }
+    },
+    {
+      "id": "7668659a-c5df-5476-ae95-20105938ef7e",
+      "name": "Registrar decisión",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2240,
+        200
+      ],
+      "parameters": {
+        "authentication": "oAuth2",
+        "documentId": {
+          "__rl": true,
+          "value": "__SPREADSHEET_ID__",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Decisiones",
+          "mode": "name"
+        },
+        "operation": "append",
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "schema": []
+        },
+        "options": {
+          "cellFormat": "RAW"
+        }
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "__CREDENCIAL_SHEETS__",
+          "name": "Google Sheets PETI"
+        }
+      }
+    },
+    {
+      "id": "b936142d-6934-5389-bf04-3fb2bab3f313",
+      "name": "Armar informe",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        340
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "// Lógica del flujo de n8n \"Gobierno de TI por célula\" (ISO/IEC 38500:2024, tarea Evaluar).\n// Sin dependencias: scripts/flujo_gobierno_construir.py copia este archivo dentro de los nodos Code.\n// Reglas de cumplimiento y estado iguales a scripts/dashboard_construir.py (rangos del PETI §10).\n\nconst MENSAJE_CORREOS = 'Reemplaza los correos de ejemplo en las pestañas Config y Celulas';\nconst GRAVEDAD = { Bajo: 0, Intermedio: 1, Bueno: 2, 'Sin datos': 3 };\n\nfunction numero(v) {\n  if (v === null || v === undefined) return null;\n  const s = String(v).trim().replace(',', '.');\n  if (s === '') return null;\n  const n = Number(s);\n  return Number.isFinite(n) ? n : null;\n}\n\nfunction redondear1(x) {\n  return Math.round(x * 10) / 10;\n}\n\nfunction cumplimiento(valor, meta, menorEsMejor) {\n  if (valor === null || valor === undefined) return null;\n  if (menorEsMejor) return valor <= meta ? 100 : redondear1((100 * meta) / valor);\n  return meta ? redondear1(Math.min(100, (100 * valor) / meta)) : 100;\n}\n\nfunction estadoDe(c) {\n  if (c === null || c === undefined) return null;\n  return c >= 95 ? 'Bueno' : c > 70 ? 'Intermedio' : 'Bajo';\n}\n\nfunction cicloDe(mes) {\n  const m0 = 9 + (Number(mes) - 1); // mes 1 = octubre de 2026\n  const anio = 2026 + Math.floor(m0 / 12);\n  return `${anio}-${String((m0 % 12) + 1).padStart(2, '0')}`;\n}\n\nfunction fmt(valor, unidad) {\n  if (valor === null) return 'sin dato';\n  return `${valor.toFixed(1).replace('.', ',')} ${unidad}`;\n}\n\nfunction esEjemplo(correo) {\n  const c = String(correo || '').trim().toLowerCase();\n  return c === '' || c.endsWith('@ejemplo.com');\n}\n\nfunction validarCorreos(config, celulas) {\n  const correos = [config.correo_comite, config.correo_copia, ...celulas.map((c) => c.correo_lider)];\n  if (correos.some(esEjemplo)) throw new Error(MENSAJE_CORREOS);\n}\n\nfunction evaluarMes(celula, mes, umbrales, mediciones) {\n  const filas = mediciones.filter((m) => Number(m.mes) === Number(mes) && m.celula === celula);\n  if (filas.length === 0) return { estado: 'Sin datos', indicadores: [] };\n  const indicadores = umbrales.map((u) => {\n    const fila = filas.find((m) => m.kpi === u.kpi);\n    const valor = fila ? numero(fila.valor) : null;\n    const meta = numero(u.meta);\n    const c = cumplimiento(valor, meta, String(u.menor_es_mejor).trim() === 'Si');\n    return { kpi: u.kpi, nombre: u.nombre, valor, meta, unidad: u.unidad, cumplimiento: c, estado: estadoDe(c), proyecto: u.proyecto };\n  });\n  const conDato = indicadores.filter((i) => i.estado !== null);\n  if (conDato.length === 0) return { estado: 'Sin datos', indicadores };\n  const peor = conDato.reduce((a, b) => (GRAVEDAD[b.estado] < GRAVEDAD[a.estado] ? b : a));\n  return { estado: peor.estado, indicadores };\n}\n\nfunction filasIndicadores(indicadores, soloEstado) {\n  return indicadores\n    .filter((i) => !soloEstado || soloEstado.includes(i.estado))\n    .map((i) => `<tr><td>${i.kpi}</td><td>${i.nombre}</td><td>${fmt(i.valor, i.unidad)}</td><td>${fmt(i.meta, i.unidad)}</td><td>${i.estado || 'sin dato'}</td><td>${i.proyecto}</td></tr>`)\n    .join('');\n}\n\nconst ENCABEZADO = '<tr><th>Indicador</th><th>Nombre</th><th>Valor</th><th>Meta</th><th>Estado</th><th>Proyecto que corrige</th></tr>';\n\nfunction evaluarCelulas({ config, celulas, umbrales, mediciones, ahora }) {\n  const mes = Number(config.mes_corte);\n  const ciclo = cicloDe(mes);\n  const fecha = ahora || new Date().toISOString();\n  return celulas.map((c) => {\n    const actual = evaluarMes(c.celula, mes, umbrales, mediciones);\n    const anterior = mes > 1 ? evaluarMes(c.celula, mes - 1, umbrales, mediciones).estado : null;\n    const item = {\n      clave: `${ciclo}|${c.celula}`,\n      ciclo,\n      celula: c.celula,\n      nombre: c.nombre,\n      correo_lider: c.correo_lider,\n      estado: actual.estado,\n      estado_anterior: anterior,\n      indicadores: actual.indicadores,\n      fecha_ejecucion: fecha,\n    };\n    for (const u of umbrales) {\n      const i = actual.indicadores.find((x) => x.kpi === u.kpi);\n      item[u.kpi] = i ? i.valor : null;\n    }\n    if (actual.estado === 'Intermedio') {\n      item.aviso_asunto = `Gobierno de TI ${ciclo}: ${c.celula} con indicadores bajo la meta`;\n      item.aviso_html = `<p>La revisión mensual del ciclo ${ciclo} encontró indicadores de ${c.nombre} (${c.celula}) por debajo de la meta del PETI.</p>`\n        + `<table border=\"1\" cellpadding=\"4\">${ENCABEZADO}${filasIndicadores(actual.indicadores, ['Intermedio', 'Bajo'])}</table>`\n        + '<p>Se pide al Technical Lead y al Line Manager registrar un plan de acción antes del próximo Comité Táctico de TI.</p>';\n    }\n    return item;\n  });\n}\n\nfunction agruparRojos(evaluadas) {\n  const rojos = evaluadas.filter((e) => e.estado === 'Bajo');\n  if (rojos.length === 0) return [];\n  const ciclo = rojos[0].ciclo;\n  const n = rojos.length;\n  const filas = rojos\n    .map((r) => `<tr><td colspan=\"6\"><b>${r.nombre} (${r.celula})</b></td></tr>${filasIndicadores(r.indicadores, ['Bajo'])}`)\n    .join('');\n  return [{\n    ciclo,\n    celulas: rojos.map((r) => ({ celula: r.celula, nombre: r.nombre, indicadores: r.indicadores.filter((i) => i.estado === 'Bajo') })),\n    asunto: `Aprobación requerida: ${n} ${n === 1 ? 'célula' : 'células'} en rojo, ciclo ${ciclo}`,\n    cuerpoHtml: `<p>En el ciclo ${ciclo}, ${n === 1 ? 'una célula tiene' : `${n} células tienen`} indicadores en estado Bajo:</p>`\n      + `<table border=\"1\" cellpadding=\"4\">${ENCABEZADO}${filas}</table>`\n      + '<p><b>Aprobar</b>: el Comité Táctico de TI ejecuta el plan correctivo del proyecto indicado. '\n      + '<b>Escalar</b>: el caso pasa al Comité Directivo del PETI.</p>',\n    // El nodo Gmail \"Send and Wait\" escapa el HTML y respeta los saltos de línea: este es el cuerpo que usa.\n    cuerpoTexto: [\n      `En el ciclo ${ciclo}, ${n === 1 ? 'una célula tiene' : `${n} células tienen`} indicadores en estado Bajo:`,\n      '',\n      ...rojos.map((r) => `${r.nombre} (${r.celula}): ${r.indicadores.filter((i) => i.estado === 'Bajo')\n        .map((i) => `${i.kpi}: ${fmt(i.valor, i.unidad)} (meta ${fmt(i.meta, i.unidad)}; corrige ${i.proyecto})`).join('; ')}`),\n      '',\n      'Aprobar plan correctivo: el Comité Táctico de TI ejecuta el plan del proyecto indicado.',\n      'Escalar al Comité Directivo: el caso pasa al Comité Directivo del PETI.',\n    ].join('\\n'),\n  }];\n}\n\nfunction armarInforme(evaluadas) {\n  const ciclo = evaluadas.length ? evaluadas[0].ciclo : '';\n  const minimo = (e) => Math.min(...e.indicadores.filter((i) => i.cumplimiento !== null).map((i) => i.cumplimiento), 101);\n  const orden = [...evaluadas].sort((a, b) => GRAVEDAD[a.estado] - GRAVEDAD[b.estado] || minimo(a) - minimo(b));\n  const conteo = Object.keys(GRAVEDAD).map((k) => `${k}: ${evaluadas.filter((e) => e.estado === k).length}`).join(' · ');\n  const filas = orden\n    .map((e) => `<tr><td>${e.celula}</td><td>${e.nombre}</td><td>${e.estado}</td><td>${e.estado_anterior || '—'}</td>`\n      + `<td>${e.indicadores.map((i) => `${i.kpi} ${fmt(i.valor, i.unidad)}`).join('<br>')}</td></tr>`)\n    .join('');\n  return {\n    asunto: `Informe mensual de gobierno de TI por célula, ciclo ${ciclo}`,\n    cuerpoHtml: `<p>Resultado de la revisión mensual del ciclo ${ciclo} (ISO/IEC 38500:2024: evaluar, dirigir y monitorear).</p>`\n      + `<p>${conteo}</p>`\n      + '<table border=\"1\" cellpadding=\"4\"><tr><th>Célula</th><th>Nombre</th><th>Estado</th><th>Mes anterior</th><th>Indicadores</th></tr>'\n      + `${filas}</table>`\n      + '<p>Datos sintéticos del PETI Colombia (trabajo académico). Historial y decisiones en la hoja de gobierno.</p>',\n  };\n}\n\nfunction prepararDecisiones(grupo, aprobado, ahora) {\n  const decision = aprobado === true ? 'Aprobado plan correctivo'\n    : aprobado === false ? 'Escalado al Comité Directivo' : 'Sin respuesta en el plazo';\n  return grupo.celulas.map((c) => ({\n    fecha: ahora || new Date().toISOString(),\n    ciclo: grupo.ciclo,\n    celula: c.celula,\n    foco: 'Desempeño',\n    justificacion: c.indicadores.map((i) => `${i.kpi}: ${fmt(i.valor, i.unidad)} frente a meta ${fmt(i.meta, i.unidad)} (${i.proyecto})`).join('; '),\n    decision,\n    responsable: 'Comité Táctico de TI',\n  }));\n}\n\nconst COLUMNAS_HISTORIAL = ['clave', 'ciclo', 'celula', 'estado', 'KPI-05', 'ANS', 'KPI-09', 'KPI-10', 'fecha_ejecucion'];\n\nfunction filaHistorial(item) {\n  return Object.fromEntries(COLUMNAS_HISTORIAL.map((k) => [k, item[k] === null || item[k] === undefined ? '' : item[k]]));\n}\n\nreturn [{ json: armarInforme($input.all().map((i) => i.json)) }];"
+      }
+    },
+    {
+      "id": "8c88bf1f-e084-552e-95cf-48d9daa809d8",
+      "name": "Enviar informe",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1580,
+        340
+      ],
+      "parameters": {
+        "sendTo": "={{ $('Leer Config').first().json.correo_comite }},{{ $('Leer Config').first().json.correo_copia }}",
+        "subject": "={{ $json.asunto }}",
+        "emailType": "html",
+        "message": "={{ $json.cuerpoHtml }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "__CREDENCIAL_GMAIL__",
+          "name": "Gmail PETI"
+        }
+      },
+      "webhookId": "8aff0360-6d54-5cf2-a4a7-a0f61cf601fd"
+    }
+  ],
+  "connections": {
+    "Disparo mensual": {
+      "main": [
+        [
+          {
+            "node": "Leer Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Disparo manual": {
+      "main": [
+        [
+          {
+            "node": "Leer Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leer Config": {
+      "main": [
+        [
+          {
+            "node": "Leer Células",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leer Células": {
+      "main": [
+        [
+          {
+            "node": "Leer Umbrales",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leer Umbrales": {
+      "main": [
+        [
+          {
+            "node": "Leer Mediciones",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leer Mediciones": {
+      "main": [
+        [
+          {
+            "node": "Evaluar células",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Evaluar células": {
+      "main": [
+        [
+          {
+            "node": "Preparar historial",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Según estado",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Armar informe",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preparar historial": {
+      "main": [
+        [
+          {
+            "node": "Registrar historial",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Según estado": {
+      "main": [
+        [
+          {
+            "node": "Avisar a líderes",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Agrupar rojos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agrupar rojos": {
+      "main": [
+        [
+          {
+            "node": "Aprobación del Comité",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aprobación del Comité": {
+      "main": [
+        [
+          {
+            "node": "Preparar decisión",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preparar decisión": {
+      "main": [
+        [
+          {
+            "node": "Registrar decisión",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Armar informe": {
+      "main": [
+        [
+          {
+            "node": "Enviar informe",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Bogota"
+  }
+}
