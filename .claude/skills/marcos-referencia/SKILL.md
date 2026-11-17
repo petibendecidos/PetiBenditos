@@ -1,6 +1,6 @@
 ---
 name: marcos-referencia
-description: Usar cuando el PETI de Perficient nombra, aplica o mapea un marco o una norma (COBIT 2019, TOGAF, ITIL 4, ISO/IEC 38500:2024 de gobierno de TI con sus principios y su modelo evaluar-dirigir-monitorear, ISO/IEC 27001:2022, ISO/IEC 42001:2023, NIST AI RMF, SOC 2, SOX, MRAE del MinTIC, Política de Gobierno Digital, Ley 1581 de 2012 u otras leyes de datos de LATAM), cuando se redacta el marco normativo (§5), la gobernanza (§17) o el mapeo de controles, cuando hay que decidir si una norma aplica a Perficient, se adapta o es solo referencia, o cuando se mapean procesos o controles (APO06, DSS01, A.8.28…).
+description: Usar cuando el PETI de Perficient nombra, aplica o mapea un marco o una norma (COBIT 2019 con sus 40 objetivos, niveles de capacidad y los diagnósticos de sensibilización gerencial y de control en TI, TOGAF, ITIL 4, ISO/IEC 38500:2024 de gobierno de TI con sus principios y su modelo evaluar-dirigir-monitorear, ISO/IEC 27001:2022, ISO/IEC 42001:2023, NIST AI RMF, SOC 2, SOX, MRAE del MinTIC, Política de Gobierno Digital, Ley 1581 de 2012 u otras leyes de datos de LATAM), cuando se redacta el marco normativo (§5), la gobernanza (§17) o el mapeo de controles, cuando hay que decidir si una norma aplica a Perficient, se adapta o es solo referencia, o cuando se mapean procesos o controles (APO06, DSS01, A.8.28…).
 argument-hint: "[marco o norma]"
 ---
 
@@ -24,7 +24,7 @@ La guía del MinTIC, el MRAE, MIPG, el Decreto 767 de 2022 y el Decreto 612 de 2
 
 | Marco | Emisor y versión | Qué aporta al PETI | Cuidado al citarlo |
 |---|---|---|---|
-| COBIT 2019 | ISACA, 2018-2019 | Gobierno y gestión de TI: 40 objetivos en 5 dominios (EDM, APO, BAI, DSS, MEA); cascada de metas; diseño del sistema de gobierno. Ej.: APO06 *Managed Budget and Costs*, DSS01 *Managed Operations*, APO12 *Managed Risk*, EDM02 *Ensured Benefits Delivery* | Se cita el objetivo por código y nombre. No es certificable para una organización. |
+| COBIT 2019 | ISACA, 2018-2019 | Gobierno y gestión de TI: 40 objetivos en 5 dominios (EDM, APO, BAI, DSS, MEA); cascada de metas; factores de diseño; capacidad de 0 a 5 basada en CMMI. Ej.: APO06 *Managed Budget and Costs*, DSS01 *Managed Operations*, APO12 *Managed Risk*, EDM02 *Ensured Benefits Delivery*. Los 40 objetivos con su nombre en español y su correspondencia con brechas y proyectos del PETI, la escala de capacidad, las fuentes (PUB-030 a PUB-035) y los diagnósticos de sensibilización gerencial y de control en TI están en [cobit-2019.md](cobit-2019.md) | Se cita el objetivo por código y nombre. No es certificable para una organización. Hay formatos que mezclan códigos de COBIT 5 y 2019 (APO09 a APO12 corridos, BAI11 "problemas"): compáralos con la tabla de `cobit-2019.md`. La escala de la ISO/IEC 33000 es la de COBIT 5. |
 | TOGAF | The Open Group; TOGAF Standard, 10.ª edición (2022) | Método ADM (fase preliminar, A-H y gestión de requisitos) y dominios de arquitectura: negocio, datos, aplicaciones, tecnología | El PETI añade "seguridad" como capa; TOGAF la trata como transversal. Decirlo. |
 | ISO/IEC 38500:2024 | ISO/IEC, edición 3, febrero de 2024 (reemplaza la de 2015) | Gobierno de TI para el órgano de gobierno: 11 principios (§5), modelo con cuatro tareas (involucrar a las partes interesadas, evaluar, dirigir, monitorear; §6) y marco con seis elementos (§7). Detalle, fuentes y correspondencia con el PETI en [iso-38500.md](iso-38500.md) | Solo hay vista previa hasta §4.2 (PUB-026): de §5 en adelante se citan nombres y el resumen secundario de Garibay (PUB-029). No es certificable. Los 6 principios y el modelo de tres tareas son de 2008. |
 | ITIL 4 | AXELOS/PeopleCert, 2019 | Sistema de valor del servicio y 34 prácticas (gestión de incidentes, de cambios, de niveles de servicio, monitoreo y eventos, mejora continua) | Es buena práctica, no norma. |
@@ -63,6 +63,7 @@ En el PETI basta una fila por país con la norma y la obligación para TI (autor
 
 - Una fila por proceso o control del PETI, con el objetivo COBIT o el control ISO que le corresponde **por código y nombre**. Si no hay correspondencia clara, "—" y no un código forzado.
 - El §17.3 actual solo tiene COBIT para una fila; complétalo o explica por qué el resto no aplica.
+- El PETI Colombia anuncia en §3 un "mapeo (anexo)" con COBIT que no existe. La tabla de los 40 objetivos de [cobit-2019.md](cobit-2019.md) ya tiene la correspondencia con brechas y proyectos: úsala como base y deja "—" donde no hay proyecto (APO08, APO10, DSS03, DSS04).
 - ISO 27001 se mapea al Anexo A de 2022 (5.x a 8.x). Un código A.12 o A.14 es de la versión 2013 y está mal.
 
 ## Señales de alerta

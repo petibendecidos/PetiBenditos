@@ -48,3 +48,20 @@ Las hojas Instructions, Assessment y Results están protegidas con contraseña. 
 ## Segunda actividad: flujo automatizado de gobierno de TI con ISO/IEC 38500:2024
 
 Tarea "Cargar flujo automatizado de Gobierno de TI - ISO 38500 2024" (cierre: 18 de noviembre de 2026, 23:59). Está en [flujo-iso38500/](flujo-iso38500/README.md): un flujo de n8n que cada mes evalúa las doce células con cuatro indicadores del PETI, avisa a los líderes de las células en amarillo, pide aprobación al Comité por correo para las células en rojo y registra historial y decisiones en Google Sheets. Se ejecutó tres veces con éxito el 16 de noviembre (10 células en rojo, 2 en amarillo) y quedó activo para correr cada mes. Lo que se sube es el JSON del flujo y el Word con la correspondencia con la ISO y las capturas. Plan: [docs/superpowers/plans/2026-11-16-flujo-gobierno-iso38500.md](../superpowers/plans/2026-11-16-flujo-gobierno-iso38500.md).
+
+## Tercera actividad: documentación en GitBook del flujo y del dashboard
+
+Tarea "Cargar documentación del flujo automatizado y dashboard de Gobierno de TI - ISO 38500 2024" (cierre: 18 de noviembre de 2026, 23:59). La documentación está en Markdown en [docs/gitbook/](../gitbook/README.md), con la estructura que GitBook entiende (`SUMMARY.md`, `.gitbook.yaml` e imágenes en `imagenes/`). Se importa a mano en un espacio de GitBook de la cuenta del equipo y se entrega el enlace público.
+
+| Sección | Estado |
+|---|---|
+| Inicio, ISO/IEC 38500:2024 en una página, cómo se conectan, fuentes y límites | Lista |
+| Flujo automatizado (5 páginas, con capturas de la ejecución) | Lista |
+| Dashboard: qué muestra, páginas, indicadores y reglas | Lista, tomada del plan del dashboard; las cifras se confirman con el informe terminado |
+| Dashboard: evidencias | Pendiente: capturas de las páginas 1 a 5, hoja de vida de KPI-05 y enlace al video |
+
+Para importar: crear un espacio en GitBook y, en la primera página vacía, importar un ZIP con el contenido de `docs/gitbook/` (sin `.gitbook.yaml`). GitBook acepta hasta 20 archivos por importación, imágenes incluidas; hoy son 19. Las 6 capturas del dashboard se agregan después en el editor de GitBook o con una segunda importación de la página de evidencias.
+
+## Cuarta actividad: diagnósticos de sensibilización gerencial y de control en TI (COBIT 2019)
+
+Tarea "Diagnóstico de Sensibilización Gerencial - Diagnóstico de Control en TI". Está en [diagnosticos-cobit/](diagnosticos-cobit/README.md): los dos formatos del docente diligenciados con los 40 objetivos de COBIT 2019 (el de control traía 37 filas con códigos corridos y se corrigió) y el Word del análisis. Capacidad promedio 1,23 de 5 (EDM, el dominio más bajo, con 0,80); 11 objetivos de riesgo alto, todos sin responsable conocido; continuidad, problemas y proveedores sin proyecto en el PETI.
