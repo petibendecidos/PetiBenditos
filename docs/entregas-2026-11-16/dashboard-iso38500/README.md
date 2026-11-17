@@ -8,7 +8,7 @@ Entrega del curso Gobierno y Servicios de TI (Universidad Santiago de Cali, doce
 | [Dashboard_Gobierno_TI_ISO38500_Perficient_Colombia.docx](Dashboard_Gobierno_TI_ISO38500_Perficient_Colombia.docx) | **Lo que se sube.** Justificación ejecutiva, correspondencia con la ISO/IEC 38500:2024, cambios frente al tablero del 4 de noviembre, catálogo de 18 indicadores, lectura al corte del mes 12 y límites |
 | [dashboard-gobierno-iso38500.md](dashboard-gobierno-iso38500.md) | Fuente en Markdown del documento Word |
 | [guia-exposicion-dashboard-iso38500.md](guia-exposicion-dashboard-iso38500.md) | Guía de estudio para la sustentación oral (no se entrega) |
-| `capturas/` | Capturas de las tres páginas visibles (`p1-resumen.jpg`, `p2-portafolio.png`, `p3-operacion.png`); van incrustadas en el Word |
+| `capturas/` | Capturas de las tres páginas visibles (`p1-resumen.png`, `p2-portafolio.png`, `p3-operacion.png`); van incrustadas en el Word |
 | [datos/modelo_gobierno_ti.xlsx](datos/modelo_gobierno_ti.xlsx) | Libro de 14 hojas (modelo en estrella) generado con semilla `38500` |
 | [datos/control_corte_mes12.csv](datos/control_corte_mes12.csv) | Archivo de control para validar que Python y DAX arrojan exactamente las mismas cifras al mes 12 |
 | [powerbi/tema-gobierno-ti.json](powerbi/tema-gobierno-ti.json) | Tema JSON aplicado al informe |

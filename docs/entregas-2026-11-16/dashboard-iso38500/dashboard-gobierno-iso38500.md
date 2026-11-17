@@ -116,7 +116,7 @@ Frente al tablero del 4 de noviembre cambian tres estados y un valor de referenc
 
 ## 10. Capturas del tablero (corte septiembre de 2027)
 
-![Página 1: Resumen](capturas/p1-resumen.jpg)
+![Página 1: Resumen](capturas/p1-resumen.png)
 
 ![Página 2: Portafolio](capturas/p2-portafolio.png)
 
