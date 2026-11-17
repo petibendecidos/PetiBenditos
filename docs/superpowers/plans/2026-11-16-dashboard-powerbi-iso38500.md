@@ -93,7 +93,7 @@ Fórmula, línea base, frecuencia y responsable de los KPI se copian del PETI §
 |---|---|---|---|
 | KPI-07, KPI-08, KPI-09, KPI-14, DAT-03, IA-02 | KPI-01, KPI-02, KPI-04, KPI-06, DAT-01, IA-01 | KPI-03, KPI-05, KPI-10, KPI-11, DAT-02 | KPI-13 |
 
-Frente al 4 de noviembre cambian KPI-02 (Bueno → Intermedio, meta −5 % del METI11 en lugar de −3 %), KPI-03 (Bueno → Bajo, el METI03 pide 1 caso en el año 1 pero P3.1 y P3.3 empiezan en el mes 13: es una inconsistencia del PETI y se dice), KPI-13 (Bueno → No evaluado, no tiene meta al año 1) y KPI-05 (181 h → 217,9 h, porque ahora es el valor del mes y no el promedio del trimestre).
+Frente al 4 de noviembre cambian KPI-02 (Bueno → Intermedio, meta −5 % del METI11 en lugar de −3 %), KPI-03 (Bueno → Bajo, el METI03 pide 1 caso en el año 1 pero P3.1 y P3.3 empiezan en el mes 13: es una inconsistencia del PETI y se dice), KPI-13 (Bueno → No evaluado, no tiene meta al año 1) y KPI-05 (181 h → 217,9 h, porque ahora es el valor del mes y no el promedio del trimestre). KPI-04 pasa de 78 % a 75 % (9 de 12 células) y sigue en Intermedio: el 78 % era el final de la serie recta `ADOPCION_IA` del 4 de noviembre.
 
 ## Global Constraints
 
@@ -154,7 +154,7 @@ Tablas y columnas (nombres exactos; Task 3 y las medidas dependen de ellos):
 | `fact_vulnerabilidad` | `mes`, `fecha_deteccion`, `id_celula`, `severidad` (con tilde), `origen`, `horas_deteccion`, `horas_remediacion` (solo meses 1-12) |
 | `fact_sistema_ia` | `id_sistema` ("IA-S01"…), `id_celula`, `tipo` ("Asistente de código"/"Búsqueda con documentos (RAG)"/"Agente"/"Clasificación o predicción"), `origen` ("Servicio externo"/"API de terceros"/"Desarrollo propio"), `mes_identificado`, `mes_registrado`, `mes_evaluacion_riesgo`, `supervision_humana` ("Sí"/"No"), `usa_datos_personales`, `nivel_riesgo` ("Alto"/"Medio"/"Bajo"), `estado` ("Piloto"/"Uso interno"/"Producción") |
 | `fact_solicitud_titular` | `id_solicitud`, `mes`, `fecha_recibida`, `tipo` ("Consulta"/"Reclamo"), `plazo_dias_habiles` (10/15), `dias_habiles_respuesta`, `en_plazo` ("Sí"/"No") |
-| `fact_decision` | `fecha`, `ciclo` ("2027-09"), `celula` (id o "OPE"), `foco` ("Priorización"/"Riesgo"/"Desempeño"/"Estrategia"), `justificacion`, `decision`, `responsable` (rol), `instancia` ("Comité Directivo"/"Comité Táctico"), `mes`, `id_indicador`, `id_proyecto`. Las 7 primeras son las de la pestaña "Decisiones" del flujo n8n |
+| `fact_decision` | `fecha`, `ciclo` ("2027-09"), `celula` (id o "OPE"), `foco` ("Priorización"/"Riesgo"/"Desempeño"/"Estrategia"), `justificacion`, `decision`, `responsable` (rol), `instancia` ("Comité Directivo"/"Comité Táctico"), `mes`, `id_indicador`, `id_proyecto`. Las 7 primeras **columnas** tienen los mismos nombres y el mismo orden que la pestaña "Decisiones" del flujo n8n; las filas no se copian de allí |
 
 Reglas del escenario:
 - **KPI-01** sale de `PORTAFOLIO`: terminados acumulados / 25 (13 al mes 12).
@@ -172,7 +172,7 @@ Reglas del escenario:
   - R03 sigue Alto (KPI-05 en Bajo).
   - R06 Medio → Alto (KPI-10 en Bajo).
   - Los demás sin cambio.
-- **Decisiones**: 12 a 16 filas escritas a mano como constantes, entre el mes 3 y el 12, de una o dos frases cada una (≤ 160 caracteres), en lenguaje de acta y sin adjetivos. Ejemplos de tono:
+- **Decisiones**: 12 a 16 filas escritas a mano como constantes, entre el mes 3 y el 12, de una o dos frases cada una (≤ 160 caracteres), en lenguaje de acta y sin adjetivos. La pestaña del repositorio está vacía a propósito: las 30 filas reales viven en la hoja de Google, con correos, y son tres corridas de prueba del mismo ciclo 2027-09. La decisión del mes 12 sí debe coincidir con lo que hizo el flujo: el Comité Táctico aprueba plan correctivo para las 10 células en rojo (C02 y C07 en amarillo), con la justificación al estilo del flujo ("KPI-05: 396,8 h frente a 72 h"). Ejemplos de tono:
   - "Se aplaza P2.6 un trimestre; DevSecOps se concentra en P2.3 por R03."
   - "Se exige plan de remediación a C05 y C09: críticas sobre 200 h en dos meses seguidos."
   - "No se aprueba licencia de IA para C11 hasta registrar sus sistemas en el inventario."
