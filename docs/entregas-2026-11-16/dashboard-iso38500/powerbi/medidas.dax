@@ -117,16 +117,18 @@ Valor texto =
 VAR val = [Valor al corte]
 VAR uni = SELECTEDVALUE ( dim_indicador[unidad] )
 VAR marca = IF ( [Es de operación] && ISFILTERED ( dim_celula ) && NOT ISBLANK ( val ), " · toda la operación", "" )
+VAR r = ROUND ( val, 1 )
+VAR num_txt = IF ( r = TRUNC ( r ), FORMAT ( r, "0" ), FORMAT ( r, "0.0" ) )
 VAR base_txt =
     IF (
         ISBLANK ( val ),
         "—",
         SWITCH (
             uni,
-            "%", FORMAT ( ROUND ( val, 1 ), "0.#" ) & " %",
-            "h", FORMAT ( ROUND ( val, 1 ), "0.#" ) & " h",
+            "%", num_txt & " %",
+            "h", num_txt & " h",
             "sí/no", IF ( val >= 1, "Sí", "No" ),
-            FORMAT ( ROUND ( val, 1 ), "0.#" )
+            num_txt
         )
     )
 RETURN
@@ -153,15 +155,15 @@ RETURN
 
 // Cuenta los indicadores del contexto actual con estado Bueno
 Indicadores Bueno =
-COUNTROWS ( FILTER ( VALUES ( dim_indicador[id_indicador] ), [Estado] = "Bueno" ) )
+COALESCE ( COUNTROWS ( FILTER ( VALUES ( dim_indicador[id_indicador] ), [Estado] = "Bueno" ) ), 0 )
 
 // Cuenta los indicadores del contexto actual con estado Intermedio
 Indicadores Intermedio =
-COUNTROWS ( FILTER ( VALUES ( dim_indicador[id_indicador] ), [Estado] = "Intermedio" ) )
+COALESCE ( COUNTROWS ( FILTER ( VALUES ( dim_indicador[id_indicador] ), [Estado] = "Intermedio" ) ), 0 )
 
 // Cuenta los indicadores del contexto actual con estado Bajo
 Indicadores Bajo =
-COUNTROWS ( FILTER ( VALUES ( dim_indicador[id_indicador] ), [Estado] = "Bajo" ) )
+COALESCE ( COUNTROWS ( FILTER ( VALUES ( dim_indicador[id_indicador] ), [Estado] = "Bajo" ) ), 0 )
 
 // Cuenta los proyectos por estado en el mes de corte seleccionado
 Proyectos al corte =
@@ -272,3 +274,33 @@ Decisiones hasta el corte =
 VAR m = MAX ( fact_decision[mes] )
 RETURN
     IF ( NOT ISBLANK ( m ) && m <= [Corte], 1, 0 )
+
+// Devuelve un espacio cuando el proyecto tiene estado en ese mes para pintar el fondo del cronograma
+Celda cronograma =
+IF ( NOT ISBLANK ( SELECTEDVALUE ( fact_proyecto_mes[estado] ) ), " " )
+
+// Cuenta los indicadores en el contexto actual (útil para la matriz Dónde mide el tablero)
+Cantidad indicadores =
+COUNTROWS ( dim_indicador )
+
+// Devuelve Proyectos al corte mostrando 0 en lugar de blanco cuando no hay proyectos en ese estado
+Proyectos al corte (con cero) =
+COALESCE ( [Proyectos al corte], 0 )
+
+// Devuelve el estado precedido de un punto Unicode para usar con formato condicional de color de fuente
+Estado con punto =
+"● " & [Estado]
+
+// Devuelve 1 si el sistema de IA está registrado al corte pero aún sin evaluación de riesgo al corte (para filtrar la tabla de Pág. 5)
+Sistema sin evaluación al corte =
+VAR c = [Corte]
+VAR reg = SELECTEDVALUE ( fact_sistema_ia[mes_registrado] )
+VAR ev = SELECTEDVALUE ( fact_sistema_ia[mes_evaluacion_riesgo] )
+RETURN
+    IF ( NOT ISBLANK ( reg ) && reg <= c && ( ISBLANK ( ev ) || ev > c ), 1, 0 )
+
+// Devuelve 1 si la solicitud fue recibida hasta el corte y respondida fuera de plazo (para filtrar la tabla de Pág. 4)
+Solicitud fuera de plazo al corte =
+VAR c = [Corte]
+RETURN
+    IF ( MAX ( fact_solicitud_titular[mes] ) <= c && SELECTEDVALUE ( fact_solicitud_titular[en_plazo] ) = "No", 1, 0 )
