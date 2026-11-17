@@ -413,6 +413,7 @@ Plantilla de todas las páginas, que se hace en la página 1 y se duplica:
   - Cómo regenerar los datos y cómo cambiar la ruta del origen en Power BI (Review Focus 5).
   - Decisiones.
   - Pendientes: verificar los plazos de la Ley 1581, la inconsistencia de METI03 para la versión 1.1 del PETI y la evidencia de la recertificación (PUB-002).
+- [ ] **Step 2b (GitBook, agregado el 16-nov-2026):** la entrega "Cargar documentación del flujo automatizado y dashboard" usa `docs/gitbook/`. Copiar las 6 capturas de Task 6 a `docs/gitbook/imagenes/` con los nombres de `docs/gitbook/dashboard/evidencias.md`, reemplazar ahí los textos "Pendiente" por las imágenes y el enlace al video, y comprobar que las cifras de `docs/gitbook/dashboard/` (estados al mes 12, portafolio, cambios frente al 4 de noviembre) coinciden con el informe terminado. Después, Mateo agrega las imágenes en GitBook.
 - [ ] **Step 3:** Guía de exposición, que no se entrega. Incluye:
   - Recorrido de 5 minutos en el orden del video.
   - Por qué cada decisión, con referencia al PETI y a `iso-38500.md`.
