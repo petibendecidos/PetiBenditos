@@ -1,0 +1,274 @@
+// Devuelve el mes de corte seleccionado en el filtro; por defecto mes 12 (sep 2027)
+Corte =
+SELECTEDVALUE ( dim_corte[mes], 12 )
+
+// Indica si el indicador evaluado tiene alcance de toda la operación
+Es de operación =
+SELECTEDVALUE ( dim_indicador[nivel] ) = "Operación"
+
+// Calcula el valor del indicador sumando numeradores y denominadores; quita el filtro de célula si es de operación
+Valor =
+VAR escala = SELECTEDVALUE ( dim_indicador[escala], 1 )
+VAR num =
+    IF (
+        [Es de operación],
+        CALCULATE ( SUM ( fact_medicion[numerador] ), REMOVEFILTERS ( dim_celula ) ),
+        SUM ( fact_medicion[numerador] )
+    )
+VAR den =
+    IF (
+        [Es de operación],
+        CALCULATE ( SUM ( fact_medicion[denominador] ), REMOVEFILTERS ( dim_celula ) ),
+        SUM ( fact_medicion[denominador] )
+    )
+RETURN
+    IF ( NOT ISBLANK ( den ) && den <> 0, DIVIDE ( num, den ) * escala )
+
+// Devuelve el mayor mes reportado con denominador válido menor o igual al corte actual
+Mes último reporte =
+VAR corte = [Corte]
+RETURN
+    IF (
+        [Es de operación],
+        CALCULATE (
+            MAX ( fact_medicion[mes] ),
+            REMOVEFILTERS ( dim_fecha ),
+            REMOVEFILTERS ( dim_celula ),
+            fact_medicion[mes] <= corte,
+            fact_medicion[estado_reporte] = "Reportado",
+            NOT ISBLANK ( fact_medicion[denominador] ),
+            fact_medicion[denominador] <> 0
+        ),
+        CALCULATE (
+            MAX ( fact_medicion[mes] ),
+            REMOVEFILTERS ( dim_fecha ),
+            fact_medicion[mes] <= corte,
+            fact_medicion[estado_reporte] = "Reportado",
+            NOT ISBLANK ( fact_medicion[denominador] ),
+            fact_medicion[denominador] <> 0
+        )
+    )
+
+// Calcula el valor al corte en el último mes con medición reportada quitando el filtro de fecha
+Valor al corte =
+VAR m = [Mes último reporte]
+RETURN
+    IF (
+        NOT ISBLANK ( m ),
+        CALCULATE ( [Valor], REMOVEFILTERS ( dim_fecha ), dim_fecha[mes] = m )
+    )
+
+// Selecciona la meta del año 1 hasta el mes 12 o la meta del año 2 después del mes 12
+Meta al corte =
+VAR m12 = SELECTEDVALUE ( dim_indicador[meta_mes12] )
+VAR m24 = SELECTEDVALUE ( dim_indicador[meta_mes24] )
+RETURN
+    IF ( [Corte] <= 12, m12, m24 )
+
+// Calcula el porcentaje de cumplimiento al corte redondeado a un decimal usando ISBLANK
+Cumplimiento =
+VAR val = [Valor al corte]
+VAR meta = [Meta al corte]
+VAR sent = SELECTEDVALUE ( dim_indicador[sentido] )
+RETURN
+    IF (
+        NOT ISBLANK ( val ) && NOT ISBLANK ( meta ),
+        IF (
+            sent = "menor",
+            IF (
+                val <= meta,
+                100,
+                IF ( meta = 0, 0, ROUND ( 100 * meta / val, 1 ) )
+            ),
+            IF (
+                meta = 0,
+                IF ( val >= 0, 100, 0 ),
+                ROUND ( MAX ( 0, MIN ( 100, 100 * val / meta ) ), 1 )
+            )
+        )
+    )
+
+// Clasifica el cumplimiento al corte en Bueno, Intermedio, Bajo o No evaluado
+Estado =
+VAR c = [Cumplimiento]
+RETURN
+    IF (
+        ISBLANK ( c ),
+        "No evaluado",
+        IF ( c >= 95, "Bueno", IF ( c > 70, "Intermedio", "Bajo" ) )
+    )
+
+// Devuelve el orden numérico del estado (1 Bueno a 4 No evaluado) para ordenar e íconos
+Estado orden =
+SWITCH ( [Estado], "Bueno", 1, "Intermedio", 2, "Bajo", 3, 4 )
+
+// Devuelve el color hexadecimal del tema correspondiente al estado del indicador
+Color estado =
+SWITCH (
+    [Estado],
+    "Bueno", "#0ca30c",
+    "Intermedio", "#fab219",
+    "Bajo", "#d03b3b",
+    "#8a8985"
+)
+
+// Formatea el valor al corte con su unidad y agrega la marca de operación si hay filtro de célula
+Valor texto =
+VAR val = [Valor al corte]
+VAR uni = SELECTEDVALUE ( dim_indicador[unidad] )
+VAR marca = IF ( [Es de operación] && ISFILTERED ( dim_celula ) && NOT ISBLANK ( val ), " · toda la operación", "" )
+VAR base_txt =
+    IF (
+        ISBLANK ( val ),
+        "—",
+        SWITCH (
+            uni,
+            "%", FORMAT ( ROUND ( val, 1 ), "0.#" ) & " %",
+            "h", FORMAT ( ROUND ( val, 1 ), "0.#" ) & " h",
+            "sí/no", IF ( val >= 1, "Sí", "No" ),
+            FORMAT ( ROUND ( val, 1 ), "0.#" )
+        )
+    )
+RETURN
+    base_txt & marca
+
+// Formatea el texto del último mes reportado hasta el corte
+Último reporte texto =
+VAR m = [Mes último reporte]
+VAR etiq = CALCULATE ( MIN ( dim_fecha[etiqueta] ), REMOVEFILTERS ( dim_fecha ), dim_fecha[mes] = m )
+RETURN
+    IF ( ISBLANK ( m ), "sin reporte al corte", "último reporte: " & etiq )
+
+// Devuelve el valor de la serie temporal solo para meses menores o iguales al corte
+Valor (serie) =
+IF ( MAX ( dim_fecha[mes] ) <= [Corte], [Valor] )
+
+// Devuelve la meta aplicable para cada mes de la serie temporal hasta el mes de corte
+Meta (serie) =
+VAR m = MAX ( dim_fecha[mes] )
+VAR m12 = SELECTEDVALUE ( dim_indicador[meta_mes12] )
+VAR m24 = SELECTEDVALUE ( dim_indicador[meta_mes24] )
+RETURN
+    IF ( m <= [Corte], IF ( m <= 12, m12, m24 ) )
+
+// Cuenta los indicadores del contexto actual con estado Bueno
+Indicadores Bueno =
+COUNTROWS ( FILTER ( VALUES ( dim_indicador[id_indicador] ), [Estado] = "Bueno" ) )
+
+// Cuenta los indicadores del contexto actual con estado Intermedio
+Indicadores Intermedio =
+COUNTROWS ( FILTER ( VALUES ( dim_indicador[id_indicador] ), [Estado] = "Intermedio" ) )
+
+// Cuenta los indicadores del contexto actual con estado Bajo
+Indicadores Bajo =
+COUNTROWS ( FILTER ( VALUES ( dim_indicador[id_indicador] ), [Estado] = "Bajo" ) )
+
+// Cuenta los proyectos por estado en el mes de corte seleccionado
+Proyectos al corte =
+VAR corte = [Corte]
+RETURN
+    CALCULATE ( COUNTROWS ( fact_proyecto_mes ), REMOVEFILTERS ( dim_fecha ), dim_fecha[mes] = corte )
+
+// Cuenta los proyectos cuyo fin planeado acumulado es menor o igual al mes del eje hasta el corte
+Terminados plan (acum) =
+VAR m = MAX ( dim_fecha[mes] )
+RETURN
+    IF (
+        m <= [Corte],
+        CALCULATE (
+            COUNTROWS ( dim_proyecto ),
+            REMOVEFILTERS ( dim_fecha ),
+            dim_proyecto[mes_fin_plan] <= m
+        )
+    )
+
+// Cuenta los proyectos cerrados realmente hasta el mes del eje, limitado al mes de corte
+Terminados real (acum) =
+VAR m = MAX ( dim_fecha[mes] )
+RETURN
+    IF (
+        m <= [Corte],
+        CALCULATE (
+            COUNTROWS ( dim_proyecto ),
+            REMOVEFILTERS ( dim_fecha ),
+            NOT ISBLANK ( dim_proyecto[mes_fin_real] ),
+            dim_proyecto[mes_fin_real] <= m
+        )
+    )
+
+// Devuelve el color de fondo del cronograma según el estado del proyecto en el mes
+Color proyecto =
+VAR est = SELECTEDVALUE ( fact_proyecto_mes[estado] )
+RETURN
+    SWITCH (
+        est,
+        "Terminado", "#1c5cab",
+        "En ejecución", "#86b6ef",
+        "Atrasado", "#d03b3b",
+        BLANK ()
+    )
+
+// Cuenta las vulnerabilidades detectadas desde el mes 1 hasta el mes de corte
+Vulnerabilidades =
+VAR corte = [Corte]
+RETURN
+    CALCULATE ( COUNTROWS ( fact_vulnerabilidad ), KEEPFILTERS ( dim_fecha[mes] <= corte ) )
+
+// Cuenta los sistemas de IA identificados hasta el mes de corte
+Sistemas identificados =
+VAR corte = [Corte]
+RETURN
+    CALCULATE ( COUNTROWS ( fact_sistema_ia ), fact_sistema_ia[mes_identificado] <= corte )
+
+// Cuenta los sistemas de IA registrados en el inventario hasta el mes de corte
+Sistemas registrados =
+VAR corte = [Corte]
+RETURN
+    CALCULATE (
+        COUNTROWS ( fact_sistema_ia ),
+        NOT ISBLANK ( fact_sistema_ia[mes_registrado] ),
+        fact_sistema_ia[mes_registrado] <= corte
+    )
+
+// Cuenta los sistemas de IA con evaluación de riesgo completada hasta el mes de corte
+Con evaluación de riesgo =
+VAR corte = [Corte]
+RETURN
+    CALCULATE (
+        COUNTROWS ( fact_sistema_ia ),
+        NOT ISBLANK ( fact_sistema_ia[mes_evaluacion_riesgo] ),
+        fact_sistema_ia[mes_evaluacion_riesgo] <= corte
+    )
+
+// Cuenta los sistemas de IA registrados que tienen supervisión humana definida hasta el corte
+Con supervisión humana =
+VAR corte = [Corte]
+RETURN
+    CALCULATE (
+        COUNTROWS ( fact_sistema_ia ),
+        NOT ISBLANK ( fact_sistema_ia[mes_registrado] ),
+        fact_sistema_ia[mes_registrado] <= corte,
+        fact_sistema_ia[supervision_humana] = "Sí"
+    )
+
+// Cuenta las solicitudes de titulares recibidas hasta el mes de corte
+Solicitudes =
+VAR corte = [Corte]
+RETURN
+    CALCULATE ( COUNTROWS ( fact_solicitud_titular ), KEEPFILTERS ( dim_fecha[mes] <= corte ) )
+
+// Cuenta las solicitudes de titulares respondidas fuera de plazo hasta el mes de corte
+Solicitudes fuera de plazo =
+VAR corte = [Corte]
+RETURN
+    CALCULATE (
+        COUNTROWS ( fact_solicitud_titular ),
+        KEEPFILTERS ( dim_fecha[mes] <= corte ),
+        fact_solicitud_titular[en_plazo] = "No"
+    )
+
+// Devuelve 1 cuando la fila de decisión corresponde a un mes menor o igual al corte
+Decisiones hasta el corte =
+VAR m = MAX ( fact_decision[mes] )
+RETURN
+    IF ( NOT ISBLANK ( m ) && m <= [Corte], 1, 0 )

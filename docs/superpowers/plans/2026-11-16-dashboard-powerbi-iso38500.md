@@ -250,7 +250,7 @@ RETURN IF ( NOT ISBLANK ( m ), CALCULATE ( [Valor], REMOVEFILTERS ( dim_fecha ),
 - [x] **Step 2: Correr y ver que fallan** — Run: `python -m pytest scripts/tests/test_powerbi_iso38500.py -q -k "tema or medidas"` → Expected: FAIL.
 - [x] **Step 3: Escribir** el tema y `medidas.dax`.
 - [x] **Step 4: Correr y ver que pasan** — mismo comando → Expected: PASS.
-- [ ] **Step 5: Commit** — `/commit` (`feat: agregar tema y medidas del dashboard ISO 38500`).
+- [x] **Step 5: Commit** — `/commit` (`feat: agregar tema y medidas del dashboard ISO 38500`).
 
 ### Task 3: Modelo en Power BI (Lucho, a mano, unos 60 minutos)
 
