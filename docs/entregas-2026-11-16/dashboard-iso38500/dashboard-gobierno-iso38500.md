@@ -113,3 +113,11 @@ Frente al tablero del 4 de noviembre cambian tres estados y un valor de referenc
 - **PUB-028:** Material de curso. *Governance of Information Technology (IT)* (capítulo 10, versión 2008).
 - **PUB-029:** Garibay Orozco, J. *ISO/IEC 38500 y su relación con la Inteligencia Artificial* (presentación de apoyo, fuente secundaria).
 - **INT-001:** Equipo Firmes por la Gobernanza. (2026). *PETI Colombia v1.0 y supuestos internos del escenario de gobierno de datos, IA y TI* (`docs/perficient_peti_colombia_2026_2028.md`).
+
+## 10. Capturas del tablero (corte septiembre de 2027)
+
+![Página 1: Resumen](capturas/p1-resumen.jpg)
+
+![Página 2: Portafolio](capturas/p2-portafolio.png)
+
+![Página 3: Operación](capturas/p3-operacion.png)

@@ -8,6 +8,7 @@ Entrega del curso Gobierno y Servicios de TI (Universidad Santiago de Cali, doce
 | [Dashboard_Gobierno_TI_ISO38500_Perficient_Colombia.docx](Dashboard_Gobierno_TI_ISO38500_Perficient_Colombia.docx) | **Lo que se sube.** Justificación ejecutiva, correspondencia con la ISO/IEC 38500:2024, cambios frente al tablero del 4 de noviembre, catálogo de 18 indicadores, lectura al corte del mes 12 y límites |
 | [dashboard-gobierno-iso38500.md](dashboard-gobierno-iso38500.md) | Fuente en Markdown del documento Word |
 | [guia-exposicion-dashboard-iso38500.md](guia-exposicion-dashboard-iso38500.md) | Guía de estudio para la sustentación oral (no se entrega) |
+| `capturas/` | Capturas de las tres páginas visibles (`p1-resumen.jpg`, `p2-portafolio.png`, `p3-operacion.png`); van incrustadas en el Word |
 | [datos/modelo_gobierno_ti.xlsx](datos/modelo_gobierno_ti.xlsx) | Libro de 14 hojas (modelo en estrella) generado con semilla `38500` |
 | [datos/control_corte_mes12.csv](datos/control_corte_mes12.csv) | Archivo de control para validar que Python y DAX arrojan exactamente las mismas cifras al mes 12 |
 | [powerbi/tema-gobierno-ti.json](powerbi/tema-gobierno-ti.json) | Tema JSON aplicado al informe |
@@ -31,7 +32,7 @@ Los datos ya están importados en el `.pbix`: el archivo abre en cualquier equip
 
 ## Pendientes
 
-- Exportar desde Power BI Desktop el PDF (`Dashboard_Gobierno_TI_ISO38500_Perficient_Colombia.pdf`), las capturas PNG en `capturas/` y el video de recorrido de 2–3 minutos (`video-recorrido.mp4`, fuera de Git si supera 20 MB) antes de subir la entrega.
+- Exportar el PDF desde Power BI Desktop (`Archivo → Exportar → Exportar a PDF`) si la plataforma solicita copia estática adicional al `.pbix` y al Word. El dashboard se sustenta en vivo en clase.
 - Verificar los plazos legales de la Ley 1581 de 2012 usados como supuesto en `DAT-01` (10 días hábiles para consultas y 15 para reclamos).
 - Corregir en la versión 1.1 del PETI la inconsistencia detectada en `KPI-03` (`METI03` exige 1 caso en el año 1, mientras `P3.1` y `P3.3` inician en el mes 13).
 - Obtener evidencia pública o confirmación de la recertificación ISO/IEC 27001 (`PUB-002`, supuesta en el mes 5 para `KPI-07`).
