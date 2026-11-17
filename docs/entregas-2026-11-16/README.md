@@ -66,6 +66,10 @@ Para importar: crear un espacio en GitBook y, en la primera página vacía, impo
 
 Tarea "Diagnóstico de Sensibilización Gerencial - Diagnóstico de Control en TI". Está en [diagnosticos-cobit/](diagnosticos-cobit/README.md): los dos formatos del docente diligenciados con los 40 objetivos de COBIT 2019 (el de control traía 37 filas con códigos corridos y se corrigió) y el Word del análisis. Capacidad promedio 1,23 de 5 (EDM, el dominio más bajo, con 0,80); 11 objetivos de riesgo alto, todos sin responsable conocido; continuidad, problemas y proveedores sin proyecto en el PETI.
 
-## Quinta actividad: dashboard interactivo de gobierno de datos, IA y TI (ISO/IEC 38500:2024)
+## Quinta actividad: análisis del diagnóstico BSC con una herramienta de analítica de datos
+
+Tarea "Cargar ajuste nuevo proceso de análisis del diagnóstico gestión y gobierno TI alineado al BSC mediante herramienta de analítica de datos" (cierre: 18 de noviembre de 2026, 23:59). Está en [analisis-bsc/](analisis-bsc/README.md): los 40 puntajes del diagnóstico BSC del 22 de octubre pasados a un libro de Excel con tabla de datos, cinco dimensiones nuevas por enunciado (perspectiva BSC, objetivo de COBIT 2019, cobertura del PETI, respaldo y puntaje al mes 24), tablas dinámicas con segmentaciones y tablero. Se suben el .xlsx y el Word del análisis. Resultado: 182 de 400 (45,5 %) y 230 al mes 24; procesos internos (3,7) y financiera (3,5) son las perspectivas más bajas, y seis enunciados no tienen respuesta en el PETI.
+
+## Sexta actividad: dashboard interactivo de gobierno de datos, IA y TI (ISO/IEC 38500:2024)
 
 Tarea "Cargar dashboard interactivo estratégico de métricas de Gobierno de TI - ISO 38500 2024. Métricas de Gobierno de Datos, IA y TI" (cierre: 18 de noviembre de 2026, 23:59). Está en [dashboard-iso38500/](dashboard-iso38500/README.md): informe de Power BI Desktop sobre un modelo en estrella de 14 tablas y 35 medidas DAX con datos sintéticos (semilla `38500`), tres páginas visibles (**Resumen**, **Portafolio**, **Operación**) y una hoja de vida de detalle por indicador, acompañado de su documento Word. Plan: [docs/superpowers/plans/2026-11-16-dashboard-powerbi-iso38500.md](../superpowers/plans/2026-11-16-dashboard-powerbi-iso38500.md).
