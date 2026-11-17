@@ -1,0 +1,19 @@
+﻿id_indicador,nombre,valor,meta,cumplimiento,estado,mes_ultimo_reporte
+KPI-01,Ejecución acumulada del PETI,52.0,55,94.5,Intermedio,12
+KPI-02,Variación del costo de nube,-4.4,-5,87.6,Intermedio,12
+KPI-03,Casos de IA en producción,0.0,1,0.0,Bajo,12
+KPI-04,Adopción de IA en células,75.0,85,88.2,Intermedio,12
+KPI-05,Remediación de vulnerabilidades críticas (h),217.9,72,33.0,Bajo,12
+KPI-06,Conciliación de horas y tareas,83.0,90,92.2,Intermedio,12
+KPI-07,No conformidades mayores ISO/IEC 27001,0.0,0,100.0,Bueno,5
+KPI-08,Cobertura del inventario de IA,92.0,90,100.0,Bueno,12
+KPI-09,Personal técnico certificado,66.7,70,95.2,Bueno,12
+KPI-10,Rotación entre células,33.2,50,66.4,Bajo,12
+KPI-11,Ambientes con infraestructura como código,33.3,60,55.6,Bajo,12
+KPI-13,Informe SOC 2 sin salvedades,,,,No evaluado,
+KPI-14,Sesiones de comité con acta,100.0,90,100.0,Bueno,12
+DAT-01,Solicitudes de titulares respondidas en plazo,87.5,95,92.1,Intermedio,12
+DAT-02,Activos de datos clasificados,33.3,60,55.6,Bajo,12
+DAT-03,Proyectos con transferencias internacionales registradas,80.0,80,100.0,Bueno,12
+IA-01,Sistemas de IA con evaluación de riesgo,69.6,80,87.0,Intermedio,12
+IA-02,Sistemas de IA con supervisión humana definida,91.3,90,100.0,Bueno,12

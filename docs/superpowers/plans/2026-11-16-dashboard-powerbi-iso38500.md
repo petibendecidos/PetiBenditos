@@ -178,7 +178,7 @@ Reglas del escenario:
   - "No se aprueba licencia de IA para C11 hasta registrar sus sistemas en el inventario."
   - "El informe SOC 2 se mantiene en la fase 4; no se adelanta."
 
-- [ ] **Step 1: Escribir las pruebas** (`pytest`):
+- [x] **Step 1: Escribir las pruebas** (`pytest`):
   - `test_cumplimiento`: `(181, 72, "menor") == 39.8`; `(60, 72, "menor") == 100`; `(0, 0, "menor") == 100`; `(1, 0, "menor") == 0`; `(-4.4, -5, "mayor") == 88.0`; `(2, -5, "mayor") == 0`; `(None, 72, "menor") is None`; `(5, None, "mayor") is None`.
   - `test_estado`: `95 → "Bueno"`, `94.9 → "Intermedio"`, `70.1 → "Intermedio"`, `70 → "Bajo"`, `None → "No evaluado"`.
   - `test_estados_mes12`: `control_corte(modelo, 12)` da exactamente la tabla "Estados esperados al mes 12".
@@ -192,11 +192,11 @@ Reglas del escenario:
   - `test_proyectos_mes12`: conteo por estado al mes 12 = {Terminado: 13, Atrasado: 4, Por iniciar: 8}.
   - `test_decisiones`: entre 12 y 16 filas; `foco` dentro de los 4 valores; textos ≤ 160 caracteres; ningún texto de ninguna tabla contiene "@".
   - `test_determinista`: dos llamadas a `construir_modelo` con la misma semilla dan dicts iguales.
-- [ ] **Step 2: Correr y ver que fallan** — Run: `python -m pytest scripts/tests/test_powerbi_iso38500.py -q` → Expected: FAIL (`ModuleNotFoundError`).
-- [ ] **Step 3: Implementar** `scripts/powerbi_iso38500_datos.py` con las interfaces y reglas de arriba. Usa `random.Random(semilla)`, nunca el `random` global. Si un estado del mes 12 no cae donde pide la tabla, ajusta la regla del escenario, no la prueba.
-- [ ] **Step 4: Correr y ver que pasan** — Run: `python -m pytest scripts/tests/test_powerbi_iso38500.py -q` → Expected: todas PASS.
-- [ ] **Step 5: Generar** — Run: `python scripts/powerbi_iso38500_datos.py docs/entregas-2026-11-04/dashboard/datos docs/entregas-2026-11-16/dashboard-iso38500/datos` → Expected: el libro con 14 hojas y el CSV de control con 18 filas.
-- [ ] **Step 6: Commit** — `/commit` (`feat: agregar generador del modelo de datos del dashboard ISO 38500`).
+- [x] **Step 2: Correr y ver que fallan** — Run: `python -m pytest scripts/tests/test_powerbi_iso38500.py -q` → Expected: FAIL (`ModuleNotFoundError`).
+- [x] **Step 3: Implementar** `scripts/powerbi_iso38500_datos.py` con las interfaces y reglas de arriba. Usa `random.Random(semilla)`, nunca el `random` global. Si un estado del mes 12 no cae donde pide la tabla, ajusta la regla del escenario, no la prueba.
+- [x] **Step 4: Correr y ver que pasan** — Run: `python -m pytest scripts/tests/test_powerbi_iso38500.py -q` → Expected: todas PASS.
+- [x] **Step 5: Generar** — Run: `python scripts/powerbi_iso38500_datos.py docs/entregas-2026-11-04/dashboard/datos docs/entregas-2026-11-16/dashboard-iso38500/datos` → Expected: el libro con 14 hojas y el CSV de control con 18 filas.
+- [x] **Step 6: Commit** — `/commit` (`feat: agregar generador del modelo de datos del dashboard ISO 38500`).
 
 ### Task 2: Tema de Power BI y medidas DAX
 
@@ -246,10 +246,10 @@ VAR m = [Mes último reporte]
 RETURN IF ( NOT ISBLANK ( m ), CALCULATE ( [Valor], REMOVEFILTERS ( dim_fecha ), dim_fecha[mes] = m ) )
 ```
 
-- [ ] **Step 1: Escribir la prueba** `test_tema`: el JSON carga; `dataColors[:3] == ["#2a78d6", "#eb6834", "#1baf7a"]`; `good`, `neutral` y `bad` son los de Global Constraints. Y `test_medidas_declaradas`: cada nombre de la tabla de medidas aparece en `medidas.dax` como `^Nombre =`.
-- [ ] **Step 2: Correr y ver que fallan** — Run: `python -m pytest scripts/tests/test_powerbi_iso38500.py -q -k "tema or medidas"` → Expected: FAIL.
-- [ ] **Step 3: Escribir** el tema y `medidas.dax`.
-- [ ] **Step 4: Correr y ver que pasan** — mismo comando → Expected: PASS.
+- [x] **Step 1: Escribir la prueba** `test_tema`: el JSON carga; `dataColors[:3] == ["#2a78d6", "#eb6834", "#1baf7a"]`; `good`, `neutral` y `bad` son los de Global Constraints. Y `test_medidas_declaradas`: cada nombre de la tabla de medidas aparece en `medidas.dax` como `^Nombre =`.
+- [x] **Step 2: Correr y ver que fallan** — Run: `python -m pytest scripts/tests/test_powerbi_iso38500.py -q -k "tema or medidas"` → Expected: FAIL.
+- [x] **Step 3: Escribir** el tema y `medidas.dax`.
+- [x] **Step 4: Correr y ver que pasan** — mismo comando → Expected: PASS.
 - [ ] **Step 5: Commit** — `/commit` (`feat: agregar tema y medidas del dashboard ISO 38500`).
 
 ### Task 3: Modelo en Power BI (Lucho, a mano, unos 60 minutos)
