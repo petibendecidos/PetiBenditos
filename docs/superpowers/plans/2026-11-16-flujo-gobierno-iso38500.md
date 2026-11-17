@@ -4,6 +4,8 @@
 
 **Goal:** Entregar la tarea "Cargar flujo automatizado de Gobierno de TI - ISO 38500 2024" (cierre: 18 de noviembre de 2026, 23:59) con un flujo de n8n que corre cada mes, evalúa cada célula de la operación colombiana con las metas del PETI, pide decisiones al Comité cuando hay rojo y deja registro en Google Sheets y por Gmail.
 
+**Estado (16 de noviembre de 2026):** ejecutado. Tres ejecuciones con éxito, flujo activo, Word y capturas en `docs/entregas-2026-11-16/flujo-iso38500/`. Desviaciones respecto del plan: 17 nodos en vez de 16 (nodo "Preparar historial"); la verificación de nodos se hizo leyendo `n8n-nodes-base/dist/types/nodes.json` en vez de crear un flujo de prueba; la aprobación va en texto plano porque *Send and Wait* escapa el HTML; las escrituras en Sheets usan `cellFormat: RAW`; la cuenta que envía los correos es la del equipo y no la personal.
+
 **Architecture:** n8n 2.47.7 corre en local (`npx`, Node 24.12.0) con los datos en `D:\dev\n8n`. Una hoja de Google con seis pestañas es la fuente y el registro. La lógica de evaluación es un módulo JS probado con `node:test` que un script de Python incrusta en el JSON del flujo; el JSON versionado lleva marcadores en lugar de IDs y correos.
 
 **Tech Stack:** n8n 2.47.7 (nodos Schedule Trigger, Manual Trigger, Google Sheets, Code, Switch, Gmail con *Send and Wait for Approval*, IF), Node 24 `node:test`, Python 3.14 con `openpyxl` y `pytest`, Google Cloud (proyecto `peti-514922`, cliente OAuth web ya creado).

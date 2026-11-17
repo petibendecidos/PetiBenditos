@@ -1,6 +1,6 @@
 # Flujo automatizado de gobierno de TI por célula con ISO/IEC 38500:2024
 
-<!-- Fuente del Word Flujo_Gobierno_TI_ISO38500_Perficient_Colombia.docx. Se genera con scripts/md_a_docx_simple.py. Las secciones de ejecución se completan con los resultados reales del flujo. -->
+<!-- Fuente del Word Flujo_Gobierno_TI_ISO38500_Perficient_Colombia.docx. Se genera con scripts/md_a_docx_simple.py. -->
 
 **Organización:** Perficient Inc., operación en Colombia (PETI 2026-2028, trabajo académico). **Equipo:** Firmes por la Gobernanza. **Herramienta:** n8n 2.47.7 instalado en local, con Google Sheets y Gmail. **Fecha:** noviembre de 2026.
 
@@ -15,8 +15,6 @@ Cada mes, el primer día a las 7:00, el flujo revisa las doce células de entreg
 5. Si hay células en estado bajo, junta todas en un solo correo al Comité con dos botones: aprobar el plan correctivo o escalar al Comité Directivo. El flujo espera la respuesta hasta tres días.
 6. Registra la decisión de cada célula en la pestaña Decisiones: fecha, ciclo, célula, tema, justificación, decisión y responsable.
 7. Manda al Comité el informe mensual con las células ordenadas de peor a mejor y su estado del mes anterior.
-
-![Flujo en n8n](capturas/flujo.png)
 
 ## Por qué es distinto del flujo de ejemplo
 
@@ -52,7 +50,37 @@ Los datos son los sintéticos del dashboard del 4 de noviembre, generados con MO
 
 ## Resultado de la ejecución
 
-<!-- Se completa con la ejecución real: ciclo, conteo por estado, decisión del Comité, filas en Historial y Decisiones, correos recibidos y capturas. -->
+El flujo se ejecutó tres veces con el disparo manual el 16 de noviembre de 2026, entre las 6:50 p. m. y las 7:30 p. m. (hora de Colombia). Las tres terminaron con éxito. La primera tardó 2 minutos y 16 segundos porque esperó la respuesta del Comité; las otras, unos 20 segundos. Después se activó para que corra solo el primer día de cada mes.
+
+Resultado del ciclo 2027-09 (mes 12 del escenario sintético):
+
+| Estado | Células | Qué hizo el flujo |
+|---|---|---|
+| Bajo | 10: C01, C03, C04, C05, C06, C08, C09, C10, C11 y C12 | Una sola solicitud de aprobación al Comité con las diez células y sus indicadores en rojo |
+| Intermedio | 2: C02 y C07 | Un correo a los líderes de cada una |
+| Bueno | 0 | — |
+
+El resultado coincide con el dashboard de CIO del 4 de noviembre, que ya mostraba en estado bajo la remediación de vulnerabilidades críticas (KPI-05) y la rotación entre células (KPI-10). Por célula, el rojo viene sobre todo de esos dos indicadores. C11 suma además una certificación muy baja (14,3 % frente a 70 %).
+
+![Ejecución completa en n8n](capturas/flujo.png)
+
+La solicitud de aprobación llega como texto con las diez células, cada indicador en rojo, su meta y el proyecto del PETI que lo corrige, y dos botones:
+
+![Correo de aprobación al Comité](capturas/aprobacion.png)
+
+Los líderes de las células en amarillo reciben la tabla de sus indicadores bajo la meta:
+
+![Aviso a los líderes de la célula C02](capturas/aviso-lideres.png)
+
+En la primera y la tercera ejecución el Comité aprobó el plan correctivo; en la segunda lo escaló al Comité Directivo, para probar las dos ramas. La bitácora quedó con 30 filas, diez por ejecución, cada una con la fecha, el ciclo, la célula, el tema, la justificación con el indicador y su meta, la decisión y el responsable:
+
+![Bitácora de decisiones](capturas/decisiones.png)
+
+El historial quedó con 12 filas, una por célula, aunque el flujo corrió tres veces sobre el mismo ciclo: cada ejecución actualiza la fila de su clave (ciclo y célula) en lugar de agregar otra. La fecha de ejecución muestra la última:
+
+![Historial del ciclo 2027-09](capturas/historial.png)
+
+El informe mensual llegó en las tres ejecuciones con el asunto "Informe mensual de gobierno de TI por célula, ciclo 2027-09", al correo del Comité y en copia al de los líderes.
 
 ## Cómo se instala y se ejecuta
 

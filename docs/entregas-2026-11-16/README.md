@@ -45,14 +45,6 @@ Las hojas Instructions, Assessment y Results están protegidas con contraseña. 
 - Estado del certificado ISO/IEC 27001 (PUB-002): al 16 de noviembre de 2026 las dos lecturas de la fecha publicada ya pasaron y la página respondió HTTP 429. Si venció sin recertificación, las respuestas 4.5 y 5.2 bajan a "No" (19 puntos, sigue en nivel 1).
 - Los tres cambios propuestos al PETI Colombia (adelantar P2.8 a la fase 1, evaluación posterior de proyectos y lecciones aprendidas, indicador de proveedores y meta de nivel 3 al año 1) se suman a los del diagnóstico BSC y del modelo de madurez; todos esperan la versión 1.1 del PETI.
 
-## Segunda actividad: flujo automatizado de gobierno de TI con ISO/IEC 38500:2024 (en curso)
+## Segunda actividad: flujo automatizado de gobierno de TI con ISO/IEC 38500:2024
 
-Tarea "Cargar flujo automatizado de Gobierno de TI - ISO 38500 2024" (cierre: 18 de noviembre de 2026, 23:59). Está en [flujo-iso38500/](flujo-iso38500/): un flujo de n8n que cada mes evalúa las doce células con cuatro indicadores del PETI, avisa a los líderes de las células en amarillo, pide aprobación al Comité por correo para las células en rojo y registra historial y decisiones en Google Sheets. Plan y avance: [docs/superpowers/plans/2026-11-16-flujo-gobierno-iso38500.md](../superpowers/plans/2026-11-16-flujo-gobierno-iso38500.md).
-
-| Archivo | Qué es |
-|---|---|
-| `flujo-iso38500/flujo-gobierno-celulas.json` | El flujo para importar en n8n, con marcadores en lugar del ID de la hoja y de las credenciales (`scripts/flujo_gobierno_construir.py`) |
-| `flujo-iso38500/hoja-gobierno-celulas.xlsx` | La hoja de Google en Excel, con correos de ejemplo (`scripts/flujo_gobierno_datos.py`) |
-| `flujo-iso38500/flujo-gobierno-iso38500.md` | Borrador del documento de la entrega; falta el resultado de la ejecución y las capturas |
-
-Pendiente: conectar Google, importar y ejecutar el flujo, tomar las capturas y generar el Word.
+Tarea "Cargar flujo automatizado de Gobierno de TI - ISO 38500 2024" (cierre: 18 de noviembre de 2026, 23:59). Está en [flujo-iso38500/](flujo-iso38500/README.md): un flujo de n8n que cada mes evalúa las doce células con cuatro indicadores del PETI, avisa a los líderes de las células en amarillo, pide aprobación al Comité por correo para las células en rojo y registra historial y decisiones en Google Sheets. Se ejecutó tres veces con éxito el 16 de noviembre (10 células en rojo, 2 en amarillo) y quedó activo para correr cada mes. Lo que se sube es el JSON del flujo y el Word con la correspondencia con la ISO y las capturas. Plan: [docs/superpowers/plans/2026-11-16-flujo-gobierno-iso38500.md](../superpowers/plans/2026-11-16-flujo-gobierno-iso38500.md).
